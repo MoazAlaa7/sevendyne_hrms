@@ -8,10 +8,11 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 # from main.decorators import company_required
 from django.db.models import Q
+from employee.models import Employee
 from main.decorators import company_required
 
 from main.forms import CompanyForm
-from main.functions import generate_form_errors, get_a_id, get_auto_id
+from main.functions import generate_form_errors, get_a_id, get_auto_id, has_employee_dashboard_permission
 from main.models import Company, CompanyAccess, State
 
 from django.http import JsonResponse
@@ -56,11 +57,41 @@ def hrms_dashboard(request):
     try:
         # Retrieve the HrmsClient object associated with the logged-in user
         hrms_client = get_object_or_404(HrmsClient, user=request.user, is_deleted=False)
-        print("hrms client")
+        # print("hrms client")
         print(hrms_client)
 
         context = {
             'hrms_client': hrms_client,
+        }
+    
+        return render(request, "dashboard/admin-dashboard.html", context=context)
+    except HrmsClient.DoesNotExist:
+        # Debugging: Print a message if the HrmsClient object is not found
+        # print("HrmsClient not found for the user.")
+        return HttpResponse("HrmsClient not found for the user.")
+    except Exception as e:
+        # Debugging: Print any other exceptions that might occur
+        # print("Exception:", e)
+        return HttpResponse(f"An error occurred: {str(e)}")
+    
+@login_required
+@user_passes_test(has_employee_dashboard_permission, redirect_field_name=None)
+@company_required
+def employee_dashboard(request):
+    print("hrms home request got")
+    # Debugging: Print the user to verify it's the correct user
+    print("User:", request.user)
+    employees = Employee.objects.filter(is_deleted=False)
+    print("all hrms clients",employees)
+
+    try:
+        # Retrieve the HrmsClient object associated with the logged-in user
+        employee = get_object_or_404(HrmsClient, user=request.user, is_deleted=False)
+        print("hrms client")
+        print(employee)
+
+        context = {
+            'employee': employee,
         }
     
         return render(request, "dashboard/admin-dashboard.html", context=context)
@@ -72,16 +103,6 @@ def hrms_dashboard(request):
         # Debugging: Print any other exceptions that might occur
         print("Exception:", e)
         return HttpResponse(f"An error occurred: {str(e)}")
-    # Retrieve the HrmsClient object associated with the logged-in user
-    # hrms_client = get_object_or_404(HrmsClient, user=request.user, is_deleted=False)
-    # print("hrms client")
-    # print(hrms_client)
-    # context = {
-    #     'hrms_client': hrms_client,
-    # }
-
-    # return render(request, "home_hrms.html", context=context)
-
 
 @login_required
 @user_passes_test(has_admin_dashboard_permission, redirect_field_name=None)

@@ -77,6 +77,11 @@ def has_hrms_permission(user):
         print("user not exist in hrms client group")
     return user.groups.filter(name='hrms_clients').exists() 
 
+def has_employee_dashboard_permission(user):
+    print("checking admin permission")
+    return user.groups.filter(name='employee_group').exists()
+
+
 def has_admin_dashboard_permission(user):
     print("checking admin permission")
     return user.groups.filter(name='sevendyne_admin').exists()
