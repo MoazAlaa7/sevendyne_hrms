@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from employee import models
-from employee.forms import DepartmentForm, DesignationForm, EmployeeForm, LeaveTypeForm
+from employee.forms import DepartmentForm, DesignationForm, EmployeeForm, LeaveForm, LeaveTypeForm
 from employee.models import Department, Designation, Employee, Leave, LeaveType
 from main.decorators import company_required
 from main.functions import generate_form_errors, get_a_id, get_auto_id, get_current_company
@@ -784,7 +784,6 @@ def delete_leave_type(request,pk):
 
 # Leave crud starts here
 @login_required
-@company_required
 def create_leave(request):
     current_company = get_current_company(request)
     print("current comapny",current_company)

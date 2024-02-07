@@ -107,30 +107,30 @@ class Leave(BaseModel):
     def __str__(self):
         return f"{self.employee} - {self.leavetype}"
 
-    @property
-    def leave_days(self):
-        days_count = ''
-        startdate = self.startdate
-        enddate = self.enddate
-        if startdate > enddate:
-            return
-        elif startdate == enddate:
-            days_count = '1 day'
-        else:
-            diff = enddate - startdate
-            if diff.days == 1:
-                days_count = '{0} day'.format(diff.days)
-            else:
-                days_count = '{0} days'.format(diff.days)
-        return "{0}, {1}".format(days_count, self.leavetype)
+    # @property
+    # def leave_days(self):
+    #     days_count = ''
+    #     startdate = self.startdate
+    #     enddate = self.enddate
+    #     if startdate > enddate:
+    #         return
+    #     elif startdate == enddate:
+    #         days_count = '1 day'
+    #     else:
+    #         diff = enddate - startdate
+    #         if diff.days == 1:
+    #             days_count = '{0} day'.format(diff.days)
+    #         else:
+    #             days_count = '{0} days'.format(diff.days)
+    #     return "{0}, {1}".format(days_count, self.leavetype)
 
-    @property
-    def remaining_days(self):
-        if self.leavetype.days is not None:
-            approved_leave_days = Leave.objects.filter(employee=self.employee, leavetype=self.leavetype, is_approved=True).count()
-            remaining_days = self.leavetype.days - approved_leave_days
-            return max(0, remaining_days)
-        return None
+    # @property
+    # def remaining_days(self):
+    #     if self.leavetype.days is not None:
+    #         approved_leave_days = Leave.objects.filter(employee=self.employee, leavetype=self.leavetype, is_approved=True).count()
+    #         remaining_days = self.leavetype.days - approved_leave_days
+    #         return max(0, remaining_days)
+    #     return None
 
 
 # 	@property

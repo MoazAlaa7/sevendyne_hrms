@@ -1,9 +1,8 @@
-{% extends "base/base_settings.html" %}
+{% extends "base/base_employee.html" %}
 {%load static%}
 
 {% block content %}
 
-			
 <!-- Page Content -->
 <div class="content container-fluid">
 
@@ -122,18 +121,19 @@
 						</tr>
 					</thead>
 					<tbody>
+						{% for leave in leaves %}
 						<tr>
 							<td>
 								<h2 class="table-avatar">
 									<a href="profile.html" class="avatar"><img src="assets/img/profiles/avatar-09.jpg" alt="User Image"></a>
-									<a href="#">Richard Miles <span>Web Developer</span></a>
+									<a href="#">{{ leave.employee.get_full_name }} <span>{{ leave.employee.designation }}</span></a>
 								</h2>
 							</td>
-							<td>Casual Leave</td>
-							<td>8 Mar 2019</td>
-							<td>9 Mar 2019</td>
-							<td>2 days</td>
-							<td>Going to Hospital</td>
+							<td>{{ leave.leavetype }}</td>
+							<td>{{ leave.startdate }}</td>
+							<td>{{ leave.enddate }}</td>
+							<td>{{ leave.leave_days }}</td>
+							<td>{{ leave.reason }}</td>
 							<td class="text-center">
 								<div class="dropdown action-label">
 									<a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
@@ -156,7 +156,110 @@
 									</div>
 								</div>
 							</td>
-						</tr>						
+						</tr>	
+						<!-- Edit Leave Modal -->
+						<div id="edit_leave" class="modal custom-modal fade" role="dialog">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">Edit Leave</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<form>
+											<div class="input-block mb-3">
+												<label class="col-form-label">Leave Type <span class="text-danger">*</span></label>
+												<select class="select">
+													<option>Select Leave Type</option>
+													<option>Casual Leave 12 Days</option>
+												</select>
+											</div>
+											<div class="input-block mb-3">
+												<label class="col-form-label">From <span class="text-danger">*</span></label>
+												<div class="cal-icon">
+													<input class="form-control datetimepicker" value="01-01-2019" type="text">
+												</div>
+											</div>
+											<div class="input-block mb-3">
+												<label class="col-form-label">To <span class="text-danger">*</span></label>
+												<div class="cal-icon">
+													<input class="form-control datetimepicker" value="01-01-2019" type="text">
+												</div>
+											</div>
+											<div class="input-block mb-3">
+												<label class="col-form-label">Number of days <span class="text-danger">*</span></label>
+												<input class="form-control" readonly type="text" value="2">
+											</div>
+											<div class="input-block mb-3">
+												<label class="col-form-label">Remaining Leaves <span class="text-danger">*</span></label>
+												<input class="form-control" readonly value="12" type="text">
+											</div>
+											<div class="input-block mb-3">
+												<label class="col-form-label">Leave Reason <span class="text-danger">*</span></label>
+												<textarea rows="4" class="form-control">Going to hospital</textarea>
+											</div>
+											<div class="submit-section">
+												<button class="btn btn-primary submit-btn">Save</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Edit Leave Modal -->
+
+						<!-- Approve Leave Modal -->
+						<div class="modal custom-modal fade" id="approve_leave" role="dialog">
+							<div class="modal-dialog modal-dialog-centered">
+								<div class="modal-content">
+									<div class="modal-body">
+										<div class="form-header">
+											<h3>Leave Approve</h3>
+											<p>Are you sure want to approve for this leave?</p>
+										</div>
+										<div class="modal-btn delete-action">
+											<div class="row">
+												<div class="col-6">
+													<a href="javascript:void(0);" class="btn btn-primary continue-btn">Approve</a>
+												</div>
+												<div class="col-6">
+													<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Decline</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Approve Leave Modal -->
+
+						<!-- Delete Leave Modal -->
+						<div class="modal custom-modal fade" id="delete_approve" role="dialog">
+							<div class="modal-dialog modal-dialog-centered">
+								<div class="modal-content">
+									<div class="modal-body">
+										<div class="form-header">
+											<h3>Delete Leave</h3>
+											<p>Are you sure want to delete this leave?</p>
+										</div>
+										<div class="modal-btn delete-action">
+											<div class="row">
+												<div class="col-6">
+													<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+												</div>
+												<div class="col-6">
+													<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /Delete Leave Modal -->
+						{% endfor %}
 					</tbody>
 				</table>
 			</div>
@@ -176,46 +279,54 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form method="post" action="{% url 'leave:create_leave' %}">
+				<form method="post" action="{% url 'employee:create_leave' %}" enctype="multipart/form-data">
 					{% csrf_token %}
 					
 					<div class="input-block mb-3">
 					  <label class="col-form-label">Leave Type <span class="text-danger">*</span></label>
-					  <select name="leavetype" class="select form-control">
-						<option value="" selected disabled>Select Leave Type</option>
-						{% for leave_type in form.leavetype.field.choices %}
-						  <option value="{{ leave_type.0 }}">{{ leave_type.1 }}</option>
-						{% endfor %}
-					  </select>
+					  	{{ form.leavetype }}
+						{% if form.leavetype.errors %}
+						<span class="error">{{ form.leavetype.errors.0 }}</span>
+						{% endif %}
 					</div>
 		  
 					<div class="input-block mb-3">
 					  <label class="col-form-label">From <span class="text-danger">*</span></label>
-					  <div class="cal-icon">
-						<input name="startdate" class="form-control datetimepicker" type="text">
+					  <div class="cal-icon"><div class="cal-icon">
+							<input id="start_date" name="startdate" class="form-control datetimepicker" type="text">
+						</div>
 					  </div>
 					</div>
 		  
 					<div class="input-block mb-3">
 					  <label class="col-form-label">To <span class="text-danger">*</span></label>
-					  <div class="cal-icon">
-						<input name="enddate" class="form-control datetimepicker" type="text">
+					  <div class="cal-icon"><div class="cal-icon">
+							<input id="end_date" name="enddate" class="form-control datetimepicker" type="text">
+						</div>
 					  </div>
 					</div>
 		  
 					<div class="input-block mb-3">
 					  <label class="col-form-label">Number of days <span class="text-danger">*</span></label>
-					  <input name="days" class="form-control" readonly type="text">
+					  <input id="leave_days" class="form-control" readonly type="text" value="">
+					  
+					  {% comment %} <input name="days" class="form-control" readonly type="text" value="{{ form.days }}"> {% endcomment %}
 					</div>
 		  
 					<div class="input-block mb-3">
 					  <label class="col-form-label">Remaining Leaves <span class="text-danger">*</span></label>
-					  <input name="remaining_days" class="form-control" readonly type="text" value="{{ form.remaining_days }}">
+					  <input id="remaining_days" class="form-control" readonly type="text" value="">
+					  
+					  {% comment %} <input name="remaining_days" class="form-control" readonly type="text" value="{{ form.remaining_days }}"> {% endcomment %}
 					</div>
 		  
 					<div class="input-block mb-3">
 					  <label class="col-form-label">Leave Reason <span class="text-danger">*</span></label>
-					  <textarea name="reason" rows="4" class="form-control">{{ form.reason }}</textarea>
+					  	{{ form.reason }}
+						{% if form.reason.errors %}
+						<span class="error">{{ form.reason.errors.0 }}</span>
+						{% endif %}
+					  {% comment %} <textarea name="reason" rows="4" class="form-control">{{ form.reason }}</textarea> {% endcomment %}
 					</div>
 		  
 					<div class="submit-section">
@@ -227,108 +338,57 @@
 	</div>
 </div>
 <!-- /Add Leave Modal -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  function calculateLeaveDays(startDateString, endDateString, leaveTypeDays) {
+    var startDate = new Date(startDateString);
+    var endDate = new Date(endDateString);
+    var diffTime = Math.abs(endDate - startDate);
+    var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-<!-- Edit Leave Modal -->
-<div id="edit_leave" class="modal custom-modal fade" role="dialog">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Edit Leave</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="input-block mb-3">
-						<label class="col-form-label">Leave Type <span class="text-danger">*</span></label>
-						<select class="select">
-							<option>Select Leave Type</option>
-							<option>Casual Leave 12 Days</option>
-						</select>
-					</div>
-					<div class="input-block mb-3">
-						<label class="col-form-label">From <span class="text-danger">*</span></label>
-						<div class="cal-icon">
-							<input class="form-control datetimepicker" value="01-01-2019" type="text">
-						</div>
-					</div>
-					<div class="input-block mb-3">
-						<label class="col-form-label">To <span class="text-danger">*</span></label>
-						<div class="cal-icon">
-							<input class="form-control datetimepicker" value="01-01-2019" type="text">
-						</div>
-					</div>
-					<div class="input-block mb-3">
-						<label class="col-form-label">Number of days <span class="text-danger">*</span></label>
-						<input class="form-control" readonly type="text" value="2">
-					</div>
-					<div class="input-block mb-3">
-						<label class="col-form-label">Remaining Leaves <span class="text-danger">*</span></label>
-						<input class="form-control" readonly value="12" type="text">
-					</div>
-					<div class="input-block mb-3">
-						<label class="col-form-label">Leave Reason <span class="text-danger">*</span></label>
-						<textarea rows="4" class="form-control">Going to hospital</textarea>
-					</div>
-					<div class="submit-section">
-						<button class="btn btn-primary submit-btn">Save</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- /Edit Leave Modal -->
+    if (diffDays === 0) {
+      return "1 day";
+    } else if (diffDays === 1) {
+      return "1 day, " + leaveTypeDays;
+    } else {
+      return diffDays + " days, " + leaveTypeDays;
+    }
+  }
 
-<!-- Approve Leave Modal -->
-<div class="modal custom-modal fade" id="approve_leave" role="dialog">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-body">
-				<div class="form-header">
-					<h3>Leave Approve</h3>
-					<p>Are you sure want to approve for this leave?</p>
-				</div>
-				<div class="modal-btn delete-action">
-					<div class="row">
-						<div class="col-6">
-							<a href="javascript:void(0);" class="btn btn-primary continue-btn">Approve</a>
-						</div>
-						<div class="col-6">
-							<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Decline</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- /Approve Leave Modal -->
+  function calculateRemainingDays(approvedLeaveDays, leaveTypeDays) {
+    var remainingDays = leaveTypeDays - approvedLeaveDays;
+    return Math.max(0, remainingDays);
+  }
 
-<!-- Delete Leave Modal -->
-<div class="modal custom-modal fade" id="delete_approve" role="dialog">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-body">
-				<div class="form-header">
-					<h3>Delete Leave</h3>
-					<p>Are you sure want to delete this leave?</p>
-				</div>
-				<div class="modal-btn delete-action">
-					<div class="row">
-						<div class="col-6">
-							<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
-						</div>
-						<div class="col-6">
-							<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- /Delete Leave Modal -->
+  $(document).ready(function() {
+    // Function to calculate and update leave days
+    function updateLeaveDays() {
+      var startDate = $('#start_date').val();
+      var endDate = $('#end_date').val();
+      var leaveTypeDays = parseInt($('#leave_type_days').val()); // Assuming you have a hidden input field with leave type days
+      var leaveDays = calculateLeaveDays(startDate, endDate, leaveTypeDays);
+      $('#leave_days').val(leaveDays);
+    }
 
+    // Function to update remaining days
+    function updateRemainingDays() {
+      var approvedLeaveDays = parseInt($('#approved_leave_days').val()); // Assuming you have a hidden input field with approved leave days
+      var leaveTypeDays = parseInt($('#leave_type_days').val()); // Assuming you have a hidden input field with leave type days
+      var remainingDays = calculateRemainingDays(approvedLeaveDays, leaveTypeDays);
+      $('#remaining_days').val(remainingDays);
+    }
+
+    // Event listener for start date change
+    $('#start_date').change(function() {
+      updateLeaveDays();
+      updateRemainingDays();
+    });
+
+    // Event listener for end date change
+    $('#end_date').change(function() {
+      updateLeaveDays();
+      updateRemainingDays();
+    });
+  });
+</script>
 {% endblock %}
