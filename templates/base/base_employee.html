@@ -15,11 +15,15 @@
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{%static 'assets/css/bootstrap.min.css'%}">
+        <link rel="stylesheet" href="{%static 'assets/css/bootstrap-datetimepicker.min.css'%}">
 		
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/fontawesome.min.css'%}">
     	<link rel="stylesheet" href="{%static 'assets/plugins/fontawesome/css/all.min.css'%}">
-
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="{%static 'assets/css/select2.min.css' %}">
+		
 		<!-- Lineawesome CSS -->
         <link rel="stylesheet" href="{%static 'assets/css/line-awesome.min.css'%}">
 		<link rel="stylesheet" href="{%static 'assets/css/material.css'%}">
@@ -36,7 +40,7 @@
         <div class="main-wrapper">
 		
 			<!-- Loader -->
-			<div id="loader-wrapper">
+			{% comment %} <div id="loader-wrapper">
 				<div id="loader">
 					<div class="loader-ellips">
 					  <span class="loader-ellips__dot"></span>
@@ -45,7 +49,7 @@
 					  <span class="loader-ellips__dot"></span>
 					</div>
 				</div>
-			</div>
+			</div> {% endcomment %}
 			<!-- /Loader -->
 		
 			<!-- Header -->
@@ -349,10 +353,12 @@
 										<span>Main</span>
 									</li>
 									<li class="submenu">
-										<a href="#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
-										 <ul>
+										<a href="#"><i class="la la-dashboard" href="{% url 'main:employee_dashboard' %}"></i> <span> Dashboard</span>
+											 {% comment %} <span class="menu-arrow"></span> {% endcomment %}
+										</a>
+										{% comment %} <ul>
 											<li><a  class="active" href="{% url 'main:employee_dashboard' %}">Employee Dashboard</a></li>
-										</ul>
+										</ul> {% endcomment %}
 									</li>
 									<li class="submenu">
 										<a href="#"><i class="la la-cube"></i> <span> Apps</span> <span class="menu-arrow"></span></a>
@@ -445,11 +451,22 @@
 								<span>Main</span>
 							</li>
 							<li class="submenu">
-								<a href="{% url 'hrms_dashboard' %}"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
-								<ul>
+								<a href="{% url 'main:employee_dashboard' %}"><i class="la la-dashboard"></i> <span> Dashboard</span>
+									 {% comment %} <span class="menu-arrow"></span> {% endcomment %}
+								</a>
+								{% comment %} <ul>
 									<li><a  class="active" href="{% url 'main:employee_dashboard' %}">Employee Dashboard</a></li>
-								</ul>
+								</ul> {% endcomment %}
 							</li> 
+							<li class="submenu">
+								<a href="#"><i class="la la-rocket"></i> <span> Leave Management</span> <span class="menu-arrow"></span></a>
+								<ul>
+									<li><a href="{% url 'employee:create_leave' %}">Leave Request</a></li>
+									<li><a href="#">Leave Status</a></li>
+									{% comment %} <li><a href="#">Task Board</a></li> {% endcomment %}
+								</ul>
+							</li>
+							
 							<li class="submenu">
 								<a href="#"><i class="la la-cube"></i> <span> Apps</span> <span class="menu-arrow"></span></a>
 								<ul>
@@ -1206,11 +1223,16 @@
 		
 		<!-- Bootstrap Core JS -->
         <script src="{%static 'assets/js/bootstrap.bundle.min.js'%}"></script>
-		
+		<!-- Datetimepicker JS -->
+		<script src="{%static 'assets/js/moment.min.js' %}"></script>
+		<script src="{%static 'assets/js/bootstrap-datetimepicker.min.js'%}"></script>
 		<!-- Slimscroll JS -->
 		<script src="{%static 'assets/js/jquery.slimscroll.min.js'%}"></script>
-
-		 <!-- Theme Settings JS -->
+		
+		<!-- Select2 JS -->
+		<script src="{%static 'assets/js/select2.min.js' %}"></script>
+		
+		<!-- Theme Settings JS -->
 		<script src="{%static 'assets/js/layout.js'%}"></script>
 		<script src="{%static 'assets/js/theme-settings.js'%}"></script>
 		<script src="{%static 'assets/js/greedynav.js'%}"></script>
