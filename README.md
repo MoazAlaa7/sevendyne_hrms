@@ -34,3 +34,6 @@ For Windows
 - Admin: username - admin , password - admin
 - Client: username - hrmsclient1 , password - password@123, hrmsclient1@example.com 
 - Employee: username - employee1, password - password@123
+
+**Run the app**: python manage.py runserver 0.0.0.0:8000
+Open your browser and type localhost:8000 and you will see the app running. Cheers!!!
