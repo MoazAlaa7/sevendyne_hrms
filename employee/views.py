@@ -9,6 +9,7 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
 from django.core.paginator import Paginator
+from client.models import Client
 from employee import models
 from employee.forms import AttendanceDateForm, AttendanceRegisterForm, DepartmentForm, DesignationForm, EmployeeForm, LeaveForm, LeaveTypeForm
 from employee.models import AttendanceRegister, Department, Designation, Employee, Leave, LeaveType
@@ -314,12 +315,14 @@ def create_designation(request):
 @company_required
 def designations(request):
     current_company = get_current_company(request)
+    departments = Department.objects.filter(company=current_company,is_deleted=False)
     designations = Designation.objects.filter(company=current_company,is_deleted=False)
     paginator = Paginator(designations,1000000000000)
     page_number = request.GET.get('page')
     designations = paginator.get_page(page_number)
     context = {
         'designations': designations,
+        'departments' : departments,
         "title": 'Designation' 
     }
     return render(request, "designation/designations.html", context)
@@ -525,8 +528,16 @@ def employees(request):
     employees = Employee.objects.filter(is_deleted=False,is_blocked=False,company=current_company,)
     paginator = Paginator(employees,1000000000000)
     page_number = request.GET.get('page')
-    employee = paginator.get_page(page_number)
+    employees = paginator.get_page(page_number)
+    
+    departments = Department.objects.filter(company=current_company,is_deleted=False)
+    designations = Designation.objects.filter(company=current_company,is_deleted=False)
+    clients = Client.objects.filter(company=current_company,is_deleted=False)
+    print("clients",clients)
     context = {
+        'departments': departments,
+        'designations' : designations,
+        "clients" : clients,
         'employees': employees,
         "title": 'Employees' 
     }
@@ -581,14 +592,18 @@ def edit_employee(request, pk):
         return HttpResponse(json.dumps(response_data), content_type='application/json')
     else:
         form = EmployeeForm(instance=instance)
-
+        
+        print("employee edit form request")
+        print("instance",instance)
+        print("departmet",instance.department)
+        print("designation",instance.designation)
         context = {
             "form": form,
             "instance": instance,
             "title": "Edit Employee :" + instance.firstname,
             
             "redirect": "true",
-            "url": reverse('employee:employeemployee', kwargs={'pk': instance.pk}),
+            "url": reverse('employee:edit_employee', kwargs={'pk': instance.pk}),
 
 
         }

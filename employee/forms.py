@@ -37,7 +37,7 @@ class DesignationForm(forms.ModelForm):
         }
         error_messages = {
             'name' : {
-                'required' : _("first_name field is required."),
+                'required' : _("name field is required."),
             },
             'department' : {
                 'required' : _("Department field is required."),
