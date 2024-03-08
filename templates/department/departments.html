@@ -334,7 +334,7 @@
 		.then((result) => {
 			if (result.isConfirmed) {
 				// If user confirms, send Fetch API request to delete
-				fetch('{% url "hrms:delete_hrms_client" pk=0 %}'.replace('0', pk), {
+				fetch('{% url "employee:delete_department" pk=0 %}'.replace('0', pk), {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
@@ -363,7 +363,7 @@
 					Swal.fire("Error", "An error occurred while processing the request.", "error");
 				});
 			} else {
-				Swal.fire("HRMS Client is safe!");
+				Swal.fire("Department is safe!");
 			}
 		});
 	}

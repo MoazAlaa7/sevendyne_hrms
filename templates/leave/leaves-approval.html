@@ -115,6 +115,7 @@
 							<th>No of Days</th>
 							<th>Reason</th>
 							<th class="text-center">Status</th>
+							<th class="text-center">Approve/Reject</th>
 							{% comment %} <th class="text-end">Actions</th> {% endcomment %}
 						</tr>
 					</thead>
@@ -135,25 +136,25 @@
 							{% else %} 
 								<td><i class="fa-solid fa-xmark text-danger"></i> Rejected</td>
 							{% endif %}
-							{% comment %} <td class="text-center">
+							<td class="text-center">
 								<div class="dropdown action-label">
 									<a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-										<i class="fa-regular fa-circle-dot text-purple"></i> New
+										<i class="fa-regular fa-circle-dot text-purple"></i> Pending
 									</a>
 									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item" href="#"><i class="fa-regular fa-circle-dot text-purple"></i> New</a>
+										{% comment %} <a class="dropdown-item" href="#"><i class="fa-regular fa-circle-dot text-purple"></i> New</a> {% endcomment %}
 										<a class="dropdown-item" href="#"><i class="fa-regular fa-circle-dot text-info"></i> Pending</a>
 										<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#approve_leave_{{ leave.id }}"><i class="fa-regular fa-circle-dot text-success"></i> Approved</a>
-										<a class="dropdown-item" href="#"><i class="fa-regular fa-circle-dot text-danger"></i> Declined</a>
+										{% comment %} <a class="dropdown-item" href="#"><i class="fa-regular fa-circle-dot text-danger"></i> Declined</a> {% endcomment %}
 									</div>
 								</div>
-							</td> {% endcomment %}
+							</td>
 							{% comment %} <td class="text-end">
 								<div class="dropdown dropdown-action">
 									<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 									<div class="dropdown-menu dropdown-menu-right">
-										<a class="dropdown-item" onclick="loadUpdateApprovalForm(this, '{{ leave.id }}')" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave_modal"><i class="fa-solid fa-pencil m-r-5"></i> Approve/Reject</a>
-										<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_approve_{{ leave.id }}"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a>
+										<a class="dropdown-item" onclick="loadUpdateLeaveForm(this, '{{ leave.id }}')" href="#" data-bs-toggle="modal" data-bs-target="#edit_leave_modal"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
+										{% comment %} <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_approve_{{ leave.id }}"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a> {% endcomment %}
 									</div>
 								</div>
 							</td> {% endcomment %}
@@ -163,58 +164,47 @@
 							<div class="modal-dialog modal-dialog-centered" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title">Approve/Reject Leave Request</h5>
+										<h5 class="modal-title">Leave Request Edit Form</h5>
 										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
 									</div>
 									<div class="modal-body">
-										<form id="update_form_{{ leave.id }}" method="POST" action="{% url 'employee:edit_leave' pk=leave.id %}" enctype="multipart/form-data">
-											{% csrf_token %}
-											<div class="isnput-block mb-3">
+										<form>
+											<div class="input-block mb-3">
 												<label class="col-form-label">Leave Type <span class="text-danger">*</span></label>
-												{{ form.leavetype }}
-												{% if form.leavetype.errors %}
-												<span class="error">{{ form.leavetype.errors.0 }}</span>
-												{% endif %}
+												<select class="form-control" name="leavetype">
+													{% for leavetype in leavetypes %}
+														<option value="{{ leavetype.id }}" {% if leavetype.id == leave.leavetype.id %} selected {% endif %}>{{ leavetype.name }}</option>
+													{% endfor %}
+												</select>
 											</div>
 											<div class="input-block mb-3">
 												<label class="col-form-label">From <span class="text-danger">*</span></label>
-												{{ form.startdate }}
-												{% if form.startdate.errors %}
-												<span class="error">{{ form.startdate.errors.0 }}</span>
-												{% endif %}
+												<div class="cal-icon">
+													<input class="form-control datetimepicker"  name="phone" value="{{employee.phone}}" type="text">
+												</div>
 											</div>
 											<div class="input-block mb-3">
 												<label class="col-form-label">To <span class="text-danger">*</span></label>
-												{{ form.enddate }}
-												{% if form.enddate.errors %}
-												<span class="error">{{ form.enddate.errors.0 }}</span>
-												{% endif %}
+												<div class="cal-icon">
+													<input class="form-control datetimepicker"  name="phone" value="{{employee.phone}}" type="text">
+												</div>
 											</div>
 											<div class="input-block mb-3">
 												<label class="col-form-label">Number of days <span class="text-danger">*</span></label>
-												{{ form.leave_days }}
-												{% if form.leave_days.errors %}
-												<span class="error">{{ form.leave_days.errors.0 }}</span>
-												{% endif %}
+												<input class="form-control" readonly type="text" name="phone" value="{{employee.phone}}">
 											</div>
 											<div class="input-block mb-3">
 												<label class="col-form-label">Remaining Leaves <span class="text-danger">*</span></label>
-												{{ form.remaining_days }} 
-												{% if form.remaining_days.errors %}
-												<span class="error">{{ form.remaining_days.errors.0 }}</span>
-												{% endif %}
+												<input class="form-control" readonly  name="phone" value="{{employee.phone}}" type="text">
 											</div>
 											<div class="input-block mb-3">
 												<label class="col-form-label">Leave Reason <span class="text-danger">*</span></label>
-												{{ form.reason }}
-												{% if form.reason.errors %}
-												<span class="error">{{ form.reason.errors.0 }}</span>
-												{% endif %}
+												<textarea rows="4" class="form-control"  name="phone" value="{{employee.phone}}">Going to hospital</textarea>
 											</div>
 											<div class="submit-section">
-												<button class="btn btn-primary submit-btn" onclick="submitUpdateForm(event,{{leave.id}})">Update</button>
+												<button class="btn btn-primary submit-btn">Save</button>
 											</div>
 										</form>
 									</div>
@@ -235,10 +225,12 @@
 										<div class="modal-btn delete-action">
 											<div class="row">
 												<div class="col-6">
-													<a href="{% url 'employee:leave_approval' pk=leave.id %}" class="btn btn-primary continue-btn">Approve</a>
+													<a href="{% url 'employee:leave_approval' pk=leave.id %}" class="btn btn-primary continue-btn approve-btn" data-leave-id="{{ leave.id }}">Approve</a>
 												</div>
 												<div class="col-6">
 													<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Decline</a>
+													
+
 												</div>
 											</div>
 										</div>
@@ -260,9 +252,100 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Add JavaScript code to handle form submission and show SweetAlert messages -->
-
+<script src="{%static 'assets/js/jquery-3.7.1.min.js'%}"></script>
 <script>
-	function loadUpdateApprovalForm(element, leaveId) {
+	$(document).ready(function(){
+        $('.datetimepicker').datetimepicker({
+            format: 'YYYY-MM-DD', // Date-only format
+            // Additional configurations to ensure time is not included
+            ignoreReadonly: true,
+            allowInputToggle: true
+        });
+    });		
+
+	// Function to handle leave approval
+	function handleApproval(leaveId) {
+		Swal.fire({
+			title: "Are you sure?",
+			text: "Do you want to approve this leave request?",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, approve it!"
+		}).then((result) => {
+			if (result.isConfirmed) {
+				// If user confirms, send Fetch API request to approve
+				fetch('{% url "employee:leave_approval" pk=0 %}'.replace('0', leaveId), {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'X-CSRFToken': '{{ csrf_token }}'
+					},
+				})
+				.then(response => response.json())
+				.then(data => {
+					console.log("data.status",data.status)
+					// Handle success response
+					if (data.status === "true") {
+						Swal.fire({
+							title: data.title,
+							text: data.message,
+							icon: "success",
+						})
+						.then((value) => {
+							// Redirect to the specified URL after success
+							window.location.href = data.redirect_url;
+						});
+					} else {
+						Swal.fire("Error", "An error occurred while approving the leave.", "error");
+					}
+				})
+				.catch(() => {
+					// Handle error
+					Swal.fire("Error", "An error occurred while processing the request.", "error");
+				});
+			}
+		});
+	}
+
+	// Attach click event to approve button
+	document.addEventListener("DOMContentLoaded", function() {
+		document.querySelectorAll('.approve-btn').forEach(function(el) {
+			el.addEventListener('click', function(e) {
+				e.preventDefault();
+				var leaveId = this.getAttribute('data-leave-id');
+				handleApproval(leaveId);
+			});
+		});
+	});
+	{% comment %} $(document).ready(function() {
+		$('.approve-btn').on('click', function(e) {
+			e.preventDefault();
+			var leaveId = $(this).data('leave-id'); // Ensure your "Approve" button has a data-leave-id attribute
+	
+			$.ajax({
+				type: 'POST',
+				url: '{% url "employee:leave_approval" pk=0 %}'.replace('0', leaveId),
+				data: {
+					csrfmiddlewaretoken: '{{ csrf_token }}',
+					// Any other data you want to send
+				},
+				success: function(response) {
+					// Handle success
+					if(response.redirect === "true") {
+						window.location.href = response.redirect_url;
+					}
+				},
+				error: function(response) {
+					// Handle error
+					alert('There was an error approving the leave request.');
+				}
+			});
+		});
+	}); {% endcomment %}
+	
+	function loadUpdateLeaveForm(element, leaveId) {
 		console.log("update leave form load called");
 		console.log("leave id", leaveId);
 	
