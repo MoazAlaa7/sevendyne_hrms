@@ -3,7 +3,8 @@ import datetime
 import json
 from django.forms import formset_factory
 from django.db.models import Sum
-from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
@@ -15,8 +16,6 @@ from employee.forms import AttendanceDateForm, AttendanceRegisterForm, Departmen
 from employee.models import AttendanceRegister, Department, Designation, Employee, Leave, LeaveType
 from main.decorators import company_required
 from main.functions import generate_form_errors, get_a_id, get_auto_id, get_current_company
-from django.urls import reverse
-
 
 # Department crud starts here
 @login_required
@@ -561,8 +560,8 @@ def edit_employee(request, pk):
             user.username = data.username
             user.email = data.email
             user.password = make_password(data.password)  # Hash the new password
-            user.first_name = data.first_name
-            user.last_name = data.last_name
+            user.first_name = data.firstname
+            user.last_name = data.lastname
             user.email = data.email
             user.save()
 
@@ -581,7 +580,7 @@ def edit_employee(request, pk):
 
         else:
             message = generate_form_errors(form, formset=False)
-
+            print(message)
             response_data = {
                 "stable": "true",
                 "status": "false",
@@ -914,7 +913,7 @@ def leaves(request):
     leaves = paginator.get_page(page_number)
     context = {
         'leaves': leaves,
-        "title": 'Leaves' 
+        "title": 'Leaves'
     }
     return render(request, "leave/leaves.html", context)
 
@@ -926,9 +925,12 @@ def leave_approvals(request):
     paginator = Paginator(leaves,1000000000000)
     page_number = request.GET.get('page')
     leaves = paginator.get_page(page_number)
+    leavetypes = LeaveType.objects.filter(company=current_company,is_deleted=False)
+    print("leavetypes",leavetypes)
     context = {
         'leaves': leaves,
-        "title": 'Leaves' 
+        "title": 'Leaves',
+        'leavetypes': leavetypes, 
     }
     return render(request, "leave/leaves-approval.html", context)
 
@@ -998,20 +1000,32 @@ def leave(request, pk):
 @login_required
 @company_required
 def leave_approval(request,pk):
-    current_company = get_current_company(request)
-    instance = get_object_or_404(Leave.objects.filter(pk=pk,company=current_company,is_deleted=False))
-    
-    Leave.objects.filter(pk=pk).update(is_approved=True,status='Approved',employee=instance.employee)
+    if request.method == 'POST':
+        current_company = get_current_company(request)
+        instance = get_object_or_404(Leave.objects.filter(pk=pk,company=current_company,is_deleted=False))
+        
+        if not instance.is_approved:
+            Leave.objects.filter(pk=pk).update(is_approved=True,status='Approved',employee=instance.employee)
 
-    response_data = {
-        "status" : "true",        
-        "title" : "Successfully Approved",
-        "message" : "Leave Request Successfully Approved.", 
-        "redirect" : "true",       
-        "redirect_url" : reverse('employee:leave_approvals')
-    }
-    return HttpResponse(json.dumps(response_data), content_type='application/json')
-   
+            response_data = {
+                "status" : "true",        
+                "title" : "Successfully Approved",
+                "message" : "Leave Request Successfully Approved.", 
+                "redirect" : "true",       
+                "redirect_url" : reverse('employee:leave_approvals')
+            }
+            return HttpResponse(json.dumps(response_data), content_type='application/json')
+        else:               
+            response_data = {
+                "status": "false",
+                "stable": "true",
+                "title": "Already processed",
+                "message": "This leave request is already processed.",                        
+            }
+            return HttpResponse(json.dumps(response_data), content_type='application/json')
+
+    # Redirect or show an error for non-POST requests
+    return redirect('employee:leave_approvals')
 
 
 # class LeaveManager(models.Manager):
