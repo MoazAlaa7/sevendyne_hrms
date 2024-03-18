@@ -360,10 +360,13 @@
 								<a href="invoice-settings.html"><i class="la la-pencil-square"></i> <span>Invoice Settings</span></a>
 							</li> {% endcomment %}
 							<li> 
-								<a href="{% url 'payroll:create_salary_setting' %}"><i class="la la-money"></i> <span>Salary Settings</span></a>
+								<a href="{% url 'main:companies' %}"><i class="la la-money"></i> <span>Company Settings</span></a>
 							</li>
 							<li> 
-								<a href="{% url 'payroll:create_payroll_item' %}"><i class="la la-money"></i> <span>Payroll Item Settings</span></a>
+								<a href="{% url 'payroll:salary_settings' %}"><i class="la la-money"></i> <span>Salary Settings</span></a>
+							</li>
+							<li> 
+								<a href="{% url 'payroll:payroll_items' %}"><i class="la la-money"></i> <span>Payroll Item Settings</span></a>
 							</li>
 							{% comment %} <li> 
 								<a href="notifications-settings.html"><i class="la la-globe"></i> <span>Notifications</span></a>

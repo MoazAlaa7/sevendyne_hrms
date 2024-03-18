@@ -11,11 +11,9 @@
 				<h3 class="page-title">Salary Settings</h3>
 			</div>
 		</div>
-		{% if not salary_settings %}
-        <div class="col-auto float-end ms-auto">
-            <a href="#" class="btn add-btn" data-bs-toggle="modal" data-bs-target="#add_salary_setting"><i class="fa-solid fa-plus"></i> Add Salary Settings</a>
-        </div>
-        {% endif %}
+		<div class="col-auto float-end ms-auto">
+			<a href="#" class="btn add-btn" data-bs-toggle="modal" data-bs-target="#add_salary_setting"><i class="fa-solid fa-plus"></i> Add Salary Settings</a>
+		</div>
 	</div>
 	<!-- /Page Header -->
 	
@@ -26,13 +24,13 @@
 					<thead>
 						<tr>
 							<th class="width-thirty">#</th>
-							<th>DA (%)</th>
-							<th>HRA (%)</th>							
-							<th>PF EMP (%)</th>							
-							<th>PF ORG (%)</th>							
-							<th>ESI EMP (%)</th>							
-							<th>ESI ORG (%)</th>							
-							<th>TDS (%)</th>
+							<th>DA </th>
+							<th>HRA </th>							
+							<th>PF EMP </th>							
+							<th>PF ORG </th>							
+							<th>ESI EMP </th>							
+							<th>ESI ORG </th>							
+							<th>TDS </th>
 							<th class="text-end">Action</th>
 						</tr>
 					</thead>
@@ -139,7 +137,6 @@
 	</div>
 </div>
 <!-- /Page Content -->
-
 <!-- Add Salary Setting Modal -->
 <div id="add_salary_setting" class="modal custom-modal fade" role="dialog">
 	<div class="modal-dialog modal-dialog-centered" role="document">
@@ -282,6 +279,7 @@
 			});
 		}
 	}
+		
 	function submitUpdateForm(event,Id) {
 		event.preventDefault();  // Prevent the default form submission behavior
 		var form = document.getElementById('update_form_' + Id);

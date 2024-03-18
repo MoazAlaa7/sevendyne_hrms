@@ -20,7 +20,7 @@ from main.decorators import company_required
 from main.functions import generate_form_errors, get_a_id, get_auto_id, get_current_company, has_employee_dashboard_permission, has_hrms_permission
 # from payroll import models
 from payroll.forms import PayrollItemForm, SalaryForm, SalarySettingForm
-from payroll.models import  PayrollItem, Salary, SalaryDynamicField, SalarySetting
+from payroll.models import  CATEGORY_CHOICES, PayrollItem, Salary, SalaryDynamicField, SalarySetting
 
 
 def ajax_load_salary_components(request):
@@ -158,7 +158,7 @@ def edit_salary_setting(request, pk):
                 "redirect" : "true",
                 "title": "Successfully Updated",
                 "message": "Salary Setting updated successfully.",                
-                "redirect_url": reverse('payroll:salaries_settings')
+                "redirect_url": reverse('payroll:salary_settings')
             }
 
         else:
@@ -178,7 +178,7 @@ def edit_salary_setting(request, pk):
         context = {
             "form": form,
             "instance": instance,
-            "title": "Edit Salary Setting :" + instance.da,
+            "title": "Edit Salary Setting ",
             
             "redirect": "true",
             "url": reverse('payroll:edit_salarysetting', kwargs={'pk': instance.pk}),
@@ -208,14 +208,14 @@ def delete_salary_setting(request,pk):
     current_company = get_current_company(request)
     instance = get_object_or_404(SalarySetting.objects.filter(pk=pk,company=current_company,is_deleted=False))
     
-    SalarySetting.objects.filter(pk=pk).update(is_deleted=True,da=instance.da + "_deleted_" + str(instance.auto_id))
+    SalarySetting.objects.filter(pk=pk).update(is_deleted=True)
 
     response_data = {
         "status" : "true",        
         "title" : "Successfully Deleted",
         "message" : "Salary Setting Successfully Deleted.", 
         "redirect" : "true",       
-        "redirect_url" : reverse('payroll:salaries_settings')
+        "redirect_url" : reverse('payroll:salary_settings')
     }
     return HttpResponse(json.dumps(response_data), content_type='application/json')
    
@@ -293,7 +293,8 @@ def payroll_items(request):
     payroll_items = paginator.get_page(page_number)
     context = {
         'payroll_items': payroll_items,
-        "title": 'Payroll Items' 
+        "title": 'Payroll Items' ,
+        'category_choices': CATEGORY_CHOICES      
     }
     return render(request, "payroll/payroll-items.html", context)
 

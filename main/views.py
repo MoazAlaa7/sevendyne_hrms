@@ -276,6 +276,20 @@ def create_company(request):
         }
         return render(request, 'settings/settings.html', context)
 
+@login_required
+@user_passes_test(has_hrms_permission, redirect_field_name=None)
+@company_required
+def companies(request):
+    companies = Company.objects.filter(is_deleted=False)
+    paginator = Paginator(companies,1000000000000)
+    page_number = request.GET.get('page')
+    companies = paginator.get_page(page_number)
+    context = {
+        'companies': companies,
+        "title": 'Companies' 
+    }
+    return render(request, "settings/companies.html", context)
+
 
 @login_required
 @user_passes_test(has_hrms_permission, redirect_field_name=None)
