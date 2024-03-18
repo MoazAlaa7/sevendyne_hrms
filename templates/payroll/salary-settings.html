@@ -14,7 +14,8 @@
 	</div>
 	<!-- /Page Header -->
 	
-	<form id="create_update_form" method="POST" action="{% url 'payroll:create_salary_setting' %}" enctype="multipart/form-data">
+	<form id="create_update_form" method="POST" action="{% if instance %}{% url 'payroll:edit_salary_setting' pk=instance.pk %}{% else %}{% url 'payroll:create_salary_setting' %}{% endif %}" enctype="multipart/form-data">
+
 		{% csrf_token %}
 		<!-- DA and HRA Settings -->
 		<div class="settings-widget">

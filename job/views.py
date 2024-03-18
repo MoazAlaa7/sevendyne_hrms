@@ -114,7 +114,7 @@ def jobs(request):
         'departments':departments,
 
         'status_choices': STATUS_CHOICES,
-        'job_type_choices': JOBTYPE_CHOICES,
+        'job_type_choices': JOBTYPE_CHOICES
     }
     return render(request, "job/jobs.html", context)
 

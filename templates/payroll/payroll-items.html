@@ -62,6 +62,7 @@
 						</thead>
 						<tbody>
 							{% for payroll_item in payroll_items %}
+							
 							{% if payroll_item.category == "Additions" %}
 							<tr>
 								<th>{{forloop.counter}}</th>
@@ -70,13 +71,73 @@
 									<div class="dropdown dropdown-action">
 										<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_addition"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
-											<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_addition"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a>
+											<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_addition_{{ payroll_item.id }}"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
+											<a class="dropdown-item remove" data-id="{{ payroll_item.id }}" href="#" data-bs-toggle="modal" data-bs-target="#delete_addition_{{ payroll_item.id }}"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a>
 										</div>
 									</div>
 								</td>
 							</tr>
 							{% endif %}
+							<!-- Edit Addition Modal -->
+							<div id="edit_addition_{{ payroll_item.id }}" class="modal custom-modal fade" role="dialog">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">Edit Addition</h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form id="update_form_{{ payroll_item.id }}" method="POST" action="{% url 'payroll:edit_payroll_item' pk=payroll_item.id %}" enctype="multipart/form-data">
+												{% csrf_token %}
+												<div class="input-block mb-3">
+													<label class="col-form-label">Name <span class="text-danger">*</span></label>
+													<input class="form-control" type="text" name="name"  value="{{payroll_item.name}}">
+												</div>
+												<div class="input-block mb-3">
+													<label class="col-form-label">Category <span class="text-danger">*</span></label>
+													<select class="select form-control" name="category">
+														{% for choice in category_choices %}
+															<option {% if payroll_item.category == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
+														{% endfor %}
+													</select>
+												</div>
+												<div class="submit-section">
+													<button class="btn btn-primary submit-btn" onclick="submitUpdateForm(event, '{{payroll_item.id}}')">Save</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Edit Addition Modal -->
+
+							<!-- Delete Addition Modal -->
+							<div class="modal custom-modal fade" id="delete_addition_{{ payroll_item.id }}" role="dialog">
+								<div class="modal-dialog modal-dialog-centered">
+									<div class="modal-content">
+										<div class="modal-body">
+											<div class="form-header">
+												<h3>Delete Addition</h3>
+												<p>Are you sure want to delete?</p>
+											</div>
+											<div class="modal-btn delete-action">
+												<div class="row">
+													<div class="col-6">
+														<a href="{% url 'payroll:delete_payroll_item' pk=payroll_item.pk %}" class="btn btn-primary continue-btn">Delete</a>
+													</div>
+													<div class="col-6">
+														<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Delete Addition Modal -->
+							
 							{% endfor %}
 						</tbody>
 					</table>
@@ -112,13 +173,75 @@
 									<div class="dropdown dropdown-action">
 										<a href="#" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
 										<div class="dropdown-menu dropdown-menu-right">
-											<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_deduction"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
-											<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#delete_deduction"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a>
+											<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#edit_deduction_{{ payroll_item.id }}"><i class="fa-solid fa-pencil m-r-5"></i> Edit</a>
+											<a class="dropdown-item remove" data-id="{{ payroll_item.id }}" href="#" data-bs-toggle="modal" data-bs-target="#delete_deduction_{{ payroll_item.id }}"><i class="fa-regular fa-trash-can m-r-5"></i> Delete</a>
 										</div>
 									</div>
 								</td>
 							</tr>
 							{% endif %}
+							
+							<!-- Edit Deduction Modal -->
+							<div id="edit_deduction_{{ payroll_item.id }}" class="modal custom-modal fade" role="dialog">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">Edit Deduction</h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form id="update_form_{{ payroll_item.id }}" method="POST" action="{% url 'payroll:edit_payroll_item' pk=payroll_item.id %}" enctype="multipart/form-data">
+												{% csrf_token %}
+												<div class="input-block mb-3">
+													<label class="col-form-label">Name <span class="text-danger">*</span></label>
+													<input class="form-control" type="text" name="name"  value="{{payroll_item.name}}">
+												</div>
+												<div class="input-block mb-3">
+													<label class="col-form-label">Category <span class="text-danger">*</span></label>
+													<select class="select form-control" name="category">
+														{% for choice in category_choices %}
+															<option {% if payroll_item.category == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
+														{% endfor %}
+													</select>
+												</div>
+												<div class="submit-section">
+													<button class="btn btn-primary submit-btn" onclick="submitUpdateForm(event, '{{payroll_item.id}}')">Save</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Edit Deduction Modal -->
+
+							<!-- Delete Deduction Modal -->
+							<div class="modal custom-modal fade" id="delete_deduction_{{ payroll_item.id }}" role="dialog">
+								<div class="modal-dialog modal-dialog-centered">
+									<div class="modal-content">
+										<div class="modal-body">
+											<div class="form-header">
+												<h3>Delete Deduction</h3>
+												<p>Are you sure want to delete?</p>
+											</div>
+											<div class="modal-btn delete-action">
+												<div class="row">
+													<div class="col-6">
+														<a href="{% url 'payroll:delete_payroll_item' pk=payroll_item.pk %}" class="btn btn-primary continue-btn">Delete</a>
+													</div>
+													<div class="col-6">
+														<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- /Delete Deduction Modal -->
+
+
 							{% endfor %}
 						</tbody>
 					</table>
@@ -172,295 +295,97 @@
 </div>
 <!-- /Add Addition Modal -->
 
-<!-- Edit Addition Modal -->
-<div id="edit_addition" class="modal custom-modal fade" role="dialog">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Edit Addition</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="input-block mb-3">
-						<label class="col-form-label">Name <span class="text-danger">*</span></label>
-						<input class="form-control" type="text">
-					</div>
-					<div class="input-block mb-3">
-						<label class="col-form-label">Category <span class="text-danger">*</span></label>
-						<select class="select">
-							<option>Select a category</option>
-							<option>Monthly remuneration</option>
-							<option>Additional remuneration</option>
-						</select>
-					</div>
-					<div class="input-block mb-3">
-						<label class="d-block col-form-label">Unit calculation</label>
-						<div class="status-toggle">
-							<input type="checkbox" id="edit_unit_calculation" class="check">
-							<label for="edit_unit_calculation" class="checktoggle">checkbox</label>
-						</div>
-					</div>
-					<div class="input-block mb-3">
-						<label class="col-form-label">Unit Amount</label>
-						<div class="input-group">
-							<span class="input-group-text">$</span>
-							<input type="text" class="form-control">
-							<span class="input-group-text">.00</span>
-						</div>
-					</div>
-					<div class="input-block mb-3">
-						<label class="d-block col-form-label">Assignee</label>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="edit_addition_assignee" id="edit_addition_no_emp" value="option1" checked>
-							<label class="form-check-label" for="edit_addition_no_emp">
-							No assignee
-							</label>
-						</div>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="edit_addition_assignee" id="edit_addition_all_emp" value="option2">
-							<label class="form-check-label" for="edit_addition_all_emp">
-							All employees
-							</label>
-						</div>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="edit_addition_assignee" id="edit_addition_single_emp" value="option3">
-							<label class="form-check-label" for="edit_addition_single_emp">
-							Select Employee
-							</label>
-						</div>
-						<div class="input-block mb-3">
-							<select class="select">
-								<option>-</option>
-								<option>Select All</option>
-								<option>John Doe</option>
-								<option>Richard Miles</option>
-							</select>
-						</div>
-					</div>
-					<div class="submit-section">
-						<button class="btn btn-primary submit-btn">Save</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- /Edit Addition Modal -->
-
-<!-- Delete Addition Modal -->
-<div class="modal custom-modal fade" id="delete_addition" role="dialog">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-body">
-				<div class="form-header">
-					<h3>Delete Addition</h3>
-					<p>Are you sure want to delete?</p>
-				</div>
-				<div class="modal-btn delete-action">
-					<div class="row">
-						<div class="col-6">
-							<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
-						</div>
-						<div class="col-6">
-							<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- /Delete Addition Modal -->
-
-<!-- Edit Deduction Modal -->
-<div id="edit_deduction" class="modal custom-modal fade" role="dialog">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Edit Deduction</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<form>
-					<div class="input-block mb-3">
-						<label class="col-form-label">Name <span class="text-danger">*</span></label>
-						<input class="form-control" type="text">
-					</div>
-					<div class="input-block mb-3">
-						<label class="d-block col-form-label">Unit calculation</label>
-						<div class="status-toggle">
-							<input type="checkbox" id="edit_unit_calculation_deduction" class="check">
-							<label for="edit_unit_calculation_deduction" class="checktoggle">checkbox</label>
-						</div>
-					</div>
-					<div class="input-block mb-3">
-						<label class="col-form-label">Unit Amount</label>
-						<div class="input-group">
-							<span class="input-group-text">$</span>
-							<input type="text" class="form-control">
-							<span class="input-group-text">.00</span>
-						</div>
-					</div>
-					<div class="input-block mb-3">
-						<label class="d-block col-form-label">Assignee</label>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="edit_deduction_assignee" id="edit_deduction_no_emp" value="option1" checked>
-							<label class="form-check-label" for="edit_deduction_no_emp">
-							No assignee
-							</label>
-						</div>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="edit_deduction_assignee" id="edit_deduction_all_emp" value="option2">
-							<label class="form-check-label" for="edit_deduction_all_emp">
-							All employees
-							</label>
-						</div>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="edit_deduction_assignee" id="edit_deduction_single_emp" value="option3">
-							<label class="form-check-label" for="edit_deduction_single_emp">
-							Select Employee
-							</label>
-						</div>
-						<div class="input-block mb-3">
-							<select class="select">
-								<option>-</option>
-								<option>Select All</option>
-								<option>John Doe</option>
-								<option>Richard Miles</option>
-							</select>
-						</div>
-					</div>
-					<div class="submit-section">
-						<button class="btn btn-primary submit-btn">Save</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- /Edit Addition Modal -->
-
-<!-- Delete Deduction Modal -->
-<div class="modal custom-modal fade" id="delete_deduction" role="dialog">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-body">
-				<div class="form-header">
-					<h3>Delete Deduction</h3>
-					<p>Are you sure want to delete?</p>
-				</div>
-				<div class="modal-btn delete-action">
-					<div class="row">
-						<div class="col-6">
-							<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
-						</div>
-						<div class="col-6">
-							<a href="javascript:void(0);" data-bs-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- /Delete Deduction Modal -->
-
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Add JavaScript code to handle form submission and show SweetAlert messages -->
 <script>
-		function loadUpdatepayroll_itemForm(element, payroll_itemId) {
-			console.log("update payroll_item form load called");
-			console.log("payroll_item id", payroll_itemId);
-		
-			// Construct the URL with a hardcoded path
-			const editUrl = `/app/employee/payroll_item/edit/${payroll_itemId}/`;
-		
-			// Fetch the URL using the provided payroll_itemId
-			fetch(editUrl)
-				.then(response => response.text())
-				.then(data => {
-					if (data.includes("edit_payroll_item_modal")) {
-						console.log("Data contains edit_payroll_item_modal", data);
-						// Create a temporary element to hold the form HTML
-						//var tempElement = document.createElement('div');
-						//tempElement.innerHTML = data;
+	function loadUpdatepayroll_itemForm(element, payroll_itemId) {
+		console.log("update payroll_item form load called");
+		console.log("payroll_item id", payroll_itemId);
+	
+		// Construct the URL with a hardcoded path
+		const editUrl = `/app/employee/payroll_item/edit/${payroll_itemId}/`;
+	
+		// Fetch the URL using the provided payroll_itemId
+		fetch(editUrl)
+			.then(response => response.text())
+			.then(data => {
+				if (data.includes("edit_payroll_item_modal")) {
+					console.log("Data contains edit_payroll_item_modal", data);
+					// Create a temporary element to hold the form HTML
+					//var tempElement = document.createElement('div');
+					//tempElement.innerHTML = data;
 
-						// Find the form element in the temporary element
-						//var formElement = tempElement.querySelector('#update_form');
+					// Find the form element in the temporary element
+					//var formElement = tempElement.querySelector('#update_form');
 
-						// Find the form element in the fetched data
-						var formElement = document.querySelector('#update_form_' + payroll_itemId);
-						//var formElement = $(data).find('#update_form_' + payroll_itemId);
-						console.log("form element",formElement)
-						if (!formElement) {
-							console.error("Form element not found in the fetched data");
-							return;
-						}
-						// Find the modal body element
-						//var modalBody = $('#edit_payroll_item_modal').find('.modal-body');
-            
-						// Check if modal body is found
-						{% comment %} if (!modalBody.length) {
-							console.error("Modal body element not found");
-							return;
-						} {% endcomment %}
-			
-						// Update the content of the modal body with the form element
-						{% comment %} modalBody.html(formElement);
-						console.log("moda body",modalBody) {% endcomment %}
-						// Show the modal after updating its content
-						{% comment %} $('#edit_payroll_item_modal').modal('show'); {% endcomment %}
-						// Find the modal element
-						var modal = $('#edit_payroll_item_modal .modal-body');
-						var modalBody = $('#edit_payroll_item_modal').find('.modal-body');
-
-						// Check if modal is found
-						if (!modal.length) {
-							console.error("Modal element not found");
-							return;
-						}
-						 // Check if modal body is found
-						 if (!modalBody.length) {
-							console.error("Modal body element not found");
-							return;
-						}
-						// Update the content of the modal body with the form element
-						modalBody.html(formElement);
-						console.log("modal body", modalBody);
-				
-		
-						// Use .find() to get the .modal-body element
-						//var modalBody = modal.find('.modal-body');
-						//modalBody.html(data);
-						//modal.html(formElement);
-						//console.log("modal",modal)
-						//modal.modal('show'); // Show the modal after content is loaded
-						//modal.find('#edit_payroll_item_modal .modal-body').html(data);
-						//modal.modal('show'); // Show the modal
-						// Get the modal body
-						//var modalBody = document.querySelector('#edit_payroll_item_modal .modal-body');
-		
-						// Set the inner HTML of the modal body to include the form element
-						//modalBody.innerHTML = ''; // Clear existing content
-						//modalBody.appendChild(formElement);
-		
-						// Show the modal for updating payroll_items
-						$('#edit_payroll_item_modal').modal('show');
-						//console.log("modal showed");
-					} else {
-						console.log("Data does not contain edit_payroll_item_modal");
+					// Find the form element in the fetched data
+					var formElement = document.querySelector('#update_form_' + payroll_itemId);
+					//var formElement = $(data).find('#update_form_' + payroll_itemId);
+					console.log("form element",formElement)
+					if (!formElement) {
+						console.error("Form element not found in the fetched data");
+						return;
 					}
-				})
-				.catch(error => {
-					console.error('Error:', error);
-				});
-		}
+					// Find the modal body element
+					//var modalBody = $('#edit_payroll_item_modal').find('.modal-body');
+		
+					// Check if modal body is found
+					{% comment %} if (!modalBody.length) {
+						console.error("Modal body element not found");
+						return;
+					} {% endcomment %}
+		
+					// Update the content of the modal body with the form element
+					{% comment %} modalBody.html(formElement);
+					console.log("moda body",modalBody) {% endcomment %}
+					// Show the modal after updating its content
+					{% comment %} $('#edit_payroll_item_modal').modal('show'); {% endcomment %}
+					// Find the modal element
+					var modal = $('#edit_payroll_item_modal .modal-body');
+					var modalBody = $('#edit_payroll_item_modal').find('.modal-body');
+
+					// Check if modal is found
+					if (!modal.length) {
+						console.error("Modal element not found");
+						return;
+					}
+						// Check if modal body is found
+						if (!modalBody.length) {
+						console.error("Modal body element not found");
+						return;
+					}
+					// Update the content of the modal body with the form element
+					modalBody.html(formElement);
+					console.log("modal body", modalBody);
+			
+	
+					// Use .find() to get the .modal-body element
+					//var modalBody = modal.find('.modal-body');
+					//modalBody.html(data);
+					//modal.html(formElement);
+					//console.log("modal",modal)
+					//modal.modal('show'); // Show the modal after content is loaded
+					//modal.find('#edit_payroll_item_modal .modal-body').html(data);
+					//modal.modal('show'); // Show the modal
+					// Get the modal body
+					//var modalBody = document.querySelector('#edit_payroll_item_modal .modal-body');
+	
+					// Set the inner HTML of the modal body to include the form element
+					//modalBody.innerHTML = ''; // Clear existing content
+					//modalBody.appendChild(formElement);
+	
+					// Show the modal for updating payroll_items
+					$('#edit_payroll_item_modal').modal('show');
+					//console.log("modal showed");
+				} else {
+					console.log("Data does not contain edit_payroll_item_modal");
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+	}
 	
 		
 	function loadCreatePayrollForm() {
