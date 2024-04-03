@@ -766,6 +766,7 @@ def generate_payslip_pdf(request):
     # Convert net_salary to words
     # Convert net_salary to words without specifying currency
     net_salary_in_words = num2words(instance.net_salary, lang='en')
+   
     template_path = 'payroll/payslip-pdf.html'
     context = {
         'instance': instance,
