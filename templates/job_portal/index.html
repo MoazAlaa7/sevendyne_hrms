@@ -48,7 +48,7 @@
 <div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
     <div class="container">
         <div class="row g-2">
-            <h3 style="text-align:center">Our Clients</h3>
+            <h3 style="text-align:center;color:white;">Our Clients</h3>
             {% comment %} <form method="GET" action="{% url 'job_portal' %}">
                 <div class="col-md-12">
                     <div class="row g-2">
@@ -176,7 +176,12 @@
                         <a class="btn btn-primary py-3 px-5" href="{% url 'job:jobs' %}" target="_blank">Browse More Internships</a>
                     {% else %}
                         <h5 style="font-weight:bolder">Introducing our "Enroll in Our Low-Cost Internship Training Programme" and Propel Your Career Forward!</h5>
-                            <a href="{% url 'candidate:create_intern' %}" class="btn btn-primary mt-3">Apply for Training Programme</a>
+                        <h6>Elevate your skills, gain hands-on experience, and broaden your career horizons through mentorship and real-world projects.</h6>    
+                        <p>Our Technical training division is committed to delivering high-quality training programs to professionals seeking to enhance their skills and stay ahead in the rapidly evolving tech landscape.
+                            With a focus on excellence, we have worked with top brands like Collabera to provide comprehensive training in Java, C++, .Net, and other core technologies
+                        </p>
+                        
+                        <a href="{% url 'candidate:create_intern' %}" class="btn btn-primary mt-3">Apply for Training Programme</a>
                     {% endif %}                    
                 </div>
                 <div id="tab-2" class="tab-pane fade show p-0">  
