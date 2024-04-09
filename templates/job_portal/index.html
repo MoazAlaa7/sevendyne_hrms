@@ -121,9 +121,18 @@
 <!-- Category End -->
 
 <!-- Jobs Start -->
-<div id="jobs" class="padd-section" style="background-color: #f8f8f8;padding-top:5%;padding-bottom:5%">
+ <!-- Heading Start -->
+ <div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
     <div class="container">
-        <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job/Training Opportunities</h1>
+        <div class="row g-2">
+            <h3 style="text-align:center;color:white;">Job/Training Opportunities</h3>           
+        </div>
+    </div>
+</div>
+<!-- Heading End -->
+<div id="jobs" class="padd-section" style="background-color: #f8f8f8;padding-top:5%;padding-bottom:5%">
+    <div class="container">       
+        {% comment %} <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job/Training Opportunities</h1> {% endcomment %}
         <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
             <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                 <li class="nav-item">
@@ -177,7 +186,7 @@
                         <h5 style="font-weight:bolder">Introducing our "Enroll in Our Low-Cost Internship Training Programme" and Propel Your Career Forward!</h5>
                         <h6>Elevate your skills, gain hands-on experience, and broaden your career horizons through mentorship and real-world projects.</h6>    
                         <p>Our Technical training division is committed to delivering high-quality training programs to professionals seeking to enhance their skills and stay ahead in the rapidly evolving tech landscape.
-                            With a focus on excellence, we have worked with top brands like Collabera to provide comprehensive training in Java, C++, .Net, and other core technologies
+                            With a focus on excellence, we have worked with top brands like Collabera to provide comprehensive training in Python, Java, C++, .Net, and other core technologies
                         </p>
                         
                         <a href="{% url 'candidate:create_intern' %}" class="btn btn-primary mt-3">Apply for Training Programme</a>
@@ -280,6 +289,16 @@
 <!-- Jobs End -->
 
 <!-- About Start -->
+
+ <!-- Heading Start -->
+ <div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
+    <div class="container">
+        <div class="row g-2">
+            <h3 style="text-align:center;color:white;">About Us</h3>           
+        </div>
+    </div>
+</div>
+<!-- Heading End -->
 <div id="about" class="container-xxl py-5">
     <div class="container">
         <div class="row g-5 align-items-center">
@@ -316,11 +335,20 @@
 
 
 <!-- ======= Contact Section ======= -->
+ <!-- Heading Start -->
+ <div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
+    <div class="container">
+        <div class="row g-2">
+            <h3 style="text-align:center;color:white;">Contact Us</h3>           
+        </div>
+    </div>
+</div>
+<!-- Heading End -->
 <section id="contact" class="padd-section" style="background-color: #f8f8f8;padding-top:5%;padding-bottom:5%">
 
     <div class="container" data-aos="fade-up">
         <div class="section-title text-center">
-        <h2>Contact Us</h2>
+        {% comment %} <h2>Contact Us</h2> {% endcomment %}
         <p class="separator">Connect with Us to discuss our works</p>
         </div>
 
