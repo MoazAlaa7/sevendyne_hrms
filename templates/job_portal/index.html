@@ -15,7 +15,7 @@
                 <div class="container">
                     <div class="row justify-content-start">
                         <div class="col-10 col-lg-8">
-                            <h1 class="display-3 text-white animated slideInDown mb-4">Unlock Your Potential with Our Comprehensive HRMS Software</h1>
+                            <h1 class="text-white animated slideInDown mb-4">Unlock Your Potential with Our Comprehensive HRMS Software</h1>
                             <p class="fs-5 fw-medium text-white mb-4 pb-2">Empower your HR team with advanced tools to manage recruitment, employee data, performance, and more efficiently.</p>
                             {% comment %} <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Search A Job</a> {% endcomment %}
                             <a href="{% url 'user:register' %}" target="_blank" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Build Teams With Us</a>
@@ -48,34 +48,7 @@
 <div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
     <div class="container">
         <div class="row g-2">
-            <h3 style="text-align:center;color:white;">Our Clients</h3>
-            {% comment %} <form method="GET" action="{% url 'job_portal' %}">
-                <div class="col-md-12">
-                    <div class="row g-2">
-                        <div class="col-md-3">
-                            <input type="text" class="form-control border-0" name="keyword" placeholder="Keyword" value="{{ keyword }}" />
-                        </div>
-                        <div class="col-md-3">
-                            <select class="form-select border-0" name="category">
-                                {% for job_category in job_categories %}
-                                    <option value="{{ job_category }}">{{ job_category }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <select class="form-select border-0" name="location">
-                                {% for job_location in job_locations %}
-                                    <option value="{{ job_location }}">{{ job_location }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>                            
-                
-                        <div class="col-md-2">
-                            <button type="submit" class="btn btn-dark border-0 w-100">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </form> {% endcomment %}
+            <h3 style="text-align:center;color:white;"> <a href="{% url 'main:portfolios_home' %}" style="color:white">Our Clients</a></h3>
         </div>
     </div>
 </div>
@@ -86,15 +59,15 @@
     <div class="container" data-aos="zoom-out">
         <div class="clients-slider swiper">
             <div class="swiper-wrapper align-items-center" style="height:40%;">
-                <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/getmy-1.png' %}" class="img-fluid" alt=""></div>
-                <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/orka.jpg' %}" class="img-fluid" alt="" ></div>
-                <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/redrhino-1.png' %}" class="img-fluid" alt="" ></div>
+                {% comment %} <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/getmy-1.png' %}" class="img-fluid" alt=""></div> {% endcomment %}
+                {% comment %} <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/orka.jpg' %}" class="img-fluid" alt="" ></div> {% endcomment %}
+                {% comment %} <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/redrhino-1.png' %}" class="img-fluid" alt="" ></div> {% endcomment %}
                 <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/rdp-1.png' %}" class="img-fluid" alt="" ></div>
                 <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/tsapi-1.png' %}" class="img-fluid" alt="" ></div>
                 <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/np.png' %}" class="img-fluid" alt="" ></div>
                 <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/cygnus.png' %}" class="img-fluid" alt="" ></div>
                 <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/csr.png' %}" class="img-fluid" alt="" ></div>
-                <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/collabera.png' %}" class="img-fluid" alt="" ></div>
+                <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/KE_logo.png' %}" class="img-fluid" alt="" ></div>
             </div>
         </div>
     </div>
@@ -124,17 +97,17 @@
 
 <!-- Jobs Start -->
  <!-- Heading Start -->
- <div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
+ {% comment %} <div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
     <div class="container">
         <div class="row g-2">
             <h3 style="text-align:center;color:white;">Job/Training Opportunities</h3>           
         </div>
     </div>
-</div>
+</div> {% endcomment %}
 <!-- Heading End -->
-<div id="jobs" class="padd-section" style="background-color: #f8f8f8;padding-top:5%;padding-bottom:5%">
+<div id="jobs" class="padd-section" style="background-color: #d9e1e5b8;padding-top:5%;padding-bottom:5%">
     <div class="container">       
-        {% comment %} <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job/Training Opportunities</h1> {% endcomment %}
+        <h2 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job/Training Opportunities</h2>
         <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s">
             <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                 <li class="nav-item">
@@ -186,7 +159,7 @@
                         <a class="btn btn-primary py-3 px-5" href="{% url 'job:jobs' %}" target="_blank">Browse More Internships</a>
                     {% else %}
                         <h5 style="font-weight:bolder">Introducing our "Enroll in Our Low-Cost Internship Training Programme" and Propel Your Career Forward!</h5>
-                        <h6>Elevate your skills, gain hands-on experience, and broaden your career horizons through mentorship and real-world projects.</h6>    
+                        {% comment %} <h6>Elevate your skills, gain hands-on experience, and broaden your career horizons through mentorship and real-world projects.</h6>     {% endcomment %}
                         <p>Our Technical training division is committed to delivering high-quality training programs to professionals seeking to enhance their skills and stay ahead in the rapidly evolving tech landscape.
                             With a focus on excellence, we have worked with top brands like Collabera to provide comprehensive training in Python, Java, C++, .Net, and other core technologies
                         </p>
@@ -293,13 +266,13 @@
 <!-- About Start -->
 
  <!-- Heading Start -->
- <div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
+ {% comment %} <div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
     <div class="container">
         <div class="row g-2">
             <h3 style="text-align:center;color:white;">About Us</h3>           
         </div>
     </div>
-</div>
+</div> {% endcomment %}
 <!-- Heading End -->
 <div id="about" class="container-xxl py-5">
     <div class="container">
@@ -321,7 +294,7 @@
                 </div>
             </div>
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                <h1 class="mb-4">We Help To Get The Best Job And Find A Talent</h1>
+                <h2 class="mb-4">We Help To Get The Best Job And Find A Talent</h2>
                 <p class="mb-4">Building a strong team is crucial for the success of any organization, as it allows individuals to collaborate and leverage their unique skills and experiences to achieve common goals.</p>
                 <p><i class="fa fa-check text-primary me-3"></i>Resource Support</p>
                 <p><i class="fa fa-check text-primary me-3"></i>Staffing Skills</p>
@@ -338,19 +311,19 @@
 
 <!-- ======= Contact Section ======= -->
  <!-- Heading Start -->
- <div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
+ {% comment %} <div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
     <div class="container">
         <div class="row g-2">
             <h3 style="text-align:center;color:white;">Contact Us</h3>           
         </div>
     </div>
-</div>
+</div> {% endcomment %}
 <!-- Heading End -->
-<section id="contact" class="padd-section" style="background-color: #f8f8f8;padding-top:5%;padding-bottom:5%">
+<section id="contact" class="padd-section" style="background-color: #d9e1e5b8;padding-top:0%;padding-bottom:5%">
 
-    <div class="container" data-aos="fade-up">
-        <div class="section-title text-center">
-        {% comment %} <h2>Contact Us</h2> {% endcomment %}
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.4393644935!2d76.28172197582408!3d9.980518090123939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b062b0821db2203%3A0x8309f97355b9a850!2sSevendyne%20Consultancy%20Services%20LLP!5e0!3m2!1sen!2sin!4v1713151457334!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><div class="container" data-aos="fade-up">
+        <div class="section-title text-center" style="padding-top:3%">
+        <h2>Contact Us</h2>
         <p class="separator">Connect with Us to discuss our works</p>
         </div>
 
@@ -361,7 +334,7 @@
             <div class="info">
             <div>
                 <i class="bi bi-geo-alt"></i>                  
-                <p>Sevendyne Consultancy Services LLP,<br>Noble Homes, <br> 5th floor, Market Rd,<br>Kochi 682011, India</p>
+                <p>Sevendyne Consultancy Services LLP,<br>Mayur Business Center, <br>  Chittoor Rd, Pullepady Junction,<br> Shenoys, Ernakulam,  <br> Kerala 682035, India<br> hr@sevendyne.com</p>
             </div>
 
             </div>
