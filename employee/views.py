@@ -453,64 +453,78 @@ def create_employee(request):
             company =current_company
             creator = request.user
             updator = request.user
-
-            if not Employee.objects.filter(username=username,company=current_company,is_deleted=False).exists():
-                existing_user = User.objects.filter(username=username).first()
-                if existing_user:
-                    user.groups.add(employee_group)
+            if not Employee.objects.filter(username=username).exists():            
+                if not Employee.objects.filter(username=username,company=current_company,email=email,employeeid=employeeid,is_deleted=False).exists():
+                    existing_user = User.objects.filter(username=username)
                     hashed_password = make_password(password)
-                    user.save()
-                hashed_password = make_password(password)
-                user, created = User.objects.get_or_create(username=username, defaults={'password': hashed_password, 'email': email, 'first_name': firstname, 'last_name': lastname})
+                    if existing_user:
+                        user = existing_user
+                        employee_group, created = Group.objects.get_or_create(name='employee_group')
+                        user.groups.add(employee_group)    
+                        print()                
+                        user.save()
+                        print("Existing Employee's groups:", user.groups.all())  
+                        response_data = {
+                            "status": "false",
+                            "stable": "true",
+                            "title": "Already existed an employee",
+                            "message": "Already existed an employee with same details(username,employee id and email). Create with different details"                   
+                        }                    
+                                        
+                    else:
+                        user, created = User.objects.get_or_create(username=username, defaults={'password': hashed_password, 'email': email, 'first_name': firstname, 'last_name': lastname})
+                        # Get or create the 'employee_group' group
+                        employee_group, created = Group.objects.get_or_create(name='employee_group')
+                        # Add the user to the 'employee_group' group
+                        user.groups.add(employee_group)
 
-                if created:
-                    # Get or create the 'hrms_clients' group
-                    employee_group, created = Group.objects.get_or_create(name='employee_group')
+                        # Save the user to update group membership
+                        user.save()
 
-                    # Add the user to the 'hrms_clients' group
-                    user.groups.add(employee_group)
+                        print("New Employee's groups:", user.groups.all())
 
-                    # Save the user to update group membership
-                    user.save()
-
-                Employee( 
-                    user = user,
-                    firstname = firstname,
-                    lastname = lastname,
-                    email = email,
-                    username = username,
-                    password = password,
-                    phone = phone,
-                    address = address,
-                    client_company = client_company,
-                    department = department,
-                    designation = designation,
-                    employeeid = employeeid,
-                    joindate = joindate,
-                    photo = photo,
-                    auto_id = auto_id,
-                    a_id = a_id,
-                    company =company,
-                    creator = creator,
-                    updator = updator
-                ).save()
-                response_data = {
-                    "status": "true",
-                    "title": "Successfully Created",
-                    "message": "Employee created successfully.",
-                    "redirect": "true",
-                    "redirect_url": reverse('employee:employees')
-                }
-                print("Redirect URL:", response_data["redirect_url"])
+                        Employee( 
+                            user = user,
+                            firstname = firstname,
+                            lastname = lastname,
+                            email = email,
+                            username = username,
+                            password = password,
+                            phone = phone,
+                            address = address,
+                            client_company = client_company,
+                            department = department,
+                            designation = designation,
+                            employeeid = employeeid,
+                            joindate = joindate,
+                            photo = photo,
+                            auto_id = auto_id,
+                            a_id = a_id,
+                            company =company,
+                            creator = creator,
+                            updator = updator
+                        ).save()
+                        response_data = {
+                            "status": "true",
+                            "title": "Successfully Created",
+                            "message": "Employee created successfully.",
+                            "redirect": "true",
+                            "redirect_url": reverse('employee:employees')
+                        }
+                else:               
+                    response_data = {
+                        "status": "false",
+                        "stable": "true",
+                        "title": "Already exists",
+                        "message": "Employee already exists",                        
+                    }
             else:               
                 response_data = {
                     "status": "false",
                     "stable": "true",
-                    "title": "Already exists",
-                    "message": "Employee already exists",                        
+                    "title": "Username already taken",
+                    "message": "Username already exists",                        
                 }
-                print("status inside", response_data["status"])
-            print("status outside", response_data["status"])
         else:
             print('not valid form validation error')
             message = generate_form_errors(form, formset=False)
@@ -617,7 +631,7 @@ def edit_employee(request, pk):
     instance = get_object_or_404(Employee.objects.filter(pk=pk,company=current_company, is_deleted=False))    
     print("Employee id",instance.pk)
     if request.method == "POST":
-        form = EmployeeForm(request.POST, instance=instance)
+        form = EmployeeForm(request.POST, request.FILES, instance=instance)
 
         if form.is_valid():
             data = form.save(commit=False)
@@ -630,12 +644,19 @@ def edit_employee(request, pk):
             user.first_name = data.firstname
             user.last_name = data.lastname
             user.email = data.email
+            # Remove user from hrms_clients group if exists
+            hrms_clients_group = Group.objects.get(name='hrms_clients')
+            user.groups.remove(hrms_clients_group)
+            # Add user to employee_group
+            employee_group, created = Group.objects.get_or_create(name='employee_group')
+            user.groups.add(employee_group)
             user.save()
 
             data.updator = request.user
             data.date_updated = datetime.datetime.now()
             data.save()
             # print("updated Client",data.company)
+            print("edited Employee's groups:", user.groups.all())
 
             response_data = {
                 "status": "true",
