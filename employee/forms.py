@@ -47,8 +47,7 @@ class DesignationForm(forms.ModelForm):
         }
     def __init__(self, *args, **kwargs):
         current_company = kwargs.pop('current_company', None)
-        super(DesignationForm, self).__init__(*args, **kwargs)
-        
+        super(DesignationForm, self).__init__(*args, **kwargs)        
         if current_company:
             # Filter departments by current company
             self.fields['department'].queryset = Department.objects.filter(company=current_company, is_deleted=False)
@@ -150,7 +149,13 @@ class LeaveForm(forms.ModelForm):
                 'required': _("startdate field is required."),
             }
         }
-
+    def __init__(self, *args, **kwargs):
+        current_company = kwargs.pop('current_company', None)
+        super(LeaveForm, self).__init__(*args, **kwargs)        
+        if current_company:
+            # Filter LeaveType by current company
+            self.fields['leavetype'].queryset = LeaveType.objects.filter(company=current_company, is_deleted=False)            
+            
 
 class AttendanceRegisterForm(forms.ModelForm):
     ATTENDANCE_CHOICES = (                
@@ -183,6 +188,13 @@ class AttendanceRegisterForm(forms.ModelForm):
         error_messages = {
             
         }
+    def __init__(self, *args, **kwargs):
+        current_company = kwargs.pop('current_company', None)
+        super(AttendanceRegisterForm, self).__init__(*args, **kwargs)        
+        if current_company:
+            # Filter employee by current company
+            self.fields['employee'].queryset = Employee.objects.filter(company=current_company, is_deleted=False)            
+      
        
 class AttendanceDateForm(forms.ModelForm): 
     an_fn_CHOICES = (                
@@ -205,7 +217,7 @@ class AttendanceDateForm(forms.ModelForm):
                 'required' : ("date field is required."),
             }
         }
-
+        
 
 class HolidayForm(forms.ModelForm):
     class Meta:

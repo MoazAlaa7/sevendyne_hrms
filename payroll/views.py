@@ -378,7 +378,7 @@ def delete_payroll_item(request,pk):
 def create_salary(request):
     current_company = get_current_company(request)    
     if request.method == 'POST':
-        form = SalaryForm(request.POST)
+        form = SalaryForm(request.POST, current_company=current_company)
         if form.is_valid():
             net_salary = form.cleaned_data['net_salary']
             selected_date = form.cleaned_data['date']
@@ -465,7 +465,7 @@ def create_salary(request):
             }
         return HttpResponse(json.dumps(response_data), content_type='application/json')
     else:
-        form = SalaryForm()
+        form = SalaryForm(current_company=current_company)
         # Retrieve dynamic fields for additions and deductions
         additions_fields = [item.name for item in PayrollItem.objects.filter(company=current_company, category='Additions', is_deleted=False)]
         deductions_fields = [item.name for item in PayrollItem.objects.filter(company=current_company, category='Deductions', is_deleted=False)]
@@ -518,7 +518,7 @@ def edit_salary(request, pk):
     current_company = get_current_company(request)
     instance = get_object_or_404(Salary.objects.filter(pk=pk,company=current_company, is_deleted=False))    
     if request.method == "POST":
-        form = SalaryForm(request.POST, instance=instance)
+        form = SalaryForm(request.POST, instance=instance, current_company=current_company)
         if form.is_valid():
             data = form.save(commit=False)
             data.updator = request.user
@@ -541,7 +541,7 @@ def edit_salary(request, pk):
             }
         return HttpResponse(json.dumps(response_data), content_type='application/json')
     else:
-        form = SalaryForm(instance=instance)       
+        form = SalaryForm(instance=instance, current_company=current_company)       
         context = {
             "form": form,
             "instance": instance,

@@ -1,5 +1,6 @@
 from django import forms
 from django.forms.widgets import Select
+from employee.models import Employee
 from payroll.models import PayrollItem, Salary, SalarySetting
 from datetime import date
 from django.utils.translation import gettext_lazy as _
@@ -66,3 +67,10 @@ class SalaryForm(forms.ModelForm):
                 'required': _("date field is required."),
             }
         }
+    def __init__(self, *args, **kwargs):
+        current_company = kwargs.pop('current_company', None)
+        super(SalaryForm, self).__init__(*args, **kwargs)        
+        if current_company:
+            # Filter employee by current company
+            self.fields['employee'].queryset = Employee.objects.filter(company=current_company, is_deleted=False)            
+      

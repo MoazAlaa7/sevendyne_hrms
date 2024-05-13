@@ -256,7 +256,7 @@ def edit_designation(request, pk):
     current_company = get_current_company(request)
     instance = get_object_or_404(Designation.objects.filter(pk=pk,company=current_company, is_deleted=False)) 
     if request.method == "POST":
-        form = DesignationForm(request.POST, instance=instance)
+        form = DesignationForm(request.POST, instance=instance, current_company=current_company)
         if form.is_valid():
             data = form.save(commit=False)
             data.updator = request.user
@@ -279,7 +279,7 @@ def edit_designation(request, pk):
             }
         return HttpResponse(json.dumps(response_data), content_type='application/json')
     else:
-        form = DesignationForm(instance=instance)
+        form = DesignationForm(instance=instance, current_company=current_company)
         departments = Department.objects.filter(company=current_company,is_deleted=False)
         context = {
             "form": form,
@@ -509,7 +509,7 @@ def edit_employee(request, pk):
     current_company = get_current_company(request)
     instance = get_object_or_404(Employee.objects.filter(pk=pk,company=current_company, is_deleted=False))    
     if request.method == "POST":
-        form = EmployeeForm(request.POST, request.FILES, instance=instance)
+        form = EmployeeForm(request.POST, request.FILES, instance=instance, current_company=current_company)
 
         if form.is_valid():
             data = form.save(commit=False)
@@ -548,7 +548,7 @@ def edit_employee(request, pk):
             }
         return HttpResponse(json.dumps(response_data), content_type='application/json')
     else:
-        form = EmployeeForm(instance=instance)
+        form = EmployeeForm(instance=instance, current_company=current_company)
         context = {
             "form": form,
             "instance": instance,
@@ -743,7 +743,7 @@ def create_leave(request):
     employee = get_object_or_404(Employee, user=request.user)
     company = employee.company
     if request.method == 'POST':
-        form = LeaveForm(request.POST)
+        form = LeaveForm(request.POST, current_company=company)
         if form.is_valid():
             startdate = form.cleaned_data['startdate']
             enddate = form.cleaned_data['enddate']
@@ -814,7 +814,7 @@ def create_leave(request):
             }
         return HttpResponse(json.dumps(response_data), content_type='application/json')
     else:
-        form = LeaveForm()
+        form = LeaveForm(current_company=company)
         context = {
             "title": "Apply Leave",
             "form": form,
@@ -942,7 +942,7 @@ def edit_leave(request, pk):
     current_company = get_current_company(request)
     instance = get_object_or_404(Leave.objects.filter(pk=pk,company=current_company, is_deleted=False))    
     if request.method == "POST":
-        form = LeaveForm(request.POST, instance=instance)
+        form = LeaveForm(request.POST, instance=instance, current_company=current_company)
         if form.is_valid():
             data = form.save(commit=False)
             data.updator = request.user
@@ -965,7 +965,7 @@ def edit_leave(request, pk):
             }
         return HttpResponse(json.dumps(response_data), content_type='application/json')
     else:
-        form = LeaveForm(instance=instance)
+        form = LeaveForm(instance=instance, current_company=current_company)
         context = {
             "form": form,
             "instance": instance,
@@ -1067,7 +1067,7 @@ def create_attendance_register(request):
     AttendanceRegisterFormSet = formset_factory(AttendanceRegisterForm, extra=0)  
     if request.method == 'POST':     
         date_form = AttendanceDateForm(request.POST)               
-        attendanceregister_formset = AttendanceRegisterFormSet(request.POST,prefix='attendanceregister_formset')   
+        attendanceregister_formset = AttendanceRegisterFormSet(request.POST,prefix='attendanceregister_formset', current_company=company)   
         if attendanceregister_formset.is_valid() and date_form.is_valid(): 
             date = date_form.cleaned_data['date']
             an_fn = date_form.cleaned_data['an_fn']
@@ -1123,7 +1123,7 @@ def create_attendance_register(request):
                 'employee_pk' : s.pk, 
             }
             initial_dict.append(init_dict) 
-        attendanceregister_formset = AttendanceRegisterFormSet(prefix='attendanceregister_formset',initial=initial_dict)
+        attendanceregister_formset = AttendanceRegisterFormSet(prefix='attendanceregister_formset',initial=initial_dict, current_company=company)
         
         context = {
             "title": "Take Attendance",
@@ -1199,7 +1199,7 @@ def edit_attendance_register(request, pk):
         is_class = False
     if request.method == 'POST':     
         date_form = AttendanceDateForm(request.POST)               
-        attendanceregister_formset = AttendanceRegisterFormSet(request.POST,prefix='attendanceregister_formset')   
+        attendanceregister_formset = AttendanceRegisterFormSet(request.POST,prefix='attendanceregister_formset', current_company=company)   
 
         if attendanceregister_formset.is_valid() and date_form.is_valid(): 
 
@@ -1257,7 +1257,7 @@ def edit_attendance_register(request, pk):
                 'employee_pk' : s.pk, 
             }
             initial_dict.append(init_dict) 
-        attendanceregister_formset = AttendanceRegisterFormSet(prefix='attendanceregister_formset',initial=initial_dict)        
+        attendanceregister_formset = AttendanceRegisterFormSet(prefix='attendanceregister_formset',initial=initial_dict, current_company=company)        
         context = {
             "title": "Edit Attendance Register",
             "attendanceregister_formset": attendanceregister_formset,
