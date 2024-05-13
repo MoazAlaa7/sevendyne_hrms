@@ -287,7 +287,6 @@ def employee_dashboard(request):
     try:
         employee = get_object_or_404(Employee, user=request.user, is_deleted=False)
         company=employee.company
-        print(employee)
         approved_leave = Leave.objects.filter(employee=employee,company=company,is_approved=True,is_deleted=False).count()
         total_leave = Leave.objects.filter(employee=employee,company=company,is_deleted=False).count()
         remaining_leave = total_leave - approved_leave
