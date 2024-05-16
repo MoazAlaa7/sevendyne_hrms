@@ -1,3 +1,4 @@
+from decimal import Decimal
 import json
 import datetime
 
@@ -11,15 +12,16 @@ from django.contrib.auth.models import Group
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.db.models import Count
+from django.db.models import Sum
 from django.db.models import Q
 
 from main.decorators import company_required
 from main.functions import generate_form_errors, has_admin_dashboard_permission, has_hrms_permission
 from main.functions import generate_form_errors, get_a_id, get_auto_id, get_current_company, has_employee_dashboard_permission
-from employee.models import AttendanceRegister, Employee, Leave, LeaveType
+from employee.models import AttendanceRegister, Employee, Holiday, Leave, LeaveType
 from main.models import Company, CompanyAccess, EmailSetting, Portfolio
 from main.forms import CompanyForm, EmailSettingForm, PortfolioForm
-from payroll.models import PayrollItem, SalarySetting
+from payroll.models import PayrollItem, Salary, SalaryDynamicField, SalarySetting
 from candidate.models import Candidate
 from hrms.models import HrmsClient
 from client.models import Client
@@ -291,13 +293,35 @@ def employee_dashboard(request):
         employee = get_object_or_404(Employee, user=request.user, is_deleted=False)
         company=employee.company
         approved_leave = Leave.objects.filter(employee=employee,company=company,is_approved=True,is_deleted=False).count()
-        total_leave = Leave.objects.filter(employee=employee,company=company,is_deleted=False).count()
+        # total_leave = Leave.objects.filter(company=company,is_deleted=False).count()
+         # Get the total leave days across all leave types
+        total_leave = LeaveType.objects.filter(company=company, is_deleted=False).aggregate(total_leave=Sum('days'))['total_leave']
+        # If total_leave is None (no leave records found), set it to 0
+        total_leave = total_leave or 0
         remaining_leave = total_leave - approved_leave
+        # Get upcoming holidays
+        today = datetime.date.today()
+        upcoming_holidays = Holiday.objects.filter(company=company, date__gte=today).order_by('date')        
+        next_holiday = Holiday.objects.filter(company=company, date__gte=today).order_by('date').first()
+        # Fetch the last created payslip for the employee
+        last_payslip = Salary.objects.filter(employee=employee, company=company, is_deleted=False).order_by('-date').first()
+        # Fetch all salary dynamic fields related to the last payslip
+        additions_fields = SalaryDynamicField.objects.filter(salary=last_payslip, category='Additions')
+        deductions_fields = SalaryDynamicField.objects.filter(salary=last_payslip, category='Deductions')
+
+        total_deductions = deductions_fields.aggregate(Sum('field_value'))['field_value__sum'] or Decimal('0.00')
+
         context = {
             'company':company,
             'employee': employee,
             'approved_leave':approved_leave,
-            'remaining_leave':remaining_leave
+            'remaining_leave':remaining_leave,
+            'upcoming_holidays': upcoming_holidays,
+            'next_holiday':next_holiday,
+            'last_payslip': last_payslip,
+            'additions_fields': additions_fields,
+            'deductions_fields': deductions_fields,
+            'total_deductions': total_deductions
         }    
         return render(request, "dashboard/employee-dashboard.html", context=context)
     except Employee.DoesNotExist:
