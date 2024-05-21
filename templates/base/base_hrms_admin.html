@@ -158,16 +158,10 @@
 									</li> 
 							</nav>
 						</div>
-						<ul class="sidebar-vertical">
-							<li class="menu-title"> 
-								<span>Main</span>
-							</li>
+						<ul class="sidebar-vertical">							
 							<li class="submenu">
 								<a href="{% url 'hrms_dashboard' %}"><i class="la la-dashboard"></i> <span> Dashboard</span></a>								
 							</li> 
-							<li class="menu-title"> 
-								<span>Employees</span>
-							</li>
 							<li class="submenu">
 								<a href="#" >
 									<i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span>
@@ -183,13 +177,8 @@
 									{% endif %}
 									<li ><a href="{% url 'employee:departments' %}" >Departments</a></li>
 									<li ><a href="{% url 'employee:designations' %}" >Designations</a></li>
+									<li ><a href="{% url 'client:clients' %}">Clients</a></li>
 								</ul>
-							</li>
-							<li> 
-								<a href="{% url 'client:clients' %}"><i class="la la-users"></i> <span>Clients</span></a>
-							</li>
-							<li class="menu-title"> 
-								<span>HR</span>
 							</li>
 							<li class="submenu">
 								<a href="{% url 'payroll:salaries' %}"><i class="la la-money"></i> <span> Payroll </span></a>								
