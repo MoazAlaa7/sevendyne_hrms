@@ -162,6 +162,12 @@
 							<li class="submenu">
 								<a href="{% url 'hrms_dashboard' %}"><i class="la la-dashboard"></i> <span> Dashboard</span></a>								
 							</li> 
+							<li>
+								<a href="{% url 'employee:departments' %}"><i class="la la-building"></i><span>Departments</span></a>
+							</li>
+							<li >
+								<a href="{% url 'employee:designations' %}"><i class="la la-mortar-board"></i><span>Designations</span></a>
+							</li>
 							<li class="submenu">
 								<a href="#" >
 									<i class="la la-group"></i> <span> Employees</span> <span class="menu-arrow"></span>
@@ -175,13 +181,7 @@
 										<li><a href="{% url 'employee:attendance_register' %}">Attendance</a></li>
 									{% endif %}
 								</ul>
-							</li>
-							<li>
-								<a href="{% url 'employee:departments' %}"><i class="la la-building"></i><span>Departments</span></a>
-							</li>
-							<li >
-								<a href="{% url 'employee:designations' %}"><i class="la la-mortar-board"></i><span>Designations</span></a>
-							</li>
+							</li>							
 							<li> 
 								<a href="{% url 'employee:holidays' %}"><i class="la la-automobile"></i> <span>Holidays</span></a>
 							</li>
