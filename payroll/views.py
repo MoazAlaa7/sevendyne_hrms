@@ -909,6 +909,8 @@ def payslips_employee(request):
         # Calculate total of deductions
         total_deductions = deductions_fields.aggregate(Sum('field_value'))['field_value__sum'] or Decimal('0.00')
         context = {
+            'company':company,
+            'employee': employee,
             'payslips': payslips,
             'title': 'PaySlip',
             'additions_fields': additions_fields,
