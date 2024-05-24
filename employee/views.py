@@ -919,6 +919,7 @@ def leaves(request):
     leaves = paginator.get_page(page_number)
     context = {
         'company':company,
+        'employee': employee,
         'leaves': leaves,
         "title": 'Leaves',
         "is_leaves" : True
