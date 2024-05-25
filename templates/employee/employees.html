@@ -68,7 +68,13 @@
 						{% if employee.photo %}
 							<img src="{{ employee.photo.url }}" alt="{{ employee.firstname }}'s profile photo">
 						{% else %}
-							<img src="{% static 'assets/img/profiles/avatar-02.jpg' %}" alt="Default User Image">
+							{% if employee.gender == "Male" %}
+								<img src="{% static 'assets/img/profiles/it_man.png' %}" alt="Default User Image">
+							{% elif employee.gender == "Female" %}
+								<img src="{% static 'assets/img/profiles/it_woman.png' %}" alt="Default User Image">
+							{% else %}
+								<img src="{% static 'assets/img/profiles/avatar-02.jpg' %}" alt="Default User Image">
+							{% endif %}
 						{% endif %}
 					</a>						
 				</div>
@@ -128,6 +134,12 @@
 									<div class="input-block mb-3">
 										<label class="col-form-label">Email <span class="text-danger">*</span></label>
 										<input class="form-control" type="email" name="email" value="{{employee.email}}">
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="input-block mb-3">
+										<label class="col-form-label">Gender <span class="text-danger">*</span></label>
+										<input class="form-control" type="gender" name="gender" value="{{employee.gender}}">
 									</div>
 								</div>
 								<div class="col-sm-6">
@@ -276,6 +288,15 @@
 								{{ form.email }}
 								{% if form.email.errors %}
 								<span class="error">{{ form.email.errors.0 }}</span>
+								{% endif %}
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="input-block mb-3">
+								<label class="col-form-label">Gender <span class="text-danger">*</span></label>
+								{{ form.gender }}
+								{% if form.gender.errors %}
+								<span class="error">{{ form.gender.errors.0 }}</span>
 								{% endif %}
 							</div>
 						</div>

@@ -50,6 +50,7 @@ class Employee(BaseModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     firstname = models.CharField(_('Firstname'),max_length=125)
     lastname = models.CharField(_('Lastname'),max_length=125)
+    gender = models.CharField(_('Gender'),max_length=125,null=True, blank=True)
     username = models.CharField(max_length=254)    
     password = models.CharField(max_length=100)
     email = models.EmailField(_("Email"))
