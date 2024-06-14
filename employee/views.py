@@ -18,6 +18,7 @@ from employee.models import GENDER_CHOICES, AttendanceRegister, Department, Desi
 from django.contrib.auth.models import User, Group
 from django.core.paginator import Paginator
 from django.core.mail import EmailMessage
+from django.utils import timezone
 from django.http import HttpResponse
 from payroll.models import Salary, SalaryDynamicField
 from sevendyne_hrms import settings
@@ -582,7 +583,7 @@ def edit_employee(request, pk):
             user.save()
 
             data.updator = request.user
-            data.date_updated = datetime.datetime.now()
+            data.date_updated =  timezone.now() 
             data.save()
 
             response_data = {
