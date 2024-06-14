@@ -453,7 +453,6 @@ def create_company(request):
                 PayrollItem.objects.create(company=current_company,name="DA",category="Additions", auto_id=get_auto_id(PayrollItem),a_id = get_a_id(PayrollItem,request),creator = request.user,updator = request.user)
                 PayrollItem.objects.create(company=current_company,name="HRA",category="Additions", auto_id=get_auto_id(PayrollItem),a_id = get_a_id(PayrollItem,request),creator = request.user,updator = request.user)
                 PayrollItem.objects.create(company=current_company,name="ESI",category="Additions", auto_id=get_auto_id(PayrollItem),a_id = get_a_id(PayrollItem,request),creator = request.user,updator = request.user)
-                PayrollItem.objects.create(company=current_company,name="Basic Salary",category="Additions", auto_id=get_auto_id(PayrollItem),a_id = get_a_id(PayrollItem,request),creator = request.user,updator = request.user)
                 PayrollItem.objects.create(company=current_company,name="Leave",category="Deductions", auto_id=get_auto_id(PayrollItem),a_id = get_a_id(PayrollItem,request),creator = request.user,updator = request.user)
                 PayrollItem.objects.create(company=current_company,name="PF",category="Deductions", auto_id=get_auto_id(PayrollItem),a_id = get_a_id(PayrollItem,request),creator = request.user,updator = request.user)
                 PayrollItem.objects.create(company=current_company,name="TDS",category="Deductions", auto_id=get_auto_id(PayrollItem),a_id = get_a_id(PayrollItem,request),creator = request.user,updator = request.user)
