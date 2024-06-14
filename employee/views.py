@@ -583,7 +583,7 @@ def edit_employee(request, pk):
         context = {
             "form": form,
             "instance": instance,
-            "title": "Edit Employee :" + instance.firstname,            
+            "title": "Edit Employee :" + instance.firstname,          
             "redirect": "true",
             "url": reverse('employee:edit_employee', kwargs={'pk': instance.pk})
         }
