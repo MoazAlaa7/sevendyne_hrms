@@ -594,13 +594,7 @@
 				.then(response => response.json())
 				.then(data => {
 					// Handle success and error response
-					showDeleteSweetAlert(data.message, data.status, data.redirect_url);
-					// Handle success response
-					//if (data.status === "true") {
-					//	showDeleteSweetAlert(data.message, data.status, data.redirect_url);
-					//} else {
-					//	Swal.fire("Error", "An error occurred while deleting.", "error");
-					//}
+					showDeleteSweetAlert(data.message, data.status, data.redirect_url);					
 				})
 				.catch(() => {
 					// Handle error
