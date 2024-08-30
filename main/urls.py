@@ -26,7 +26,7 @@ urlpatterns = [
 
     path("hrms/home/", views.home_hrms, name="home_hrms"),
     path("hrms/dashboard/", views.hrms_dashboard, name="hrms_dashboard"),
-    path("admin/dashboard/", views.admin_dashboard, name="admin_dashboard"),
+    path("sevendyne/dashboard/", views.admin_dashboard, name="admin_dashboard"),
     path("employee/dashboard/", views.employee_dashboard, name="employee_dashboard"),
 
 	path('company/create/', views.create_company, name='create_company'),
