@@ -39,6 +39,15 @@ def robots_txt(request):
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
 
+
+def custom_404(request, exception):
+    return render(request, "error/error-404.html", status=404)
+
+
+def custom_500(request):
+    return render(request, "error/error-500.html", status=500)
+
+
 def home_hrms(request):
     portfolios = Portfolio.objects.filter(is_deleted=False)
     context ={

@@ -30,5 +30,11 @@ urlpatterns = [
     path('app/asset/',include(('asset.urls','asset'),namespace='asset'))
 ] 
 
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)  
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)
+
+# Add the custom 404 handler
+handler404 = "main.views.custom_404"
+
+# Add the custom 500 handler
+handler500 = "main.views.custom_500"
