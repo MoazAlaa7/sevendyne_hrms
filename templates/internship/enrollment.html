@@ -78,15 +78,17 @@
                 <h2>Training Programs</h2>
             </div>
             <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
-                {% comment %} <div class="col-lg-3 col-md-4">
-                    <div class="card" style="width: 17rem;">
-                        <img class="card-img-top" src="{% static 'job_portal/img/employee-development-and-training-program.png' %}" alt="Card image cap">
-                        <div class="card-body" style="background-color: #e5efe9;">
-                            <p class="card-text">Join our comprehensive training program designed for professionals from diverse backgrounds including App developers, Design engineers, Accountants, Marketing managers, and more.</p>
-                            <p>Elevate your skills, gain hands-on experience, and broaden your career horizons through mentorship and real-world projects.</p>
-                        </div>
-                    </div>
-                </div> {% endcomment %}
+       
+			<div class="col-lg-3 col-md-4">
+				<div class="card" style="width: 17rem;">
+					<img class="card-img-top" src="{% static 'job_portal/img/employee-development-and-training-program.png' %}" alt="Card image cap">
+					<div class="card-body" style="background-color: #e5efe9;">
+					<h5 class="card-title">Elevate Your Career with Our Fullstack Training Program</h5>
+					<p class="card-text">Join our comprehensive Fullstack training program designed for professionals and aspiring developers. Learn essential frontend and backend skills including Node.js, Bootstrap, Django, Python, HTML, CSS, and more.</p>
+					<p>Gain hands-on experience, build real-world applications, and expand your career opportunities in Fullstack development with guidance from industry experts.</p>
+					</div>
+				</div>
+			</div> 
                 <div class="col-lg-4 col-md-8">
                     <div class="form">
                        <form  id="create_form" method="POST" action="{% url 'candidate:create_intern' %}" enctype="multipart/form-data">

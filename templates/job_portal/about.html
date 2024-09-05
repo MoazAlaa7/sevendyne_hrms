@@ -1,10 +1,10 @@
 {% extends "job_portal/base.html" %}
 
-{% block og_title %}Sevendyne : Top Talent Management & Free HRMS Solutions{% endblock %}
-{% block og_description %}At Sevendyne, we connect businesses with top talent and offer free HRMS software to streamline HR operations, reduce costs, and support business growth.{% endblock %}
+{% block og_title %}Sevendyne: App Development Solutions, Global HR Services, and Skill-Building Programs{% endblock %}
+{% block og_description %}At Sevendyne, we specialize in providing cutting-edge App Development Solutions, Global HR Services to connect with top talent, and Skill-Building Programs to enhance your team’s capabilities. Explore how our tailored solutions can drive your business forward.{% endblock %}
 {% comment %} {% block og_image %}https://example.com/my-custom-image.jpg{% endblock %} {% endcomment %}
-{% block og_url %}https://sevendyne.com/app/main/about/{% endblock %}
-{% block title %}About Us - Sevendyne HRMS{% endblock %}
+{% block og_url %}https://sevendyne.com/{% endblock %}
+{% block title %}Sevendyne: Innovative Solutions for Business Growth{% endblock %}
 
 {% load static %}
 
@@ -30,30 +30,73 @@
 <div id="about" class="container-xxl py-5">
     <div class="container">
         <div class="row g-5 align-items-center">
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                <div class="row g-0 about-bg rounded overflow-hidden">
-                    <div class="col-12 text-start">
-                        <img class="img-fluid w-100" src="{% static 'job_portal/img/about1.png' %}">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                <h1 class="mb-4">Unlock Success with Sevendyne's Comprehensive IT Solutions</h1>
-                <p class="mb-4">Founded in 2016, Sevendyne began as a small freelancing venture and has since evolved into a leading provider of remote tech staffing solutions. Our journey started with building a dedicated remote tech team for a UK client, which laid the foundation for our expertise in creating high-performing teams. Over the years, we have successfully built and managed remote teams for clients across the globe, including in the US, Germany, Malaysia, Singapore, and beyond.</p>
-                <p class="mb-4">At Sevendyne, we are committed to helping businesses thrive by providing tailored IT solutions that meet their unique needs. Our comprehensive suite of services is designed to enhance business operations through innovative technology, expert talent management, and efficient HR solutions. Whether you need cutting-edge software development, strategic talent management, or seamless payroll and HR services, Sevendyne has the expertise to drive your success.</p>
-                <p class="mb-4">Our HRMS platform is the cornerstone of our remote staffing solutions, offering businesses an easy-to-use, free tool to manage their global teams. We take pride in our ability to connect clients with top-tier remote tech talent, ensuring that each team member is selected and managed to deliver optimal performance. Our experience in working with clients across various industries and regions has equipped us with the insights and skills to handle diverse business challenges, making us a trusted partner for your IT and staffing needs.</p>
+            <div wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="mb-4">Sevendyne: Your Trusted Partner for Innovative IT Solutions</h1>
+                <p class="mb-4">Since 2016, Sevendyne has been at the forefront of providing comprehensive IT and staffing solutions. Our journey began with building remote tech teams for global clients, and today, we offer a wide range of services to help businesses thrive.</p>
+
+                <h2>Custom App Development: Your Digital Success Catalyst</h2>
+                <p class="mb-4">Our app development expertise is unmatched. We craft tailored solutions that align with your business goals and drive growth. From mobile apps to web platforms and enterprise solutions, our team delivers cutting-edge technology.</p>
+
                 <ul class="mb-4">
-                    <li>Remote Tech Staffing: Build and manage high-performing remote teams with ease using our HRMS platform.</li>
-                    <li>Talent Management: Optimize team performance with our effective talent management strategies.</li>
-                    <li>Resource Nourishment: Enhance skills and adaptability through targeted training programs.</li>
-                    <li>HR and Payroll Services: Streamline payroll processing, HR management, and compliance.</li>
-                    <li>Employer of Record (EOR): Seamlessly manage remote employment and administrative responsibilities.</li>
+                    <li><strong>Mobile App Development:</strong> Seamless experiences on iOS and Android.</li>
+                    <li><strong>Web App Development:</strong> Scalable, responsive web platforms.</li>
+                    <li><strong>Enterprise App Development:</strong> Tailored solutions for large-scale businesses.</li>
+                    <li><strong>UI/UX Design:</strong> Intuitive interfaces that captivate your audience.</li>
+                    <li><strong>DevOps & Cloud Services:</strong> Efficient deployment and management.</li>
+                    <li><strong>Content Generation:</strong> Engaging content to drive digital sales.</li>
                 </ul>
-                <p class="mb-4">Contact us today to discover how Sevendyne’s tailored IT and staffing solutions can elevate your business. Let us help you build the future of your workforce with our expertise in remote tech staffing and comprehensive HR services.</p>
+
+                <h2>Beyond App Development: Comprehensive IT Services</h2>
+                <p class="mb-4">Our services extend beyond app development. We offer:</p>
+                <ul class="mb-4">
+                    <li><strong>HRMS & Payroll Services:</strong> Streamlined HR operations and global team management.</li>
+                    <li><strong>Skill-Building Programs:</strong> Empower your workforce with full-stack training.</li>
+                </ul>
+
+                <h2>Why Choose Sevendyne?</h2>
+                <p class="mb-4">
+                    <ul>
+                        <li><strong>Expertise and Experience:</strong> Years of delivering successful IT solutions.</li>
+                        <li><strong>Client-Centric Approach:</strong> Understanding your unique needs and goals.</li>
+                        <li><strong>Innovative Solutions:</strong> Cutting-edge technology and creative thinking.</li>
+                        <li><strong>Global Reach:</strong> Serving clients across the globe.</li>
+                    </ul>
+                </p>
             </div>
         </div>
     </div>
 </div>
+
+
+<!-- Search Start -->
+<div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
+    <div class="container">
+        <div class="row g-2">
+            <h3 style="text-align:center;color:white;">Our Clients</h3>
+        </div>
+    </div>
+</div>
+<!-- Search End -->
+
+<!-- ======= Clients Section ======= -->
+<section id="clients" class="clients mb-3 " style="margin-top:0%">
+    <div class="container" data-aos="zoom-out">
+        <div class="clients-slider swiper">
+            <div class="swiper-wrapper align-items-center" style="height:40%;">
+                {% comment %} <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/getmy-1.png' %}" class="img-fluid" alt=""></div> {% endcomment %}
+                {% comment %} <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/orka.jpg' %}" class="img-fluid" alt="" ></div> {% endcomment %}
+                {% comment %} <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/redrhino-1.png' %}" class="img-fluid" alt="" ></div> {% endcomment %}
+                <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/rdp-1.png' %}" class="img-fluid" alt="" ></div>
+                <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/tsapi-1.png' %}" class="img-fluid" alt="" ></div>
+                <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/np.png' %}" class="img-fluid" alt="" ></div>
+                <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/cygnus.png' %}" class="img-fluid" alt="" ></div>
+                <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/csr.png' %}" class="img-fluid" alt="" ></div>
+                <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/KE_logo.png' %}" class="img-fluid" alt="" ></div>
+            </div>
+        </div>
+    </div>
+</section> 
+
 <!-- End About Us Section -->
 
 {% endblock %}
