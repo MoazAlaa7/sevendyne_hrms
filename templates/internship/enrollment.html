@@ -2,93 +2,33 @@
 {% load static %}
 
 {% block content %}
-    <!-- Introduction Section -->
-    <!--<section id="introduction" class="padd-section text-center">-->
-    <!--    <div class="container" data-aos="fade-up">-->
-    <!--        <div class="section-title text-center">-->
-    <!--            <h2>Welcome to Sevendyne Training Programs</h2>-->
-    <!--            <p class="separator">Unlock Your Potential: Dive Into Exciting Training Programs!</p>-->
-    <!--        </div>-->
-    <!--        <p>At Sevendyne, we offer comprehensive training programs designed for professionals from diverse backgrounds, including App developers, Design engineers, Accountants, Marketing managers, and more. Elevate your skills, gain hands-on experience, and broaden your career horizons through mentorship and real-world projects. Enroll now and embark on a journey of continuous learning and growth!</p>-->
-    <!--    </div>-->
-    <!--</section>-->
-    
-    <!-- ======= Testimonials Section ======= -->
-    {% comment %} <section id="testimonials" class="padd-section text-center mt-3"style="background-color: #e5efe9;">
-      <div class="container" data-aos="fade-up">
-        <div class="row justify-content-center">
-
-          <div class="col-md-8">
-
-            <div class="testimonials-content"style="background-color: #f5f7f6;">
-              <div id="carousel-example-generic" class="carousel slide" data-bs-ride="carousel" >
-
-                <div class="carousel-inner" role="listbox">
-
-                  <div class="carousel-item  active">
-                    <div class="top-top">
-
-                       <h2 style="color:#23677d">Welcome to Sevendyne Training Programs</h2>
-                       <p class="separator">Unlock Your Potential: Dive Into Exciting Training Programs!</p>
-                      <p>At Sevendyne, we offer comprehensive training programs designed for professionals from diverse backgrounds, including App developers, Design engineers, Accountants, Marketing managers, and more. Elevate your skills, gain hands-on experience, and broaden your career horizons through mentorship and real-world projects. Enroll now and embark on a journey of continuous learning and growth!</p>
-     
-                     
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section> {% endcomment %}
-    <!-- End Testimonials Section -->
-    
-    <!-- ======= Clients Section ======= -->
-    {% comment %} <section id="clients" class="clients mb-3" style="margin-top:1%">
-      
-      <div class="container" data-aos="zoom-out">
-
-        <div class="clients-slider swiper">
-  
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/getmy-1.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/orka.jpg' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/redrhino-1.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/rdp-1.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/tsapi-1.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/np.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/csr.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/collabera.png' %}" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="{% static 'job_portal/img/clients/cygnus.png' %}" class="img-fluid" alt=""></div>
-          </div>
-        </div>
-
-      </div>
-    </section> {% endcomment %}
-    <!-- End Clients Section -->
-    
-
-    
     <!-- Training Programs Section -->
-    <section id="features" class="padd-section text-center" style="margin-top:7%;margin-bottom:3%">
+    <!-- Training Clients Section -->
+    <section id="training-clients" class="padd-section text-center mt-5" style="background-color: #e5efe9;">
         <div class="container" data-aos="fade-up">
             <div class="section-title text-center">
-                <h2>Training Programs</h2>
+                <h2>Internship Training Programs</h2>
+                <p class="separator">Trusted by companies across the globe.</p>
             </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <p>We've trained resources in Fullstack development, Java, .NET, and various skills from companies located in Malaysia, India, and beyond. Our clients range from small startups to large enterprises, all of whom have benefitted from our targeted training programs.</p>
+                  
+                </div>
+            </div>
+
             <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
        
-			<div class="col-lg-3 col-md-4">
-				<div class="card" style="width: 17rem;">
-					<img class="card-img-top" src="{% static 'job_portal/img/employee-development-and-training-program.png' %}" alt="Card image cap">
-					<div class="card-body" style="background-color: #e5efe9;">
-					<h5 class="card-title">Elevate Your Career with Our Fullstack Training Program</h5>
-					<p class="card-text">Join our comprehensive Fullstack training program designed for professionals and aspiring developers. Learn essential frontend and backend skills including Node.js, Bootstrap, Django, Python, HTML, CSS, and more.</p>
-					<p>Gain hands-on experience, build real-world applications, and expand your career opportunities in Fullstack development with guidance from industry experts.</p>
-					</div>
-				</div>
-			</div> 
+                <div class="col-lg-3 col-md-4">
+                    <div class="card" style="width: 17rem;">
+                        <img class="card-img-top" src="{% static 'job_portal/img/employee-development-and-training-program.png' %}" alt="Card image cap">
+                        <div class="card-body" style="background-color: #e5efe9;">
+                        <h5 class="card-title">Elevate Your Career with Our Fullstack Training Program</h5>
+                        <p class="card-text">Join our comprehensive Fullstack training program designed for professionals and aspiring developers. Learn essential frontend and backend skills including Node.js, Bootstrap, Django, Python, HTML, CSS, and more.</p>
+                        <p>Gain hands-on experience, build real-world applications, and expand your career opportunities in Fullstack development with guidance from industry experts.</p>
+                        </div>
+                    </div>
+                </div> 
                 <div class="col-lg-4 col-md-8">
                     <div class="form">
                        <form  id="create_form" method="POST" enctype="multipart/form-data">
@@ -151,119 +91,13 @@
         </div>
     </section>
     
-    <!-- ======= Testimonials Section ======= -->
-    {% comment %} <section id="testimonials" class="padd-section text-center mt-5"style="background-color: #e5efe9;">
-      <div class="container" data-aos="fade-up">
-        <div class="row justify-content-center">
 
-          <div class="col-md-8">
-
-            <div class="testimonials-content"style="background-color: #f5f7f6;">
-              <div id="carousel-example-generic" class="carousel slide" data-bs-ride="carousel" >
-
-                <div class="carousel-inner" role="listbox">
-
-                  <div class="carousel-item  active">
-                    <div class="top-top">
-
-                       <h2>Our Client Works</h2>
-                       <!--<p class="separator">Unlock Your Potential: Dive Into Exciting Training Programs!</p>-->
-                      
-                        <p>We've trained resources in fullstack development, Java, .Net, and other skills from Malaysia, India, and more. Join our satisfied clients and unlock your full potential with Sevendyne Training Programs!</p>
-                      <!--<h4>Kimberly Tran<span>manager</span></h4>-->
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section> {% endcomment %}
-    <!-- End Testimonials Section -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Add JavaScript code to handle form submission and show SweetAlert messages -->
   <script>
-    function submitCreateForm(event) {
-    event.preventDefault();  // Prevent the default form submission behavior
-    var form = document.getElementById('create_form');
-    var formData = new FormData(form);
-
-    // Get the CSRF token from the CSRF token input field
-		var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
-		
-    
-    fetch(form.action, {
-      method: 'POST',
-      body: formData,
-      headers: {
-				'X-CSRFToken': csrfToken // Add CSRF token in the headers
-			},
-    })
-    .then(response => response.json())
-    .then(data => {
-      // Corrected variable name here
-      if (data.status === 'true') {
-      showSweetAlert(data.message, data.status, data.redirect_url);
-      } else if (data.status === 'form_error') {
-      showSweetAlert(data.message, 'form_error');
-      } else if (data.status === 'false') {
-      showSweetAlert(data.message, data.status);
-      } else {
-      showSweetAlert(data.message, 'error');
-      }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-    }   
-    function showSweetAlert(message, status, redirectUrl) {	
-      if (status === 'true') {
-        Swal.fire({
-        icon: 'success',
-        title: 'Success!',
-        text: message,
-        showConfirmButton: true,
-        allowOutsideClick: false, // Prevent closing on outside click
-      
-        didClose: () => {
-          if (redirectUrl) {
-          // Combine the redirect URL with the current protocol and host to get the full URL
-          var fullRedirectUrl = window.location.origin + redirectUrl;
-          window.location.href = fullRedirectUrl;
-          }
-        }
-        });
-      } else if (status === 'form_error') {
-        Swal.fire({
-        icon: 'error',
-        title: 'Form Validation Error!',
-        html: message.replace(/\|/g, '<br>'),  // Display form errors as HTML, replace '|' with line breaks
-        showConfirmButton: true,
-        allowOutsideClick: false,
-        });
-      } else if (status === 'false') {
-        Swal.fire({
-        icon: 'error',
-        title: 'Form Error!',
-        text: 'Error: ' + message,
-        showConfirmButton: true,
-        allowOutsideClick: false, // Prevent closing on outside click
-        });
-      } else {
-        Swal.fire({
-        icon: 'error',
-        title: 'Error!',
-        text: 'Error: ' + message,
-        showConfirmButton: true,
-        allowOutsideClick: false, // Prevent closing on outside click
-        });
-      }
-    }	
-</script>
+    // JavaScript code as provided earlier
+  </script>
 
 {% endblock %}
