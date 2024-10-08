@@ -1,96 +1,93 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Sevendyne HRMS:Talent Management & HRMS Software</title>
-        <meta name="keywords" content="Talent Management und HRMS Deutschland, Personalbeschaffung und HR-Software, Rekrutierung und HR-Lösungen, Talent Management und Personalverwaltung, HRMS und Rekrutierungsservices" name="keywords">
-        <meta name="description" content="At Sevendyne, we connect businesses with top talent and offer free HRMS software to streamline HR operations, reduce costs, and support business growth." name="description">
-        <meta property="og:title" content="{% block og_title %}Sevendyne: Unlock Top Talent with Leading HRMS & Talent Management Solutions{% endblock %}" />
-        <meta property="og:description" content="{% block og_description %}Sevendyne connects businesses with top talent and offers free HRMS software to streamline HR processes, reduce costs, and drive growth. Simplify your HR operations and empower your business with our innovative solutions.{% endblock %}" />
-        {% comment %} <meta property="og:image" content="{% block og_image %}https://sevendyne.com/default-image.jpg{% endblock %}" /> {% endcomment %}
-        <meta property="og:url" content="{% block og_url %}https://sevendyne.com{% endblock %}" />
-        <meta property="og:type" content="website" />
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sevendyne HRMS: Talent Management & HRMS Software</title>
+    <meta name="keywords" content="Talent Management und HRMS Deutschland, Personalbeschaffung und HR-Software, Rekrutierung und HR-Lösungen, Talent Management und Personalverwaltung, HRMS und Rekrutierungsservices" name="keywords">
+    <meta name="description" content="At Sevendyne, we connect businesses with top talent and offer free HRMS software to streamline HR operations, reduce costs, and support business growth." name="description">
+    <meta property="og:title" content="{% block og_title %}Sevendyne: Unlock Top Talent with Leading HRMS & Talent Management Solutions{% endblock %}" />
+    <meta property="og:description" content="{% block og_description %}Sevendyne connects businesses with top talent and offers free HRMS software to streamline HR processes, reduce costs, and drive growth. Simplify your HR operations and empower your business with our innovative solutions.{% endblock %}" />
+    <meta property="og:url" content="{% block og_url %}https://sevendyne.com{% endblock %}" />
+    <meta property="og:type" content="website" />
 
-        <!-- Favicon -->
-        <link href="{% static 'assets/img/logo/logo_svd.png' %}" rel="icon">
+    <!-- Favicon -->
+    <link href="{% static 'assets/img/logo/logo_svd.png' %}" rel="icon">
 
-        <!-- Animate CSS -->
-        <link rel="stylesheet" href="{% static 'assets_home/css/aos.css' %}">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{% static 'assets_home/css/aos.css' %}">
 
-        <!-- Owl Carousel -->
-        <link rel="stylesheet" href="{% static 'assets_home/css/owl.carousel.min.css' %}">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{% static 'assets_home/css/owl.carousel.min.css' %}">
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="{% static 'assets_home/css/bootstrap.min.css' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets_home/css/bootstrap.min.css' %}">
 
-        <!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="{% static 'assets_home/plugins/fontawesome/css/fontawesome.min.css' %}">
-        <link rel="stylesheet" href="{% static 'assets_home/plugins/fontawesome/css/all.min.css' %}">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{% static 'assets_home/plugins/fontawesome/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets_home/plugins/fontawesome/css/all.min.css' %}">
 
-        <!-- Main CSS -->
-        <link rel="stylesheet" href="{% static 'assets_home/css/style.css' %}">
-		<!-- Add Swiper -->
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SE9SJ7ZJCT"></script>
-        <script>
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'assets_home/css/style.css' %}">
+    <!-- Add Swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SE9SJ7ZJCT"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-SE9SJ7ZJCT');
-        </script>
-    </head>
-	
-    <body class="second-landing-page">
-	
-        <!-- Header -->
-        <header id="header" class="site-header home-header home-header-while header-land">
-            <div class="container">
-                <div class="row">
-                    <div class="main-menu-wrapper">
-                        <div class="menu-header">
-                            <a href="{% url 'main:job_portal' %}" class="menu-logo">
-                                <img src="{% static 'assets_home/img/01.png' %}" style="max-width:50% !important" class="img-fluid" alt="Logo">
+    </script>
+</head>
+
+<body class="second-landing-page">
+    <!-- Header -->
+    <header id="header" class="site-header home-header home-header-while header-land">
+        <div class="container">
+            <div class="row">
+                <div class="main-menu-wrapper">
+                    <div class="menu-header">
+                        <a href="{% url 'main:job_portal' %}" class="menu-logo">
+                            <img src="{% static 'assets_home/img/01.png' %}" style="max-width:50% !important" class="img-fluid" alt="Logo">
+                        </a>
+                        <a id="menu_close" class="menu-close" href="javascript:void(0);">
+                            <i class="fas fa-times"></i>
+                        </a>
+                    </div>
+                    <div class="try-free link mobile-head-menu">
+                        <a class="btn btn-primary response-head-menu" href="#" target="_blank" role="button">Try It Free</a>
+                    </div>
+                </div>
+                <div class="main-menu-head d-flex justify-content-between">
+                    <div class="res-center col-lg-3 col-sm-12 col-12">
+                        <div class="site">
+                            <a id="mobile_btn" href="javascript:void(0);">
+                                <span class="bar-icon-second">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
                             </a>
-                            <a id="menu_close" class="menu-close" href="javascript:void(0);">
-                                <i class="fas fa-times"></i>
-                            </a>
-                        </div>
-                        <div class="try-free link mobile-head-menu">
-                            <a class="btn btn-primary response-head-menu" href="#" target="_blank"  role="button">Try It Free</a>
+                            <div class="site-brand">
+                                <a href="{% url 'main:job_portal' %}" class="site-branding-text">
+                                    <h1 style="font-size: 40px; font-weight: bold;">Sevendyne HRMS</h1>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="main-menu-head d-flex justify-content-between">
-                        <div class="res-center col-lg-3 col-sm-12 col-12">
-                            <div class="site">
-                                <a id="mobile_btn" href="javascript:void(0);">
-                                    <span class="bar-icon-second">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </span>
-                                </a>
-                             <div class="site-brand">
-								<a href="{% url 'main:job_portal' %}" class="site-branding-text">
-									<h1 style="font-size: 40px; font-weight: bold;">Sevendyne HRMS</h1>
-								</a>
-							</div>
-
-                            </div>
-                        </div>
-                        <div class="home-buy-button">
-                            <div class="buy-btns">
-                                <a href="{% url 'user:user_login' %}" target="_blank"  class="btn btn-buy">Login </a>
-                            </div>
+                    <div class="home-buy-button">
+                        <div class="buy-btns">
+                            <a href="{% url 'user:user_login' %}" target="_blank" class="btn btn-buy">Login</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-        <!-- / Header -->
+        </div>
+    </header>
+    <!-- / Header -->
+
 
         <!-- Banner -->
         <div class="main-banner-section" data-aos="fade-up" data-aos-duration="2000">
