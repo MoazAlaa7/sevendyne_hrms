@@ -90,85 +90,82 @@
 
 
         <!-- Banner -->
-        <div class="main-banner-section" data-aos="fade-up" data-aos-duration="2000">
-            <div class="home-section-vector-left-top"><img src="{% static 'assets_home/img/vector/vector-home-left.png' %}" alt="vector-image"></div>
-            <div class="home-section-vector-left-bottom"><img src="{% static 'assets_home/img/vector/vector-home-left-bottom.png' %}" alt="vector-image"></div>
-            <div class="home-section-vector-right-top"><img src="{% static 'assets_home/img/vector/vector-home-top.png' %}" alt="vector-image"></div>
-            <div class="home-section-vector-right-bottom"><img src="{% static 'assets_home/img/vector/vector-home-bottom.png' %}" alt="vector-image"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="homepage-section d-flex justify-content-center">
-                        <div class="col-lg-5 col-sm-5 col-12">
-                            <div class="process-content">
-                                <p>Simplify employee management with our all-in-one solution.</p>
-                                <h2>Manage Remote Teams Effortlessly</h2>
-                                <a href="{% url 'user:signup' %}" class="btn btn-free">Sign Up</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-sm-7 col-12">
-                            <div class="main-slider">
-                                <div class="slider-vector-layer"><img src="{% static 'assets_home/img/vector/slider-vector-bottom-left.png' %}" alt="vector-image"></div>
-                                <div class="slider-vector-layers"><img src="{% static 'assets_home/img/vector/slider-vector-bottom-right.png' %}" alt="vector-image"></div>
-                                <div class="slider-vector-top-left"><img src="{% static 'assets_home/img/vector/slider-vector-top.png' %}" alt="vector-image"></div>
-                                <img src="{% static 'assets_home/img/laptop.png' %}" alt="main-slider">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- / Banner-->
-            
-        <!-- Features slider-->
-        <div class="build-feature mb-5">
-            <div class="pricing-top-left-vector"><img src="{% static 'assets_home/img/vector/pricing-left-vector.png' %}" alt="img"></div>
-            <div class="pricing-top-right-vector"><img src="{% static 'assets_home/img/vector/dotted-vector.png' %}" alt="img"></div>
-            <div class="pricing-top-left-bottom-vector"><img src="{% static 'assets_home/img/vector/pricing-slider-bottom.png' %}" alt="img"></div>
-            <div class="container">
-                <div class="row" data-aos="fade-up" data-aos-duration="2000">
-               
-                    <div class="feature-content-heading">
-                        <h2>HRMS Features</h2>
-                        <p>Ready to streamline your HR operations? Look no further than HRMS—your all-in-one platform for employee management and HR automation. Simplify every aspect of HR with a solution designed to boost efficiency and empower your team.</p>
+       <div class="main-banner-section" data-aos="fade-up" data-aos-duration="2000">
+		<div class="home-section-vector-left-top"><img src="{% static 'assets_home/img/vector/vector-home-left.png' %}" alt="vector-image"></div>
+		<div class="home-section-vector-left-bottom"><img src="{% static 'assets_home/img/vector/vector-home-left-bottom.png' %}" alt="vector-image"></div>
+		<div class="home-section-vector-right-top"><img src="{% static 'assets_home/img/vector/vector-home-top.png' %}" alt="vector-image"></div>
+		<div class="home-section-vector-right-bottom"><img src="{% static 'assets_home/img/vector/vector-home-bottom.png' %}" alt="vector-image"></div>
+		<div class="container">
+			<div class="row">
+				<div class="homepage-section d-flex justify-content-center">
+					<div class="col-lg-5 col-sm-5 col-12">
+						<div class="process-content">
+							<p>Transform your HR operations with our cutting-edge HRMS solution.</p>
+							<h2>Experience Seamless Employee Management</h2>
+							<a href="{% url 'user:demo' %}" class="btn btn-demo">Start Your Free Demo</a>
+						</div>
+					</div>
+					<div class="col-lg-7 col-sm-7 col-12">
+						<div class="main-slider">
+							<div class="slider-vector-layer"><img src="{% static 'assets_home/img/vector/slider-vector-bottom-left.png' %}" alt="vector-image"></div>
+							<div class="slider-vector-layers"><img src="{% static 'assets_home/img/vector/slider-vector-bottom-right.png' %}" alt="vector-image"></div>
+							<div class="slider-vector-top-left"><img src="{% static 'assets_home/img/vector/slider-vector-top.png' %}" alt="vector-image"></div>
+							<img src="{% static 'assets_home/img/laptop.png' %}" alt="main-slider">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- / Banner-->
 
-                    </div>
-                </div>
-                <div class="feature-sections">
-                    <div class="row" data-aos="fade-up" data-aos-duration="2000">
-                        <div class="col-lg-4 col-md-4 d-flex">
-                            <div class="management card flex-fill">
-                                <div class="card-body">
-                                    <img src="{% static 'assets_home/img/handshake.png' %}" alt="employee-management">
-                                    <h4>Employee Management</h4>
-                                    <p>Efficiently handle all aspects of employee data and administration.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 d-flex">
-                            <div class="management card flex-fill">
-                                <div class="card-body">
-                                    <img src="{% static 'assets_home/img/client.png' %}" alt="tas-management">
-                                    <h4>Candidate Hiring Management</h4>
-                                    <p>Seamlessly manage the recruitment process, from job posting to onboarding.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4  d-flex">
-                            <div class="management card flex-fill">
-                                <div class="card-body">
-                                    <img src="{% static 'assets_home/img/management.png' %}" alt="jobs-management">
-                                    <h4>Jobs Management</h4>
-                                    <p>Post job openings and manage applications efficiently.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   
-                </div>
-                
-            </div>
-        </div>
-        <!--/ Pricing Slider-->    
+	<!-- Features slider-->
+	<div class="build-feature mb-5">
+		<div class="pricing-top-left-vector"><img src="{% static 'assets_home/img/vector/pricing-left-vector.png' %}" alt="img"></div>
+		<div class="pricing-top-right-vector"><img src="{% static 'assets_home/img/vector/dotted-vector.png' %}" alt="img"></div>
+		<div class="pricing-top-left-bottom-vector"><img src="{% static 'assets_home/img/vector/pricing-slider-bottom.png' %}" alt="img"></div>
+		<div class="container">
+			<div class="row" data-aos="fade-up" data-aos-duration="2000">
+				<div class="feature-content-heading">
+					<h2>Discover Our HRMS Features</h2>
+					<p>Ready to revolutionize your HR processes? Try our all-in-one HRMS platform to simplify employee management and automate your workflows, enhancing efficiency and empowering your team.</p>
+				</div>
+			</div>
+			<div class="feature-sections">
+				<div class="row" data-aos="fade-up" data-aos-duration="2000">
+					<div class="col-lg-4 col-md-4 d-flex">
+						<div class="management card flex-fill">
+							<div class="card-body">
+								<img src="{% static 'assets_home/img/handshake.png' %}" alt="employee-management">
+								<h4>Employee Management</h4>
+								<p>Effortlessly manage employee data and streamline administration.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 d-flex">
+						<div class="management card flex-fill">
+							<div class="card-body">
+								<img src="{% static 'assets_home/img/client.png' %}" alt="candidate-hiring-management">
+								<h4>Candidate Hiring Management</h4>
+								<p>Streamline recruitment from job postings to onboarding.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 d-flex">
+						<div class="management card flex-fill">
+							<div class="card-body">
+								<img src="{% static 'assets_home/img/management.png' %}" alt="jobs-management">
+								<h4>Jobs Management</h4>
+								<p>Post job openings and manage applications seamlessly.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/ Pricing Slider-->
+
 		
 	
         <!-- Footer-->
