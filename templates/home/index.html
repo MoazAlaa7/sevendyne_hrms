@@ -57,7 +57,7 @@
                         </a>
                     </div>
                     <div class="try-free link mobile-head-menu">
-                        <a class="btn btn-primary response-head-menu" href="#" target="_blank" role="button">Try It Free</a>
+                        <a class="btn btn-primary response-head-menu" href="{% url 'user:signup' %}">Start Your Free Demo</a>
                     </div>
                 </div>
                 <div class="main-menu-head d-flex justify-content-between">
@@ -70,11 +70,11 @@
                                     <span></span>
                                 </span>
                             </a>
-                            <div class="site-brand">
-                                <a href="{% url 'main:job_portal' %}" class="site-branding-text">
-                                    <h1 style="font-size: 40px; font-weight: bold;">Sevendyne HRMS</h1>
-                                </a>
-                            </div>
+							<div class="site-brand">
+								<a href="{% url 'main:job_portal' %}" class="site-branding-text">
+									<img src="{% static 'assets/img/01.png' %}" alt="Sevendyne HRMS Login" style="width: 71%; height: auto;"/>
+								</a>
+							</div>
                         </div>
                     </div>
                     <div class="home-buy-button">
@@ -199,12 +199,9 @@
                 <a href="{% url 'user:signup' %}" class="btn btn-primary btn-lg">Start Your Free Demo</a>
             </div>
         </div>
-	</div>
-	
-	
+	</div>	
 	</section>
 		
-	
         <!-- Footer-->
         <footer class="footer-second ">
             <div class="container">
