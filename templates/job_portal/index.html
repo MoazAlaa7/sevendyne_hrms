@@ -21,35 +21,16 @@
 <!-- Carousel Start -->
 <div class="container-fluid p-0" style="height:70vh;">
     <div class="owl-carousel header-carousel position-relative">
-        <!-- HRMS Carousel Item -->
+        <!-- App Development Support Carousel Item -->
         <div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="{% static 'job_portal/img/cover2.jpg' %}" alt="" style="height:70vh;">
+            <img class="img-fluid" src="{% static 'job_portal/img/cover4.jpg' %}" alt="" style="height:70vh;">
             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(43, 57, 64, .5);">
                 <div class="container">
                     <div class="row justify-content-start">
                         <div class="col-10 col-lg-8">
-                            <h2 class="mb-4 text-white">Effortless Staffing and Payroll with Our In-House HRMS Software</h2>
-                            <p class="mb-4 text-white">Discover a seamless way to manage staffing and payroll with our in-house HRMS solution. Built with Django Python and deployed on AWS, our software is designed to optimize resource management and scale with your business.</p>
-                           <!--  <p class="text-white"><i class="fa fa-check text-primary me-3"></i>Streamlined Resource Management</p>
-                            <p class="text-white">Our HRMS software simplifies staffing, onboarding, and managing talent efficiently.</p>
-                            <p class="text-white"><i class="fa fa-check text-primary me-3"></i>Integrated Payroll & HR</p>
-                            <p class="text-white">Handle payroll and HR tasks effortlessly with our secure and scalable platform.</p>-->
-                            <a class="btn btn-primary py-3 px-5 mt-3 animated slideInRight" href="{% url 'main:home_hrms' %}" target="_blank">Explore Sevendyne HRMS Platform</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- New Solution Carousel Item (Placeholder for future content) -->
-        <!--<div class="owl-carousel-item position-relative">
-            <img class="img-fluid" src="{% static 'job_portal/img/new_solution.jpg' %}" alt="" style="height:70vh;">
-            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(43, 57, 64, .5);">
-                <div class="container">
-                    <div class="row justify-content-start">
-                        <div class="col-10 col-lg-8">
-                            <h1 class="text-white animated slideInDown mb-4">New Solution Title Here</h1>
-                            <h4 class="fs-5 fw-medium text-white mb-4 pb-2">Description of the new solution to be added here.</h4>
-                            <a href="#" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">Learn More</a>
+                            <h2 class="mb-4 text-white">Comprehensive App Development Support</h2>
+                            <p class="mb-4 text-white">Empower your business with our expert app development services. We specialize in custom software development, mobile applications, and 3D design, using cutting-edge technology to deliver innovative solutions tailored to your needs.</p>
+                            <a class="btn btn-primary py-3 px-5 mt-3 animated slideInRight" href="{% url 'main:portfolios_home' %}">Explore Client Projects</a>
                         </div>
                     </div>
                 </div>
@@ -60,33 +41,78 @@
 </div>
 <!-- Carousel End -->
 
-<!-- App Development Support Start -->
-<div id="about" class="container-xxl py-5">
+<!-- Portfolio Projects Section Start -->
+<div id="projects" class="container-xxl py-5">
     <div class="container">
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                <div class="row g-0 about-bg rounded overflow-hidden">
+                <div class="row g-0 project-bg rounded overflow-hidden">
                     <div class="col-12 text-start">
-                        <img class="img-fluid w-100" src="{% static 'job_portal/img/cover4.jpg' %}">
+                        <img class="img-fluid w-100" src="{% static 'job_portal/img/portfolio.jpg' %}">
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                <h2 class="mb-4">Comprehensive App Development Support</h2>
-                <p class="mb-4">Empower your business with our expert app development services. We specialize in custom software development, mobile applications, and 3D design, using cutting-edge technology to deliver innovative solutions tailored to your needs.</p>
-
-                <p><i class="fa fa-check text-primary me-3"></i>Custom Software Solutions</p>
-                <p>We develop applications that are tailored to your specific requirements, ensuring seamless functionality and user experience.</p>
-
-                <p><i class="fa fa-check text-primary me-3"></i>Mobile and Web Apps</p>
-                <p>Our team excels in creating mobile and web applications that provide intuitive and engaging interfaces for users.</p>
-
-                <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'main:portfolios_home' %}">Explore Client Projects</a>
+                <h2 class="mb-4">Showcasing Our Portfolio of Technology Projects</h2>
+                
+                <!-- Project 1 -->
+                <div class="project-item mb-3">
+                    <h4>AI-Powered Job Search Automation</h4>
+                    <p>Automating job searches on Zoho Recruit.</p>
+                    <p><strong>Skills:</strong> Python, OpenAI, Zoho API</p>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-item mb-3">
+                    <h4>AI-Driven Ecommerce Site Creation</h4>
+                    <p>Automates site creation using SPREE platform.</p>
+                    <p><strong>Skills:</strong> Ruby on Rails, OpenAI, Web Scraping</p>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-item mb-3">
+                    <h4>Customer Arrival Analysis Dashboard</h4>
+                    <p>Visualizing restaurant customer patterns.</p>
+                    <p><strong>Skills:</strong> Angular, SpringBoot, Echarts</p>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-item mb-3">
+                    <h4>Unionpay Mobile Payment App</h4>
+                    <p>Android app for seamless payment processing.</p>
+                    <p><strong>Skills:</strong> Android, Java, Mobile Payments</p>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-item mb-3">
+                    <h4>RedDotPayment CRM</h4>
+                    <p>Custom CRM for managing payment transactions.</p>
+                    <p><strong>Skills:</strong> CodeIgniter, PHP, Payment Processing</p>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-item mb-3">
+                    <h4>Laravel & Vue.js CRUD Forms</h4>
+                    <p>Dynamic CRUD forms with interactive UI.</p>
+                    <p><strong>Skills:</strong> Laravel, Vue.js, REST APIs</p>
+                </div>
+                
+                <!-- Project 7 -->
+                <div class="project-item mb-3">
+                    <h4>Code Review Tool for Linux</h4>
+                    <p>Simplified code review with C++ and Qt.</p>
+                    <p><strong>Skills:</strong> C++, Qt, Linux Development</p>
+                </div>
+                
+                <a class="btn btn-primary py-3 px-5 mt-3" href="{% url 'main:portfolio' %}" target="_blank">Explore More Projects</a>
             </div>
         </div>
     </div>
 </div>
-<!-- App Development Support End -->
+<!-- Portfolio Projects Section End -->
+
+<!-- HRMS Section End -->
+
 
 <!-- HRMS End -->
 
