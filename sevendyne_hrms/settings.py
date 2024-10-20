@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1rwq8_f!3*dk-(2c2@89zlzyck5n57-j!s5*1pqd7h^fx%$n3v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['13.201.223.74','127.0.0.1','7dyne.com','www.7dyne.com']
+ALLOWED_HOSTS = ['13.201.223.74','127.0.0.1','sevendyne.com','www.sevendyne.com']
 
 
 # Application definition
@@ -184,18 +184,18 @@ LOGOUT_URL = '/app/logout/'
 # Email Configuration settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = 'smtpout.secureserver.net'  # GoDaddy SMTP server
-EMAIL_PORT = 587  # Common port for TLS
-EMAIL_HOST_USER = 'technical@7dyne.com'
-EMAIL_HOST_PASSWORD = 'technical@7dyne2016$'  # Replace with your actual password
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sevendyne.technical@gmail.com'
+EMAIL_HOST_PASSWORD = 'itze zzmq jiqt otqk'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'technical@7dyne.com'
-DEFAULT_REPLY_TO_EMAIL = 'technical@7dyne.com'
-DEFAULT_BCC_EMAIL = 'technical@7dyne.com'
-SERVER_EMAIL = 'technical@7dyne.com'
-ADMIN_EMAIL = 'technical@7dyne.com'
+DEFAULT_FROM_EMAIL = 'sevendyne.technical@gmail.com'
+DEFAULT_REPLY_TO_EMAIL = 'sevendyne.technical@gmail.com'
+DEFAULT_BCC_EMAIL = 'sevendyne.technical@gmail.com'
+SERVER_EMAIL = 'sevendyne.technical@gmail.com'
+ADMIN_EMAIL = 'sevendyne.technical@gmail.com'
 
-# app password"#7dynehrms"
+# app password"#Sevendynehrms"
 
 # CELERY STUFF
 CELERY_ACCEPT_CONTENT = ['application/json']
