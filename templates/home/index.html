@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sevendyne HRMS: Talent Management & HRMS Software</title>
+    <title>Sevendyne: Remote Staffing & HRMS Solutions</title>
     <meta name="keywords" content="Talent Management und HRMS Deutschland, Personalbeschaffung und HR-Software, Rekrutierung und HR-Lösungen, Talent Management und Personalverwaltung, HRMS und Rekrutierungsservices" name="keywords">
     <meta name="description" content="At Sevendyne, we connect businesses with top talent and offer free HRMS software to streamline HR operations, reduce costs, and support business growth." name="description">
     <meta property="og:title" content="{% block og_title %}Sevendyne: Unlock Top Talent with Leading HRMS & Talent Management Solutions{% endblock %}" />
@@ -57,7 +57,7 @@
                         </a>
                     </div>
                     <div class="try-free link mobile-head-menu">
-                        <a class="btn btn-primary response-head-menu" href="{% url 'user:signup' %}">Start Your Free Demo</a>
+                        <a class="btn btn-primary response-head-menu" href="{% url 'user:signup' %}">Build Your Team</a>
                     </div>
                 </div>
                 <div class="main-menu-head d-flex justify-content-between">
@@ -73,7 +73,7 @@
 						<div class="site-brand">
 							<a href="{% url 'main:job_portal' %}" class="site-branding-text d-flex align-items-center">
 								<img src="{% static 'assets/img/01.png' %}" alt="Sevendyne HRMS Login" style="width: 51%; height: auto;"/>
-								<span class="ms-3" style="font-size: 24px; font-weight: bold; color: #333;">Sevendyne HRMS Platform</span>
+								<span class="ms-3" style="font-size: 24px; font-weight: bold; color: #333;">Sevendyne Inc</span>
 							</a>
 						</div>
 
@@ -102,9 +102,10 @@
 				<div class="homepage-section d-flex justify-content-center">
 					<div class="col-lg-5 col-sm-5 col-12">
 						<div class="process-content">
-							<p>Transform your HR operations with our cutting-edge HRMS solution.</p>
-							<h2>Experience Seamless Employee Management</h2>
-							<a href="{% url 'user:signup' %}" class="btn btn-free">Start Your Free Demo</a>
+							<p>Build Your Global Team with Our Expert Staffing Services and HRMS Solution.</p>
+							<h2>Effortless Resource Management for International Clients</h2>
+							<a href="{% url 'user:signup' %}" class="btn btn-free">Get Started with Global Hiring</a>
+
 						</div>
 					</div>
 					<div class="col-lg-7 col-sm-7 col-12">
@@ -129,7 +130,7 @@
 		<div class="container">
 			<div class="row" data-aos="fade-up" data-aos-duration="2000">
 				<div class="feature-content-heading">
-					<h2>Discover Our HRMS Features</h2>
+					<h2>Discover Our Staffing Features</h2>
 					<p>Ready to revolutionize your HR processes? Try our all-in-one HRMS platform to simplify employee management and automate your workflows, enhancing efficiency and empowering your team.</p>
 				</div>
 			</div>
@@ -170,7 +171,7 @@
 	<section id="hrms-payroll" class="padd-section text-center" style="margin-bottom:3%;margin-top:3%">
     <div class="container">
         <div class="section-title text-center">
-            <h1>Payroll Clients</h1>
+            <h1>Our Clients</h1>
         </div>
 
         <div class="row justify-content-center">
@@ -196,13 +197,82 @@
 			  </div>
 		</div>
 		 <!-- Add Start Your Free Demo Button Below -->
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-12 text-center">
-                <a href="{% url 'user:signup' %}" class="btn btn-primary btn-lg">Start Your Free Demo</a>
-            </div>
-        </div>
 	</div>	
 	</section>
+	
+	<section id="hrms-payroll" class="padd-section text-center" style="margin-bottom:3%;margin-top:3%">
+   
+	<div id="index" class="container-fluid bg-primary mb-1 wow fadeIn" data-wow-delay="0.1s" style="padding: 15px;">
+    <div class="container">
+        <div class="row g-2">
+            <h3 style="text-align:center; color:white;">Contact Us</h3>
+        </div>
+    </div>
+</div>
+
+	<div class="container text-center">
+		<h2></h2>
+		
+		<!-- Quote Request Form (Initially Hidden) -->
+		<div id="quote-form" style="margin-top: 20px;">
+			<div class="section-title text-center">
+				<p class="separator">
+					Provide us with some details about your IT project or product requirements, and our team will get back to you with a free, no-obligation quote.
+				</p>
+			</div>
+
+			<div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+				<div class="col-lg-6 col-md-10">
+					<div class="form">
+						<form id="submit-form" action="#" class="php-email-form">
+						{% csrf_token %}
+							<div class="form-group">
+							<input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+							<input type="text" name="honeypot" style="display:none;"> <!-- Spam protection -->
+							</div>
+							<div class="form-group mt-3">
+								<input type="text" class="form-control" name="company_name" id="company_name" placeholder="Company Name" required>
+							</div>
+							<div class="form-group mt-3">
+								<input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+							</div>
+							<div class="form-group mt-3">
+								<select class="form-control" name="project_type" id="project_type" required>
+									<option value="" disabled selected>Project Request Type</option>
+									<option value="app_development">FullStack Development</option>
+									<option value="hrms_software">Android Development</option>
+									<option value="cloud_support">C++ Development</option>
+									<option value="other">Other IT Projects</option>
+								</select>
+							</div>
+							<div class="form-group mt-3">
+								<textarea class="form-control" name="project_description" rows="5" placeholder="Brief Description of Your IT Project or Product" required></textarea>
+							</div>
+							
+							<div class="form-group mt-3">
+								<input type="text" class="form-control" name="timeline" id="timeline" placeholder="Expected Timeline (e.g., 3 months, 1 year) (optional)">
+							</div>
+							<div class="form-group mt-3">
+								<input type="text" class="form-control" name="budget" id="budget" placeholder="Estimated Budget (optional)">
+							</div>
+							<div class="form-group mt-3">
+								<textarea class="form-control" name="additional_requirements" rows="3" placeholder="Additional Requirements or Details (optional)"></textarea>
+							</div>
+
+							<!-- reCAPTCHA Widget -->				
+							<div class="my-3">
+								<div class="error-message"></div>
+							</div>
+							<div class="text-center">
+								<button class="btn btn-primary" type="submit">Send Request</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+    </div>
 		
         <!-- Footer-->
         <footer class="footer-second ">
@@ -230,7 +300,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="company-logo-second">
-                            <p>A Sevendyne Project                         
+                            <p>Sevendyne Inc                        
                                  {% comment %} <img src="{% static 'assets/img/logo_svd.png' %}" alt="Company-logo"> {% endcomment %}
                             </p>
                         </div>
@@ -240,6 +310,7 @@
         </footer>
         <!-- Footer-->
 
+	</section>
 
         <!-- jQuery -->
         <script src="{% static 'assets_home/js/jquery-3.7.0.min.js' %}"></script>
@@ -262,19 +333,22 @@
         
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-            $("#subscription-form").submit((e) => {
+            $("#submit-form").submit((e) => {
                 e.preventDefault();
                 $.ajax({
                     url: "https://script.google.com/macros/s/AKfycbx94Kyn57PdZWaV3euEKfESfYG4QRYcVINTmqYVgDaknZCbOnoMUzMY_SZlwdSwkPDE/exec",
-                    data: $("#subscription-form").serialize(),
+                    data: $("#submit-form").serialize(),
                     method: "POST",
                     success: function (response) {
                         // Use SweetAlert for success message
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success!',
-                            text: 'Your email subscription request is sent to Sevendyne Inc.',
-                        }).then(() => {
+						Swal.fire({
+						  title: 'Processing...',
+						  text: 'Please wait while your request is being processed.',
+						  showConfirmButton: false,
+						  allowOutsideClick: false,
+						  didOpen: () => {
+							Swal.showLoading();
+						}).then(() => {
                             window.location.reload();
                         });
                     },
