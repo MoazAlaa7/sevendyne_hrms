@@ -40,6 +40,7 @@
         gtag('js', new Date());
         gtag('config', 'G-SE9SJ7ZJCT');
     </script>
+	
 </head>
 
 <body class="second-landing-page">
@@ -73,7 +74,7 @@
 						<div class="site-brand">
 							<a href="{% url 'main:job_portal' %}" class="site-branding-text d-flex align-items-center">
 								<img src="{% static 'assets/img/01.png' %}" alt="Sevendyne HRMS Login" style="width: 51%; height: auto;"/>
-								<span class="ms-3" style="font-size: 24px; font-weight: bold; color: #333;">Sevendyne Inc</span>
+								<span class="ms-3" style="font-size: 15px; font-weight: bold; color: #333;">Sevendyne</span>
 							</a>
 						</div>
 
@@ -167,39 +168,16 @@
 			</div>
 		</div>
 	</div>
-	<!--/ Pricing Slider-->
-	<section id="hrms-payroll" class="padd-section text-center" style="margin-bottom:3%;margin-top:3%">
-    <div class="container">
-        <div class="section-title text-center">
-            <h1>Our Clients</h1>
-        </div>
 
-        <div class="row justify-content-center">
-     
-			  <div class="col-md-6 col-lg-4 mt-3 mb-3" data-aos="zoom-in">
-				<div class="team-block bottom shadow rounded">
-				 <img src="{% static 'job_portal/img/portfolio/portfolio3.jpg' %}" class="img-fluid" alt="C++ Team">
-				  <div class="team-content p-3">
-					<h4 class="mb-2">C++ Team - Automotive Navigation Company, Germany</h4>
-					<p class="text-uppercase fw-bold mt-1">We provided end-to-end HR management services, including recruitment, onboarding, and payroll processing for the Navigation tech company in Germany. Our dedicated C++ team ensured seamless integration into their project workflows, enhancing productivity and project delivery.</p>
-				  </div>
-				</div>
-			  </div>
-
-			  <div class="col-md-6 col-lg-4 mt-3 mb-3" data-aos="zoom-in">
-				<div class="team-block bottom shadow rounded">
-				<img src="{% static 'job_portal/img/portfolio/portfolio8.jpg' %}" class="img-fluid" alt="SolidWorks Team">
-				  <div class="team-content p-3">
-					<h4 class="mb-2">SolidWorks & PLC SCADA Team - Engineering Company, UK</h4>
-					<p class="text-uppercase fw-bold mt-1">Our team delivered comprehensive HR and payroll solutions for a UK-based engineering company. This included recruitment of skilled personnel and management of payroll processes, ensuring compliance and efficiency in their engineering projects, particularly in SolidWorks and PLC SCADA applications.</p>
-				  </div>
-				</div>
-			  </div>
+	<!-- New Section at the End of the Page -->
+	<div class="signup-section d-flex justify-content-center" style="background-color: #4CAF50; padding: 40px; margin-top: 40px; text-align: center; color: white;">
+		<div class="col-lg-8 col-sm-10 col-12">
+			<h2>Join Us Today!</h2>
+			<p>Ready to enhance your team with global talent? Sign up now!</p>
+			<a href="{% url 'user:signup' %}" class="btn btn-primary" style="margin-top: 20px;">Get Started</a>
 		</div>
-		 <!-- Add Start Your Free Demo Button Below -->
-	</div>	
-	</section>
-
+	</div>
+	
 	<!-- Footer-->
 	<footer class="footer-second ">
 		<div class="container">
@@ -235,8 +213,6 @@
 		</div>
 	</footer>
 	<!-- Footer-->
-
-</section>
 
 	<!-- jQuery -->
 	<script src="{% static 'assets_home/js/jquery-3.7.0.min.js' %}"></script>
