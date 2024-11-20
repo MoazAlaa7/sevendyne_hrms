@@ -25,6 +25,7 @@
     </div>
 
     <div class="row justify-content-center">
+      <!-- Full-Stack Development -->
       <div class="col-md-6 col-lg-4 mt-3 mb-3">
         <div class="course-block bottom shadow rounded">
           <img src="{% static 'job_portal/img/courses/fullstack.jpg' %}" class="img-responsive course-img" alt="Full-Stack Development">
@@ -33,16 +34,57 @@
             <p>
               Master Full-Stack technologies including Python, Ruby on Rails, Angular, and more. Build dynamic web applications and APIs with industry-best practices.
             </p>
-            <a href="#" class="btn btn-primary">Learn More</a>
+            <a href="#course-enrollment-form" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- DevOps Engineering -->
+      <div class="col-md-6 col-lg-4 mt-3 mb-3">
+        <div class="course-block bottom shadow rounded">
+          <img src="{% static 'job_portal/img/courses/devops.jpg' %}" class="img-responsive course-img" alt="DevOps Engineering">
+          <div class="course-content p-3">
+            <h4>DevOps Engineering</h4>
+            <p>
+              Learn to set up CI/CD pipelines, manage containerized applications using Docker, and automate workflows to streamline development operations.
+            </p>
+            <a href="#course-enrollment-form" class="btn btn-primary">Learn More</a>
           </div>
         </div>
       </div>
 
+      <!-- C++ Development -->
+      <div class="col-md-6 col-lg-4 mt-3 mb-3">
+        <div class="course-block bottom shadow rounded">
+          <img src="{% static 'job_portal/img/courses/cplusplus.jpg' %}" class="img-responsive course-img" alt="C++ Development">
+          <div class="course-content p-3">
+            <h4>C++ Development</h4>
+            <p>
+              Master the intricacies of C++ programming, including advanced features like memory management, object-oriented programming, and more.
+            </p>
+            <a href="#course-enrollment-form" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
       </div>
+
+      <!-- Angular Development -->
+      <div class="col-md-6 col-lg-4 mt-3 mb-3">
+        <div class="course-block bottom shadow rounded">
+          <img src="{% static 'job_portal/img/courses/angular.jpg' %}" class="img-responsive course-img" alt="Angular Development">
+          <div class="course-content p-3">
+            <h4>Angular Development</h4>
+            <p>
+              Learn how to build dynamic, single-page web applications with Angular, focusing on components, services, and RxJS for reactive programming.
+            </p>
+            <a href="#course-enrollment-form" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="course-enrollment">
+<section id="course-enrollment" style="background-color: #f8f9fa; padding: 30px 0;">
   <div class="container">
     <div class="section-title text-center">
       <h2>Enroll in a Course</h2>
@@ -53,7 +95,7 @@
 
     <div class="text-center mt-4">
       <h3>Course Fees and Structure</h3>
-      <p><strong>Course Fees:</strong> ₹30,000 for the full 6-month program.</p>
+      <p><strong>Course Fees:</strong> <span style="font-weight: bold;">₹30,000</span> for the full 6-month program.</p>
       <p><strong>Course Structure:</strong></p>
       <ul style="list-style-type: none; padding: 0;">
         <li>1. Each course is designed to be completed in <strong>6 months</strong> with a blend of theory and practical lessons.</li>
@@ -75,7 +117,57 @@
           <div class="form">
             <form id="course-enroll-form" action="#" class="php-email-form">
               {% csrf_token %}
-              </form>
+              
+              <!-- Course Selection -->
+              <div class="form-group">
+                <label for="course" class="form-label">Select Course</label>
+                <select name="course" id="course" class="form-control" required>
+                  <option value="" disabled selected>Select a course</option>
+                  <option value="Full-Stack Development">Full-Stack Development</option>
+                  <option value="DevOps Engineering">DevOps Engineering</option>
+                  <option value="C++ Development">C++ Development</option>
+                  <option value="Angular Development">Angular Development</option>
+                </select>
+              </div>
+
+              <!-- Full Name -->
+              <div class="form-group">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Full Name" required>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group mt-3">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
+              </div>
+
+              <!-- Contact Number -->
+              <div class="form-group mt-3">
+                <label for="contact_number" class="form-label">Contact Number</label>
+                <input type="tel" class="form-control" name="contact_number" id="contact_number" placeholder="Phone Number" required>
+              </div>
+
+              <!-- Preferred Start Date -->
+              <div class="form-group mt-3">
+                <label for="start_date" class="form-label">Preferred Start Date</label>
+                <input type="date" class="form-control" name="start_date" id="start_date" required>
+              </div>
+
+              <!-- Additional Requirements -->
+              <div class="form-group mt-3">
+                <label for="additional_requirements" class="form-label">Additional Requirements (Optional)</label>
+                <textarea class="form-control" name="additional_requirements" id="additional_requirements" rows="4" placeholder="Specify any additional details"></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="my-3">
+                <div class="error-message"></div>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-primary" type="submit">Enroll Now</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -85,8 +177,22 @@
 
 <script>
   $("#course-enroll-form").submit((e) => {
-    // ... form submission logic ...
+    e.preventDefault();
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    
+    $.ajax({
+      url: "/submit-enrollment-form/",  // Replace with your server URL
+      data: $("#course-enroll-form").serialize() + '&csrfmiddlewaretoken=' + csrfToken,
+      method: "POST",
+      success: function (response) {
+        alert("Enrollment successful!");
+      },
+      error: function (err) {
+        alert("Error in enrollment. Please try again.");
+      }
+    });
   });
 </script>
+
 
 {% endblock %}
