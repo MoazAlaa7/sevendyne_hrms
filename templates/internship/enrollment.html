@@ -18,10 +18,24 @@
 <section id="courses" class="custom-app-development bg-light" style="margin-bottom:3%;margin-top:3%">
   <div class="container">
     <div class="section-title text-center">
-      <h2>Master Software Development with Our Expert-Led Courses</h2>
-      <p class="separator">
-        Enhance your skills and advance your career with our specialized training programs. Each course is designed to provide hands-on experience and comprehensive knowledge of the latest technologies.
-      </p>
+		<h2>Master Software Development with Our Expert-Led Courses</h2>
+      
+		<div class="text-center mt-4">
+		  <h3>Course Fees and Structure</h3>
+		  <p><strong>Course Fees:</strong> <span style="font-weight: bold;">₹30,000</span> for the full 6-month program.</p>
+		  <p><strong>Course Structure:</strong></p>
+		  <ul style="list-style-type: none; padding: 0;">
+			<li>1. Each course is designed to be completed in <strong>6 months</strong> with a blend of theory and practical lessons.</li>
+			<li>2. The first <strong>4 months</strong> focus on continuous theory-based learning combined with practical exercises, ensuring you gain deep technical knowledge.</li>
+			<li>3. The final <strong>2 months</strong> are dedicated to <strong>job training</strong> to help you secure a job, where you'll work on real-world projects and learn industry best practices.</li>
+		  </ul>
+		  <p><strong>Payment Options:</strong></p>
+		  <ul style="list-style-type: none; padding: 0;">
+			<li>1. Avail a <strong>10% discount</strong> on full payment (Pay ₹27,000 upfront).</li>
+			<li>2. Pay in easy installments of ₹5,000/month.</li>
+		  </ul>
+		</div>
+
     </div>
 
     <div class="row justify-content-center">
@@ -34,7 +48,6 @@
             <p>
               Master Full-Stack technologies including Python, Ruby on Rails, Angular, and more. Build dynamic web applications and APIs with industry-best practices.
             </p>
-            <a href="#course-enrollment-form" class="btn btn-primary">Learn More</a>
           </div>
         </div>
       </div>
@@ -48,7 +61,6 @@
             <p>
               Learn to set up CI/CD pipelines, manage containerized applications using Docker, and automate workflows to streamline development operations.
             </p>
-            <a href="#course-enrollment-form" class="btn btn-primary">Learn More</a>
           </div>
         </div>
       </div>
@@ -62,7 +74,6 @@
             <p>
               Master the intricacies of C++ programming, including advanced features like memory management, object-oriented programming, and more.
             </p>
-            <a href="#course-enrollment-form" class="btn btn-primary">Learn More</a>
           </div>
         </div>
       </div>
@@ -76,7 +87,6 @@
             <p>
               Learn how to build dynamic, single-page web applications with Angular, focusing on components, services, and RxJS for reactive programming.
             </p>
-            <a href="#course-enrollment-form" class="btn btn-primary">Learn More</a>
           </div>
         </div>
       </div>
@@ -85,114 +95,12 @@
 </section>
 
 <section id="course-enrollment" style="background-color: #f8f9fa; padding: 30px 0;">
-  <div class="container">
-    <div class="section-title text-center">
-      <h2>Enroll in a Course</h2>
-      <p class="separator">
-        Fill out the form below to enroll in one of our software development courses. We'll get in touch to guide you through the next steps.
-      </p>
-    </div>
-
-    <div class="text-center mt-4">
-      <h3>Course Fees and Structure</h3>
-      <p><strong>Course Fees:</strong> <span style="font-weight: bold;">₹30,000</span> for the full 6-month program.</p>
-      <p><strong>Course Structure:</strong></p>
-      <ul style="list-style-type: none; padding: 0;">
-        <li>1. Each course is designed to be completed in <strong>6 months</strong> with a blend of theory and practical lessons.</li>
-        <li>2. The first <strong>4 months</strong> focus on continuous theory-based learning combined with practical exercises, ensuring you gain deep technical knowledge.</li>
-        <li>3. The final <strong>2 months</strong> are dedicated to <strong>job training</strong> to help you secure a job, where you'll work on real-world projects and learn industry best practices.</li>
-      </ul>
-      <p><strong>Payment Options:</strong></p>
-      <ul style="list-style-type: none; padding: 0;">
-        <li>1. Avail a <strong>10% discount</strong> on full payment (Pay ₹27,000 upfront).</li>
-        <li>2. Pay in easy installments of ₹5,000/month.</li>
-      </ul>
-
-      <a href="#course-enrollment-form" class="btn btn-primary">Enroll Now</a>
-    </div>
-
-    <div id="course-enrollment-form" style="margin-top: 20px;">
-      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
-        <div class="col-lg-6 col-md-10">
-          <div class="form">
-            <form id="course-enroll-form" action="#" class="php-email-form">
-              {% csrf_token %}
-              
-              <!-- Course Selection -->
-              <div class="form-group">
-                <label for="course" class="form-label">Select Course</label>
-                <select name="course" id="course" class="form-control" required>
-                  <option value="" disabled selected>Select a course</option>
-                  <option value="Full-Stack Development">Full-Stack Development</option>
-                  <option value="DevOps Engineering">DevOps Engineering</option>
-                  <option value="C++ Development">C++ Development</option>
-                  <option value="Angular Development">Angular Development</option>
-                </select>
-              </div>
-
-              <!-- Full Name -->
-              <div class="form-group">
-                <label for="name" class="form-label">Your Name</label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="Full Name" required>
-              </div>
-
-              <!-- Email -->
-              <div class="form-group mt-3">
-                <label for="email" class="form-label">Your Email</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
-              </div>
-
-              <!-- Contact Number -->
-              <div class="form-group mt-3">
-                <label for="contact_number" class="form-label">Contact Number</label>
-                <input type="tel" class="form-control" name="contact_number" id="contact_number" placeholder="Phone Number" required>
-              </div>
-
-              <!-- Preferred Start Date -->
-              <div class="form-group mt-3">
-                <label for="start_date" class="form-label">Preferred Start Date</label>
-                <input type="date" class="form-control" name="start_date" id="start_date" required>
-              </div>
-
-              <!-- Additional Requirements -->
-              <div class="form-group mt-3">
-                <label for="additional_requirements" class="form-label">Additional Requirements (Optional)</label>
-                <textarea class="form-control" name="additional_requirements" id="additional_requirements" rows="4" placeholder="Specify any additional details"></textarea>
-              </div>
-
-              <!-- Submit Button -->
-              <div class="my-3">
-                <div class="error-message"></div>
-              </div>
-              <div class="text-center">
-                <button class="btn btn-primary" type="submit">Enroll Now</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="container">
+		<div class="section-title text-center">
+		  <h2>Enroll in a Course</h2>
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLSe36Ac9tfVFCsMxIToY8ZpxX_V-abMtmuzX8JPh7tOcO84sPg/viewform?usp=pp_url" target="_blank" class="btn btn-primary">Book Here</a>
+		</div>
+	</div>
 </section>
-
-<script>
-  $("#course-enroll-form").submit((e) => {
-    e.preventDefault();
-    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    
-    $.ajax({
-      url: "/submit-enrollment-form/",  // Replace with your server URL
-      data: $("#course-enroll-form").serialize() + '&csrfmiddlewaretoken=' + csrfToken,
-      method: "POST",
-      success: function (response) {
-        alert("Enrollment successful!");
-      },
-      error: function (err) {
-        alert("Error in enrollment. Please try again.");
-      }
-    });
-  });
-</script>
-
 
 {% endblock %}
