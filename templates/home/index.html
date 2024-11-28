@@ -104,12 +104,14 @@
 				<div class="homepage-section d-flex justify-content-center">
 					<div class="col-lg-5 col-sm-5 col-12">
 						<div class="process-content">
-							<p>Build Your Global Team with Our Expert Staffing Services and HRMS Solution.</p>
-							<h2>Effortless Resource Management for International Clients</h2>
+							<p>Workspace Management Platform</p>
+							<h2>Connect with Top Talent or Find Your Next Opportunity</h2>
 							<!-- Updated Button with Anchor Link -->
-							<a href="{% url 'user:signup' %}" class="btn btn-primary mt-3">Clients - Hire Talents</a>
-							<a href="{% url 'candidate:create_candidate' %}" class="btn btn-primary mt-3">Candidates - Apply Jobs</a>
-							
+							<div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+								<a href="{% url 'user:signup' %}" class="btn btn-primary btn-lg px-5 py-3">Clients - Hire Talents</a>
+								<a href="{% url 'candidate:create_candidate' %}" class="btn btn-primary btn-lg px-5 py-3">Candidates - Apply Jobs</a>
+							</div>
+	
 						</div>
 					</div>
 					<div class="col-lg-7 col-sm-7 col-12">
@@ -138,8 +140,11 @@
 					<div class="clients-slider swiper" data-aos="zoom-out">
 						<div class="swiper-wrapper align-items-center" style="height:40%;">
 							<div class="swiper-slide"><img src="{% static 'job_portal/img/clients/np.png' %}" class="img-fluid" alt="Client J&A"></div>
-							<div class="swiper-slide"><img src="{% static 'job_portal/img/clients/csr.png' %}" class="img-fluid" alt="Client CSR"></div>
-							<div class="swiper-slide"><img src="{% static 'job_portal/img/clients/KE_logo.png' %}" class="img-fluid" alt="Client KE"></div>
+							<div class="swiper-slide"><img src="{% static 'job_portal/img/clients/np.png' %}" class="img-fluid" alt="Client CSR"></div>
+							<div class="swiper-slide"><img src="{% static 'job_portal/img/clients/np.png' %}" class="img-fluid" alt="Client KE"></div>
+							<div class="swiper-slide"><img src="{% static 'job_portal/img/clients/np.png' %}" class="img-fluid" alt="Client J&A"></div>
+							<div class="swiper-slide"><img src="{% static 'job_portal/img/clients/np.png' %}" class="img-fluid" alt="Client CSR"></div>
+							<div class="swiper-slide"><img src="{% static 'job_portal/img/clients/np.png' %}" class="img-fluid" alt="Client KE"></div>
 						</div>
 					</div>
 				</div>
