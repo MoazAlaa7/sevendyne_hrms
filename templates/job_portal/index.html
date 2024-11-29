@@ -59,98 +59,60 @@
 <!-- Carousel End -->
 
 <!-- About Us Section -->
-<!-- Main Banner Section -->
-<!-- Main Banner Section -->
-<div class="main-banner-section py-5 text-white" style="background: url('{% static 'job_portal/img/consulting.jpg' %}') no-repeat center center/cover; height: 100vh;" data-aos="fade-up" data-aos-duration="2000">
-    <div class="container d-flex flex-column justify-content-center align-items-center text-center h-100">
-        <h1 class="fw-bold">Connect with Top Talent or Find Your Next Opportunity</h1>
-        <p class="mt-3">Explore tailored staffing solutions or find the perfect job opportunity. Your career and hiring needs, simplified.</p>
-        <div class="d-flex justify-content-center gap-3 mt-4">
-            <a href="{% url 'user:signup' %}" class="btn btn-light btn-lg px-3 py-3 text-primary fw-bold">Hire Talents</a>
-            <a href="{% url 'candidate:create_candidate' %}" class="btn btn-warning btn-lg px-3 py-3 text-dark fw-bold">Apply for Jobs</a>
-        </div>
-    </div>
-</div>
-
-
-
-
-<!-- Our Skills -->
-<div class="container-fluid py-5" style="background-color: #fffff0;"> <!-- White background -->
-    <div class="container"> 
-        <div class="row justify-content-center mb-5">
-            <div class="col-12 text-center">
-                <h3>Our Core Technical Expertise</h3>
-                <p>We specialize in a wide range of cutting-edge technologies, providing innovative solutions for our clients. Our core skill set includes:</p>
-                <div class="row justify-content-center">
-                    <div class="col-md-3 mb-4">
-                        <div class="skill-box p-4 border rounded shadow-sm">
-                            <h4>AI & Machine Learning</h4>
-                            <p>Developing AI-driven tools and automation for more efficient decision-making and processes.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="skill-box p-4 border rounded shadow-sm">
-                            <h4>Blockchain</h4>
-                            <p>Building secure, transparent blockchain solutions for decentralized needs.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="skill-box p-4 border rounded shadow-sm">
-                            <h4>Ruby on Rails</h4>
-                            <p>Expert development in Ruby on Rails for scalable and high-performance web applications.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="skill-box p-4 border rounded shadow-sm">
-                            <h4>Full-Stack Development</h4>
-                            <p>End-to-end web development using Angular, React, Node.js, and other technologies.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="skill-box p-4 border rounded shadow-sm">
-                            <h4>C++ & Embedded Systems</h4>
-                            <p>Building high-performance applications using C++ for embedded systems and complex projects.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-4">
-                        <div class="skill-box p-4 border rounded shadow-sm">
-                            <h4>Cloud Services</h4>
-                            <p>Designing scalable, cloud-based architectures using AWS, Azure, and other platforms.</p>
-                        </div>
-                    </div>
-                </div>
+<div class="container-fluid py-5" style="background-color: #ffffff;"> <!-- White background -->
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <img src="{% static 'job_portal/img/consulting.jpg' %}" class="img-fluid rounded" alt="About SevenDyne">
+            </div>
+            <div class="col-lg-6">
+                <h2 class="mb-4">About SevenDyne</h2>
+                <p><strong>Experts in Advanced Technologies</strong>: C++, Embedded Systems, OpenAI, Blockchain, Android, and Full-stack Web Development.</p>
+                <p>At SevenDyne, we specialize in developing innovative tech solutions tailored to your unique needs. Whether you're seeking expertise in advanced technologies or efficient HRMS solutions, we’ve got you covered.</p>
+                <a href="{% url 'main:about' %}" class="btn btn-primary mt-3">Learn More About Us</a>
             </div>
         </div>
     </div>
 </div>
 
-<style>
-    .skill-box {
-        background-color: #ffffff;
-        border: 1px solid #ddd;
-        transition: all 0.3s ease;
-        height: 100%; /* Makes all boxes the same height */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between; /* Ensures content stays equally spaced */
-    }
-    .skill-box:hover {
-        background-color: #f8f9fa;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    /* Ensures all skill boxes have the same height */
-    .row > .col-md-3 {
-        display: flex;
-        justify-content: center;
-    }
-    /* Keeps text centered in each box */
-    .skill-box h4, .skill-box p {
-        text-align: center;
-    }
-</style>
 
-
+<!-- Our Skills -->
+<div class="container-fluid py-5" style="background-color: #fffff0;"> <!-- White background -->
+    <div class="container"> 
+		<div class="row justify-content-center mb-5">
+			<div class="col-12 text-center">
+				<h3>Our Core Technical Expertise</h3>
+				<p>We specialize in a wide range of cutting-edge technologies, providing innovative solutions for our clients. Our core skill set includes:</p>
+				<div class="row justify-content-center">
+					<div class="col-md-3">
+						<h4>AI & Machine Learning</h4>
+						<p>Developing AI-driven tools and automation for more efficient decision-making and processes.</p>
+					</div>
+					<div class="col-md-3">
+						<h4>Blockchain</h4>
+						<p>Building secure, transparent blockchain solutions for decentralized needs.</p>
+					</div>
+					<div class="col-md-3">
+						<h4>Ruby on Rails</h4>
+						<p>Expert development in Ruby on Rails for scalable and high-performance web applications.</p>
+					</div>
+					<div class="col-md-3">
+						<h4>Full-Stack Development</h4>
+						<p>End-to-end web development using Angular, React, Node.js, and other technologies.</p>
+					</div>
+					<div class="col-md-3">
+						<h4>C++ & Embedded Systems</h4>
+						<p>Building high-performance applications using C++ for embedded systems and complex projects.</p>
+					</div>
+					<div class="col-md-3">
+						<h4>Cloud Services</h4>
+						<p>Designing scalable, cloud-based architectures using AWS, Azure, and other platforms.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <!-- Our Solutions -->
 <div class="container-fluid py-5" style="background-color: #f8f9fa;"> <!-- Light grey background -->
     <div class="container">
