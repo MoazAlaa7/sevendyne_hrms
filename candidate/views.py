@@ -326,7 +326,7 @@ def candidate_application(request):
                     "title": "Successfully Created",
                     "message": "Candidate created successfully.",
                     "redirect": "true",
-                    "redirect_url": reverse('main:job_portal')
+                    "redirect_url": reverse('main:home')
                 }
             else:               
                 response_data = {
