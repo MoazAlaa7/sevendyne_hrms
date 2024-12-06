@@ -664,7 +664,7 @@
     }
 }
 
- .custom-section {
+.custom-section {
         background-color: #f8f9fa; /* Light background for custom section */
         border-radius: 10px; /* Rounded corners */
     }
@@ -673,3 +673,78 @@
         height: auto; /* Maintain aspect ratio */
         width: 100%; /* Responsive image */
     }
+ 
+.client-box {
+    background: linear-gradient(135deg, #007bff, #4dabf7);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.client-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+.client-box:nth-child(2) { background: linear-gradient(135deg, #6c757d, #adb5bd); }
+.client-box:nth-child(3) { background: linear-gradient(135deg, #ffc107, #ffdd57); color: #000; }
+.client-box:nth-child(4) { background: linear-gradient(135deg, #28a745, #85e489); }
+.client-box:nth-child(5) { background: linear-gradient(135deg, #dc3545, #f76878); }
+.client-box:nth-child(6) { background: linear-gradient(135deg, #6f42c1, #b077e6); }
+
+/* Styling improvements */
+.course-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.course-card h4 {
+    color: #2c3e50;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.course-card p {
+    font-size: 1rem;
+    color: #7f8c8d;
+}
+
+.course-card a.btn {
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.course-card a.btn-outline-primary {
+    border: 2px solid #3498db;
+    color: #3498db;
+}
+
+.course-card a.btn-outline-primary:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.row {
+    margin-top: 40px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #50a5d5 0%, #3164b8 100%);
+    border: none;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #3164b8 0%, #50a5d5 100%);
+}
