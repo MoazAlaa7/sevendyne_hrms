@@ -766,3 +766,12 @@
 .btn-primary:hover {
     background: linear-gradient(45deg, #3164b8 0%, #50a5d5 100%);
 }
+
+.highlight-text {
+    color: #ffffff; /* Change to white or a high-contrast color */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Adds a shadow for better readability */
+    background-color: rgba(0, 0, 139, 0.6); /* Optional: Add a semi-transparent dark blue background */
+    padding: 10px; /* Optional: Add padding to make the text stand out */
+    font-size: 2.5rem; /* Adjust size if necessary */
+    line-height: 1.4; /* Better line spacing for readability */
+}
