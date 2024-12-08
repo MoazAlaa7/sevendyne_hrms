@@ -15,6 +15,8 @@ urlpatterns = [
     path('privacy_policy/',views.privacy_policy,name='privacy_policy'),
     path('portfolio-home/',views.portfolios_home,name='portfolios_home'),
     path('home/hrms/',views.home_hrms,name='home_hrms'),
+    path('terms_and_conditions/',views.terms_and_conditions,name='terms_and_conditions'),
+    path('privacy_policy/',views.privacy_policy,name='privacy_policy'),
 
     path('get_states/', views.get_states, name='get_states'),
 
@@ -39,5 +41,23 @@ urlpatterns = [
     re_path(r'^email-setting/edit/(?P<pk>.*)/$', views.edit_email_setting, name='edit_email_setting'),
     re_path(r'^delete-email-setting/(?P<pk>.*)/$', views.delete_email_setting, name='delete_email_setting'),    
     re_path(r'^email-setting/(?P<pk>.*)/$', views.email_setting, name='email_setting')
+
+    # training
+    path('corporate_training/',views.corporate_training,name='corporate_training'),
+    path('mean_stack_training/',views.mean_stack_training,name='mean_stack_training'),
+    path('testing_training/',views.testing_training,name='testing_training'),
+
+    # remote staffing
+    path('remote_staffing/',views.remote_staffing,name='remote_staffing'),
+    
+    # hrms product
+    path('hrms/',views.hrms,name='hrms'),
+    
+    #  turnkey solutions
+    path('devops/',views.devops,name='devops'),
+    path('webapps/',views.webapps,name='webapps'),
+    path('embeddedapps/',views.embeddedapps,name='embeddedapps'),
+    path('mobileapps/',views.mobileapps,name='mobileapps'),
+    path('testing/',views.testing,name='testing')
 ]
 
