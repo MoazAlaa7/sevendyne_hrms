@@ -41,5 +41,6 @@ urlpatterns = [
     re_path(r'^email-setting/(?P<pk>.*)/$', views.email_setting, name='email_setting'),
 
     path('corporate_training/',views.corporate_training,name='corporate_training'),
+    path('mean_stack_training/',views.mean_stack_training,name='mean_stack_training'),
 ]
 

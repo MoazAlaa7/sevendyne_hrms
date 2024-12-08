@@ -66,6 +66,9 @@ def terms_and_conditions(request):
 def corporate_training(request):
     return render(request, 'job_portal/corporate_training.html')
 
+def mean_stack_training(request):
+    return render(request, 'job_portal/mean_stack_training.html')
+
 def privacy_policy(request):
     return render(request, 'job_portal/privacy_policy.html')
 
