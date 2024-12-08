@@ -739,38 +739,3 @@ def delete_email_setting(request,pk):
         "redirect_url" : reverse('main:email_settings')
     }
     return HttpResponse(json.dumps(response_data), content_type='application/json')
-
-# products
-def hrms(request):
-    return render(request, 'services/hrms.html')
-
-# staffing
-def remote_staffing(request):
-    return render(request, 'services/remote_staffing.html')
-
-# training
-def corporate_training(request):
-    return render(request, 'services/corporate_training.html')
-
-def mean_stack_training(request):
-    return render(request, 'services/mean_stack_training.html')
-
-def testing_training(request):
-    return render(request, 'services/testing_training.html')
-
-# turnkey_solutions
-def devops(request):
-    return render(request, 'services/devops.html')
-
-def webapps(request):
-    return render(request, 'services/webapps.html')
-
-def mobileapps(request):
-    return render(request, 'services/mobileapps.html')
-
-def embedded(request):
-    return render(request, 'services/embedded.html')
-
-def testing(request):
-    return render(request, 'services/testing.html')
-
