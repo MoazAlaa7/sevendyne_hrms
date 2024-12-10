@@ -17,70 +17,63 @@
 	</div>
   </div>
   
-  <section class="py-5" style="background: #f8f9fa;">
-	<div class="container">
-	  <div class="row">
-		<!-- Signup Form -->
-		<div class="col-md-6 d-flex align-items-center">
-		  <div class="card shadow-lg rounded p-5 bg-white">
-			<h3 class="text-center text-primary">Get Started with Sevendyne</h3>
-			<p class="text-muted text-center mb-4">Access the best HR services in Kochi</p>
-			<form id="submit-form" action="#" class="php-email-form">
-			  {% csrf_token %}
-			  <div class="row">
-				<!-- Left Column -->
-				<div class="col-md-6">
-				  <div class="form-group">
-					<label for="name" class="form-label">Your Name</label>
-					<input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
-				  </div>
-				  <div class="form-group mt-3">
-					<label for="email" class="form-label">Your Email</label>
-					<input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
-				  </div>
-				  <div class="form-group mt-3">
-					<label for="company_name" class="form-label">Company Name</label>
-					<input type="text" class="form-control" id="company_name" name="company_name" placeholder="Your Company Name" required>
-				  </div>
-				  <div class="form-group mt-3">
-					<label for="project_name" class="form-label">Project Name</label>
-					<input type="text" class="form-control" id="project_name" name="project_name" placeholder="Project Name" required>
-				  </div>
-				</div>
-				<!-- Right Column -->
-				<div class="col-md-6">
-				  <div class="form-group mt-3">
-					<label for="project_description" class="form-label">Project Description</label>
-					<textarea class="form-control" id="project_description" name="project_description" rows="4" placeholder="Brief description of your project" required></textarea>
-				  </div>
-				  <div class="form-group mt-3">
-					<label for="num_resources" class="form-label">Number of Resources Needed</label>
-					<input type="number" class="form-control" id="num_resources" name="num_resources" min="1" placeholder="e.g., 5" required>
-				  </div>
-				  <div class="form-group mt-3">
-					<label for="preferred_location" class="form-label">Preferred Location</label>
-					<input type="text" class="form-control" id="preferred_location" name="preferred_location" placeholder="City, Country">
-				  </div>
-				</div>
-			  </div>
-			  <div class="text-center mt-4">
-				<button type="submit" class="btn btn-primary">Request HR Support</button>
-			  </div>
-			</form>
-		  </div>
-		</div>
-  
-		<!-- Hero Details -->
-		<div class="col-md-6 d-flex align-items-center">
-		  <div class="text-center p-5" style="background: #3a86ff; border-radius: 12px; color: white;">
-			<h2 class="display-5">Why Choose Us?</h2>
-			<p class="lead">We help businesses thrive with efficient and personalized HR services tailored to your needs.</p>
-		  </div>
-		</div>
-	  </div>
+  <section class="py-5" style="background: #3a86ff; color: white;">
+	<div class="container text-center p-5" style="border-radius: 12px;">
+	  <h2 class="display-5">Why Choose Us?</h2>
+	  <p class="lead">We help businesses thrive with efficient and personalized HR services tailored to your needs.</p>
 	</div>
   </section>
   
+  <section class="py-5" style="background: #f8f9fa;">
+	<div class="container">
+	  <div class="card shadow-lg rounded p-5 bg-white">
+		<h3 class="text-center text-primary">Get Started with Sevendyne</h3>
+		<p class="text-muted text-center mb-4">Access the best HR services in Kochi</p>
+		<form id="submit-form" action="#" class="php-email-form">
+		  {% csrf_token %}
+		  <div class="row">
+			<!-- Left Column -->
+			<div class="col-md-6">
+			  <div class="form-group">
+				<label for="name" class="form-label">Your Name</label>
+				<input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
+			  </div>
+			  <div class="form-group mt-3">
+				<label for="email" class="form-label">Your Email</label>
+				<input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+			  </div>
+			  <div class="form-group mt-3">
+				<label for="company_name" class="form-label">Company Name</label>
+				<input type="text" class="form-control" id="company_name" name="company_name" placeholder="Your Company Name" required>
+			  </div>
+			  <div class="form-group mt-3">
+				<label for="project_name" class="form-label">Project Name</label>
+				<input type="text" class="form-control" id="project_name" name="project_name" placeholder="Project Name" required>
+			  </div>
+			</div>
+			<!-- Right Column -->
+			<div class="col-md-6">
+			  <div class="form-group mt-3">
+				<label for="project_description" class="form-label">Project Description</label>
+				<textarea class="form-control" id="project_description" name="project_description" rows="4" placeholder="Brief description of your project" required></textarea>
+			  </div>
+			  <div class="form-group mt-3">
+				<label for="num_resources" class="form-label">Number of Resources Needed</label>
+				<input type="number" class="form-control" id="num_resources" name="num_resources" min="1" placeholder="e.g., 5" required>
+			  </div>
+			  <div class="form-group mt-3">
+				<label for="preferred_location" class="form-label">Preferred Location</label>
+				<input type="text" class="form-control" id="preferred_location" name="preferred_location" placeholder="City, Country">
+			  </div>
+			</div>
+		  </div>
+		  <div class="text-center mt-4">
+			<button type="submit" class="btn btn-primary">Request HR Support</button>
+		  </div>
+		</form>
+	  </div>
+	</div>
+  </section>  
 
   <section class="py-5" style="background: #f8f9fa;">
 	<div class="container">
