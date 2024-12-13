@@ -65,12 +65,51 @@
         }
     </style>
     <div class="row text-center">
-        <div class="col-12">
-            <h2 class="why-choose-header mb-4">Why Choose SevenDyne?</h2>
-            <p class="why-choose-text">
-                We bridge gaps in workforce management and skill development with holistic solutions tailored for businesses and professionals in Kochi.
-            </p>
+        <div class="container py-5">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h2 class="why-choose-header mb-4">Why Choose SevenDyne?</h2>
+                    <p class="why-choose-text">
+                        SevenDyne has been a trusted partner in remote staffing and professional training since 2016. From our beginnings as a freelance agency in 2012, we have evolved into a full-service consultancy, empowering businesses and professionals globally.
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-box p-4 text-center bg-light shadow rounded">
+                        <h4 class="text-primary fw-bold">Comprehensive Solutions</h4>
+                        <p>
+                            We bridge the gap between businesses and talent with remote staffing, professional training, and innovative app development services.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-box p-4 text-center bg-light shadow rounded">
+                        <h4 class="text-primary fw-bold">Global Reach</h4>
+                        <p>
+                            Serving clients across industries and locations, including the UK, Germany, Malaysia, and the US, we bring diverse expertise to every project.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-box p-4 text-center bg-light shadow rounded">
+                        <h4 class="text-primary fw-bold">Expertise You Can Trust</h4>
+                        <p>
+                            Our expertise spans technical staffing, full-stack training, HR payroll, C++ development, cloud solutions, and DevOps engineering.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center mt-4">
+                <div class="col-12">
+                    <p class="text-muted">
+                        Learn more about our journey, mission, and the industries we serve. Discover how we can support your business and professional goals. 
+                    </p>
+                    <a href="{% static 'about' %}" class="btn btn-gradient px-4 py-2 mt-2">About Us</a>
+                </div>
+            </div>
         </div>
+        
 
         <div class="flex-button">
             <a href="{% url 'main:about' %}" class="about-us-link">About Us</a>
@@ -266,12 +305,13 @@
 </div>
 
 <div class="container py-5 text-center" style="background-color: #f9f9f9;">
-    <div class="d-flex flex-column flex-md-row justify-content-center justify-content-lg-start gap-3 mt-4">
+    <div class="d-flex flex-column flex-md-row justify-content-center mt-4">
         <button type="button" class="btn btn-success btn-lg px-3 py-3 fw-bold" data-bs-toggle="modal" data-bs-target="#consultationModal">
            Get Free Consultation
        </button>
     </div>
 </div>
+
 
 <!-- Modal Structure -->
 <div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="projectSubmissionModalLabel" aria-hidden="true">
