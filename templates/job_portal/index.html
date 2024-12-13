@@ -58,19 +58,6 @@
             text-decoration: none;
         }
 
-        .why-choose-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .why-choose-content p {
-            max-width: 700px;
-            text-align: center;
-            font-size: 16px;
-        }
-
         .flex-button {
             display: flex;
             justify-content: center;
@@ -84,15 +71,9 @@
                 We bridge gaps in workforce management and skill development with holistic solutions tailored for businesses and professionals in Kochi.
             </p>
         </div>
-    </div>
-    <div class="row mt-4">
-        <div class="col-12 why-choose-content">
-            <p class="why-choose-text">
-                Learn more about our mission, vision, and the range of services we provide to empower businesses and individuals.
-            </p>
-            <div class="flex-button">
-                <a href="{% static 'about' %}" class="about-us-link">About Us</a>
-            </div>
+
+        <div class="flex-button">
+            <a href="{% static 'about' %}" class="about-us-link">About Us</a>
         </div>
     </div>
 </div>
@@ -284,6 +265,11 @@
     </div>    
 </div>
 
+<div class="d-flex flex-column flex-md-row justify-content-center justify-content-lg-start gap-3 mt-4">
+    <button type="button" class="btn btn-success btn-lg px-3 py-3 fw-bold" data-bs-toggle="modal" data-bs-target="#consultationModal">
+       Get Free Consultation
+   </button>
+</div>
 
 <!-- Modal Structure -->
 <div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="projectSubmissionModalLabel" aria-hidden="true">
