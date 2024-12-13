@@ -312,54 +312,46 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="projectSubmissionModalLabel">Submit Your Project Details</h5>
+                <h5 class="modal-title" id="projectSubmissionModalLabel">Get Free Consultation</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="submit-form" action="#" class="php-email-form">
+                <form id="consultation-form" action="#" class="php-email-form">
                     {% csrf_token %}
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <label for="name" class="form-label">Your Name</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Full Name" required>
-                        </div>
-
-                        <div class="col-md-6 form-group">
-                            <label for="email" class="form-label">Your Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
-                        </div>
+                    <div class="form-group mt-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Full Name" required>
                     </div>
 
                     <div class="form-group mt-3">
-                        <label for="project_name" class="form-label">Project Name</label>
-                        <input type="text" class="form-control" name="project_name" id="project_name" placeholder="Project Name" required>
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
                     </div>
 
                     <div class="form-group mt-3">
-                        <label for="project_description" class="form-label">Project Description</label>
-                        <textarea class="form-control" name="project_description" rows="4" id="project_description" placeholder="Brief description of your project" required></textarea>
+                        <label for="interested_in" class="form-label">Interested In</label>
+                        <select class="form-control" name="interested_in" id="interested_in" required>
+                            <option value="">Select an option</option>
+                            <option value="HR Payroll">HR Payroll</option>
+                            <option value="Training">Training</option>
+                            <option value="Turnkey Projects">Turnkey Projects</option>
+                        </select>
                     </div>
 
-                    <div class="row mt-3">
-                        <div class="col-md-6 form-group">
-                            <label for="preferred_location" class="form-label">Preferred Location</label>
-                            <input type="text" class="form-control" name="preferred_location" id="preferred_location" placeholder="City, Country">
-                        </div>
-
-                        <div class="col-md-6 form-group">
-                            <label for="budget" class="form-label">Project Budget (Optional)</label>
-                            <input type="text" class="form-control" name="budget" id="budget" placeholder="Estimated Project Budget">
-                        </div>
+                    <div class="form-group mt-3">
+                        <label for="additional_info" class="form-label">Additional Information</label>
+                        <textarea class="form-control" name="additional_info" rows="4" id="additional_info" placeholder="Briefly describe your needs or inquiries" required></textarea>
                     </div>
 
                     <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-primary btn-lg px-5">Submit Project Details</button>
+                        <button type="submit" class="btn btn-primary btn-lg px-5">Submit Consultation Request</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{%static 'assets/js/jquery-3.7.1.min.js'%}"></script>
@@ -379,7 +371,7 @@
                     Swal.fire({
                         icon: 'success',
                         title: 'Success',
-                        text: 'Your project details have been successfully submitted!'
+                        text: 'Your query have been successfully submitted!'
                     });
                     $("#submit-form")[0].reset();
                     $('#consultationModal').modal('hide');
