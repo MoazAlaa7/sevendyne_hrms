@@ -122,25 +122,25 @@
                     <a href="{% url 'main:job_portal' %}" class="nav-item nav-link active">Home</a>
                     <a href="{% url 'main:hr_payroll' %}" class="nav-item nav-link">HR Payroll</a>
             
-                    <a href="#" class="nav-item nav-link dropdown-toggle" role="button" id="trainingDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Training
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="trainingDropdown">
-                        <li><a class="dropdown-item" href="{% url 'main:corporate_training' %}">Corporate Training</a></li>
-                        <li><a class="dropdown-item" href="{% url 'main:mean_stack_training' %}">Mean Stack Training</a></li>
-                        <li><a class="dropdown-item" href="{% url 'main:testing_training' %}">Testing Training</a></li>
-                    </ul>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Training</a>
+                        <div class="dropdown-menu">
+                            <a href="{% url 'main:corporate_training' %}" class="dropdown-item">Corporate Training</a>
+                            <a href="{% url 'main:mean_stack_training' %}" class="dropdown-item">Mean Stack Training</a>
+                            <a href="{% url 'main:testing_training' %}" class="dropdown-item">Testing Training</a>
+                        </div>
+                    </div>
             
-                    <a href="#" class="nav-item nav-link dropdown-toggle" role="button" id="turnkeyDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Turnkey Solutions
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="turnkeyDropdown">
-                        <li><a class="dropdown-item" href="{% url 'main:mobileapps' %}">Mobile Apps</a></li>
-                        <li><a class="dropdown-item" href="{% url 'main:webapps' %}">Web Apps</a></li>
-                        <li><a class="dropdown-item" href="{% url 'main:embeddedapps' %}">Embedded Apps</a></li>
-                        <li><a class="dropdown-item" href="{% url 'main:devops' %}">DevOps</a></li>
-                        <li><a class="dropdown-item" href="{% url 'main:testing' %}">Testing</a></li>
-                    </ul>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Turnkey Solutions</a>
+                        <div class="dropdown-menu">
+                            <a href="{% url 'main:mobileapps' %}" class="dropdown-item">Mobile Apps</a>
+                            <a href="{% url 'main:webapps' %}" class="dropdown-item">Web Apps</a>
+                            <a href="{% url 'main:embeddedapps' %}" class="dropdown-item">Embedded Apps</a>
+                            <a href="{% url 'main:devops' %}" class="dropdown-item">DevOps</a>
+                            <a href="{% url 'main:testing' %}" class="dropdown-item">Testing</a>
+                        </div>
+                    </div>
             
                     <a href="{% url 'main:about' %}" class="nav-item nav-link">About Us</a>
                 </div>
@@ -148,6 +148,7 @@
             
             <a href="https://sevendyne.com/app/login/" target="_blank" class="btn btn-primary rounded-0 py-4 px-lg-5 d-lg-inline-block d-sm-inline-block">Login to HRMS<i class="fa fa-arrow-right ms-3"></i></a>
         </nav>
+<!-- Navbar End -->
         <!-- Navbar End -->
 
         {% block content %}
