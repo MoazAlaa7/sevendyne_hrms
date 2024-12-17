@@ -75,6 +75,13 @@ body {
     text-align: center; /* Added for mobile responsiveness */
 }
 
+.main-banner-section .fw-bold {
+    color: #FFFFFF; /* Set the heading text color to white */
+}
+
+.main-banner-section p {
+    color: #F0F0F0; /* Set the paragraph text color to a light gray/white */
+}
 /* Service Boxes */
 .service-box {
     background-color: var(--white);
