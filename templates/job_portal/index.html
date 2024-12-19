@@ -249,33 +249,23 @@
 </div>
 
 
-
-<div class="container-fluid py-5" >
+<div class="container-fluid py-5">
     <style>
         .client-box {
-            background: linear-gradient(135deg, #007bff, #4dabf7);
-            color: #fff;
+            background: linear-gradient(135deg, #001f3f, #004080); /* Dark blue gradient */
+            color: #fff; /* White text */
             transition: all 0.3s ease;
+            border: 1px solid #004080;
         }
         .client-box:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
-        .client-box:nth-child(2) {
-            background: linear-gradient(135deg, #6c757d, #adb5bd);
+        .client-box h4 {
+            color: #ffffff;
         }
-        .client-box:nth-child(3) {
-            background: linear-gradient(135deg, #ffc107, #ffdd57);
-            color: #000;
-        }
-        .client-box:nth-child(4) {
-            background: linear-gradient(135deg, #28a745, #85e489);
-        }
-        .client-box:nth-child(5) {
-            background: linear-gradient(135deg, #dc3545, #f76878);
-        }
-        .client-box:nth-child(6) {
-            background: linear-gradient(135deg, #6f42c1, #b077e6);
+        .client-box p {
+            color: #d9d9d9; /* Slightly lighter text */
         }
     </style>
     <div class="container">
@@ -351,15 +341,13 @@
     </div>
 </div>
 
-
-<div class="container py-5 text-center" >
+<div class="container py-5 text-center">
     <div class="d-flex flex-column flex-md-row justify-content-center mt-4">
-        <button type="button" class="btn btn-success btn-lg px-3 py-3 fw-bold" data-bs-toggle="modal" data-bs-target="#consultationModal">
-           Get Free Consultation
-       </button>
+        <button type="button" class="btn btn-dark btn-lg px-4 py-3 fw-bold" data-bs-toggle="modal" data-bs-target="#consultationModal">
+            Get Free Consultation
+        </button>
     </div>
 </div>
-
 
 <!-- Modal Structure -->
 <div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="projectSubmissionModalLabel" aria-hidden="true">
