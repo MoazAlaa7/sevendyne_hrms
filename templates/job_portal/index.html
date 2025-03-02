@@ -1,9 +1,9 @@
 {% extends "job_portal/base.html" %}
 
-{% block og_title %}SevenDyne: Turnkey Projects | Professional IT Training | Team Building Solutions{% endblock %}
-{% block og_description %}Comprehensive turnkey project support and team building services. From project planning to execution, we offer end-to-end solutions for your business needs.{% endblock %}
+{% block og_title %}SevenDyne: ERP & HRMS Solutions | Trusted by Global Clients{% endblock %}
+{% block og_description %}Sevendyne is a powerful ERP platform starting with our HRMS solution. Join us to streamline business processes and enhance enterprise efficiency.{% endblock %}
 {% block og_url %}https://sevendyne.com{% endblock %}
-{% block title %}SevenDyne: Turnkey Project Support & Team Building{% endblock %}
+{% block title %}SevenDyne: ERP & HRMS Platform | Trusted by Global Clients{% endblock %}
 
 {% load static %}
 
@@ -13,9 +13,12 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12 text-center text-lg-start mb-4 mb-lg-0">
-                <h1 class="fw-bold">Empower Your Business with Comprehensive Turnkey Project Support and Team Building</h1>
-                <p class="mt-3">End-to-end project solutions and expert team building services to drive successful outcomes.</p>
+                <h1 class="fw-bold">Empower Your Business with Sevendyne ERP & HRMS</h1>
+                <p class="mt-3">Comprehensive enterprise solutions for team management, payroll, finance, and business automation</p>
                 <div class="d-flex flex-column flex-md-row justify-content-center justify-content-lg-start gap-3 mt-4">
+                    <a href="{% url 'user:signup' %}" class="btn btn-primary btn-lg px-4 py-3 fw-bold shadow-lg">
+                        <i class="bi bi-eye"></i> Check HRMS Demo
+                    </a>
                     <a href="#consultationModal" class="btn btn-primary btn-lg px-4 py-3 fw-bold shadow-lg" data-bs-toggle="modal">
                         <i class="bi bi-chat" style="font-size: 1.2em;"></i> Get Free Consultation & Consulting
                     </a>
