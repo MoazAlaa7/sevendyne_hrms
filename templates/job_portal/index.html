@@ -19,7 +19,7 @@
                     <a href="{% url 'main:client_works' %}" class="btn btn-primary btn-lg px-4 py-3 fw-bold shadow-lg">
                         <i class="bi bi-eye"></i> Explore Our Team-Building Expertise
                     </a>
-                    <a href="#consultationModal" class="btn btn-primary btn-lg px-4 py-3 fw-bold shadow-lg" data-bs-toggle="modal">
+                    <a href="#consultation-form-section" class="btn btn-primary btn-lg px-4 py-3 fw-bold shadow-lg" data-bs-toggle="modal">
                         <i class="bi bi-chat" style="font-size: 1.2em;"></i> Get Free Consultation & Consulting
                     </a>
                 </div>
@@ -180,50 +180,41 @@
 </div>
 <hr>
 
-<!-- Modal Structure -->
-<div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="projectSubmissionModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="projectSubmissionModalLabel">Get Free Consultation</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="submit-form" action="#" class="php-email-form">
-                    {% csrf_token %}
-                    <div class="form-group mt-3">
-                        <label for="name" class="form-label">Your Name</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Full Name" required>
-                    </div>
-
-                    <div class="form-group mt-3">
-                        <label for="email" class="form-label">Your Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
-                    </div>
-
-                    <div class="form-group mt-3">
-                        <label for="interested_in" class="form-label">Interested In</label>
-                        <select class="form-control" name="interested_in" id="interested_in" required>
-                            <option value="">Select an option</option>
-                            <option value="Turneky">HRMS Payroll</option>
-                            <option value="Training">Training Candidates</option>
-                            <option value="Technologies">Project Supports</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group mt-3">
-                        <label for="additional_info" class="form-label">Additional Information</label>
-                        <textarea class="form-control" name="additional_info" rows="4" id="additional_info" placeholder="Briefly describe your needs or inquiries" required></textarea>
-                    </div>
-
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-primary btn-lg px-5">Submit Consultation Request</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+<!-- Embedded Consultation Form Section -->
+<section id="consultation-form-section" class="container my-5 p-4 border rounded" style="max-width: 700px;">
+  <h2 class="mb-4 text-primary">Get Free Consultation</h2>
+  <form id="submit-form" action="#" class="php-email-form">
+    {% csrf_token %}
+    <div class="form-group mt-3">
+      <label for="name" class="form-label">Your Name</label>
+      <input type="text" name="name" class="form-control" id="name" placeholder="Full Name" required>
     </div>
-</div>
+
+    <div class="form-group mt-3">
+      <label for="email" class="form-label">Your Email</label>
+      <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="interested_in" class="form-label">Interested In</label>
+      <select class="form-control" name="interested_in" id="interested_in" required>
+        <option value="">Select an option</option>
+        <option value="Turneky">HRMS Payroll</option>
+        <option value="Training">Training Candidates</option>
+        <option value="Technologies">Project Supports</option>
+      </select>
+    </div>
+
+    <div class="form-group mt-3">
+      <label for="additional_info" class="form-label">Additional Information</label>
+      <textarea class="form-control" name="additional_info" rows="4" id="additional_info" placeholder="Briefly describe your needs or inquiries" required></textarea>
+    </div>
+
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary btn-lg px-5">Submit Consultation Request</button>
+    </div>
+  </form>
+</section>
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
