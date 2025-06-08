@@ -237,11 +237,11 @@
     $(document).ready(function() {
         $("#submit-form").submit(function(e) {
             e.preventDefault();
-            const csrfToken = $('[name=csrfmiddlewaretoken]').val();
+            // const csrfToken = $('[name=csrfmiddlewaretoken]').val();
 
             $.ajax({
                 url: "https://script.google.com/macros/s/AKfycbyxzRzjygEh1l0AHrTD6uEXKGilEkmYjCeC0YGk1wABLOureKv6sv1aah09itDpLgL6GQ/exec",
-                data: $(this).serialize() + '&csrfmiddlewaretoken=' + csrfToken,
+                data: $(this).serialize(),
                 method: 'POST',
                 success: function (response) {
                     Swal.fire({
