@@ -15,6 +15,8 @@ from django.http import HttpResponse, JsonResponse
 from django.db.models import Count
 from django.db.models import Sum
 from django.db.models import Q
+from django.db import connection
+from django.db.utils import OperationalError
 
 from apps.main.decorators import company_required
 from apps.main.functions import generate_form_errors, has_admin_dashboard_permission, has_hrms_permission
@@ -28,6 +30,22 @@ from apps.hrms.models import HrmsClient
 from apps.client.models import Client
 from apps.job.models import Job
 
+
+def health_check(request):
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT 1;")
+            cursor.fetchone()
+            
+        return JsonResponse(
+            {"status": "ok", "database": "connected"}, 
+            status=200
+        )
+    except OperationalError:
+        return JsonResponse(
+            {"status": "unhealthy", "database": "unreachable"}, 
+            status=503
+        )
 
 
 def robots_txt(request):

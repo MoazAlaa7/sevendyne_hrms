@@ -86,6 +86,12 @@ docker compose down
 docker compose down -v
 ```
 
+## Container Health Checks
+
+- **Endpoint:** `GET /health/`
+- **Healthy Status Code:** `200 OK` (Database connected)
+- **Unhealthy Status Code:** `503 Service Unavailable` (Database unreachable)
+
 ## Production
 
 For production deployments, build with `compose/production/Dockerfile` (Gunicorn + `config.wsgi`). Set `DJANGO_SETTINGS_MODULE=config.settings.production` and provide `DATABASE_URL`, `DJANGO_SECRET_KEY`, and `DJANGO_ALLOWED_HOSTS` via your orchestrator.
