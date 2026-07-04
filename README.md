@@ -137,5 +137,3 @@ This HRMS is built and maintained by **[Sevendyne Consultancy Services LLP](http
 Released under the **[MIT License](LICENSE)**.
 
 You may use this software freely — including in **commercial products and internal business operations** — as long as you include the copyright notice. There is no purchase, subscription, or proprietary license required. Sevendyne retains copyright on the codebase but does not restrict commercial adoption under MIT terms.
-
-Sevendyne retains copyright on the codebase but does **not** restrict commercial adoption under MIT terms. For partnership or custom engineering support, visit [sevendyne.com](https://sevendyne.com) or contact hr@sevendyne.com.
