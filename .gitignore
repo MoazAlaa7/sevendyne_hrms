@@ -15,3 +15,4 @@ media/
 
 # Ignore specific file
 notes.txt
+staticfiles/
