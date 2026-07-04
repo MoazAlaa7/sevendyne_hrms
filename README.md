@@ -125,11 +125,17 @@ black --check apps config
 ## Contributing
 
 We use this repository to **discover engineering talent** and welcome **collaborators** who want to ship real features. Read [CONTRIBUTING.md](CONTRIBUTING.md) for the evaluation workflow, PR standards, and how to get involved.
+## Commercial Support & Custom Engineering
+
+This HRMS is built and maintained by **[Sevendyne Consultancy Services LLP](https://sevendyne.com)** — we build, customise, deploy, and support HRMS/payroll systems commercially, and run managed payroll services for companies with teams in India.
+
+**Need customisation, hosted deployment, integrations, or managed payroll?**
+→ [sevendyne.com](https://sevendyne.com) · hr@sevendyne.com
 
 ## License
 
 Released under the **[MIT License](LICENSE)**.
 
-You may use this software freely — including in **commercial products and internal business operations** — as long as you include the copyright notice. There is no purchase, subscription, or proprietary license required.
+You may use this software freely — including in **commercial products and internal business operations** — as long as you include the copyright notice. There is no purchase, subscription, or proprietary license required. Sevendyne retains copyright on the codebase but does not restrict commercial adoption under MIT terms.
 
 Sevendyne retains copyright on the codebase but does **not** restrict commercial adoption under MIT terms. For partnership or custom engineering support, visit [sevendyne.com](https://sevendyne.com) or contact hr@sevendyne.com.
